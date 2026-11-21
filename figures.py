@@ -189,9 +189,52 @@ def flow_figure(columns, row_labels, out_paths, h_max, caption, f_ticks,
     bottom = (0.16 * (caption.count("\n") + 1) + 0.06) / (3.45 * n_rows)
     fig.text(0.5, 0.004, caption, ha="center", fontsize=8.5, color=INK2)
     fig.tight_layout(rect=(0, bottom, 1, rect_top))
+    clear_legends(fig)
     for p in out_paths:
         fig.savefig(p, dpi=200)
     plt.close(fig)
+
+
+def _covers(ax, box):
+    """Whether a box in display coordinates sits on any curve or point drawn in data units."""
+    for line in ax.get_lines():
+        if line.get_transform() != ax.transData or len(line.get_xydata()) == 0:
+            continue
+        xy = ax.transData.transform(line.get_xydata())
+        if len(xy) > 1 and line.get_linestyle() not in ("None", ""):   # every 2 px along it
+            n = int(np.clip(np.hypot(*(xy[1:] - xy[:-1]).T).max() / 2, 2, 1000))
+            t = np.linspace(0, 1, n)[:, None, None]
+            xy = (xy[:-1] + t * (xy[1:] - xy[:-1])).reshape(-1, 2)
+        inside = ((xy[:, 0] >= box.x0) & (xy[:, 0] <= box.x1)
+                  & (xy[:, 1] >= box.y0) & (xy[:, 1] <= box.y1))
+        if inside.any():
+            return True
+    return False
+
+
+def clear_legends(fig):
+    """Move any legend that covers a curve into a band of its own beyond the data.
+
+    Every flow starts at zero and runs off to one side, so once the axis is extended on the
+    side away from zero, the band there is free along its whole width.
+    """
+    fig.canvas.draw()
+    for ax in fig.axes:
+        leg = ax.get_legend()
+        if leg is None:
+            continue
+        # the text and the line samples, not the padded frame around them; a line sample is
+        # a box of no height, so each box gets a few pixels of margin
+        boxes = [a.get_window_extent().padded(3) for a in [*leg.get_texts(), *leg.legend_handles]]
+        if not any(_covers(ax, box) for box in boxes):
+            continue
+        lo, hi = ax.get_ylim()
+        down = -lo > hi
+        band = 0.5 * (hi - lo)
+        ax.set_ylim((lo - band, hi) if down else (lo, hi + band))
+        handles, labels = ax.get_legend_handles_labels()
+        ax.legend(handles, labels, loc="lower left" if down else "upper left", frameon=False,
+                  fontsize=9, handlelength=2.2)
 
 
 def behaviour_figure(error_panel, gap_panel, out_paths, f_max):

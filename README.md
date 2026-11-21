@@ -63,7 +63,7 @@ At 156 Hz, the formula gives a 22× smaller error. For the same accuracy, it nee
 
 ![Isaac flow](exp1_pendulum/results/fig_flow_isaac_single.png)
 
-The PhysX source is open ([NVIDIA-Omniverse/PhysX](https://github.com/NVIDIA-Omniverse/PhysX)), so the theory comes from the solver code. TGS substeps the drive but applies gravity once per step. With this fact, the TGS drive matches the theory within 3%.
+The PhysX source is open ([NVIDIA-Omniverse/PhysX](https://github.com/NVIDIA-Omniverse/PhysX)), so the theory comes from the solver code. TGS substeps the drive but applies gravity once per step. With this fact, the first-order slopes of the TGS drive match the theory within 7%.
 
 ## MuJoCo Warp: the same pendulum on the GPU
 
@@ -83,6 +83,7 @@ uv run python run_gap.py
 uv run python plot_pendulum.py
 uv run python run_flow.py
 uv run python run_flow.py --delay
+uv run python run_flow_isaac_pipeline.py   # the MuJoCo sweep, fitted as Isaac is
 uv run python plot_flow.py
 uv run python video.py                 # needs EGL
 uv run python derive_second_order.py
@@ -102,7 +103,8 @@ Isaac Sim needs its own Python 3.11 environment, with `isaacsim[all]==5.1.0.0` a
 
 ```bash
 cd isaac
-$ISAAC_VENV/bin/python run_single.py --arm A    # also B and C; about 6 h each
+$ISAAC_VENV/bin/python run_single.py --arm A    # also B and C; about 4 h each
+$ISAAC_VENV/bin/python cross_seed.py A          # also B and C
 $ISAAC_VENV/bin/python dump_traj.py single
 $ISAAC_VENV/bin/python probe_step_map_isaac.py A 1 4 32
 $ISAAC_VENV/bin/python probe_drive_law.py B

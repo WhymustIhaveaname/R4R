@@ -29,6 +29,8 @@ parser.add_argument("--resume", action="store_true",
                     help="keep the fits already in the output file and only fill the gaps")
 parser.add_argument("--all-drives", action="store_true",
                     help="fit one parameter set to all five drive frequencies at once")
+parser.add_argument("--fctrl", type=int, nargs="+", default=[10, 20, 50, 100, 200],
+                    help="nominal control frequencies (Hz); the figure draws 50, 100 and 200")
 args = parser.parse_args()
 app = SimulationApp({"headless": True})
 
@@ -38,10 +40,10 @@ ROOT = Path(__file__).resolve().parent.parent  # the repo, wherever it is checke
 sys.path.insert(0, str(ROOT / "isaac"))
 sys.path.insert(0, str(ROOT / "exp1_pendulum"))
 
-from pendulum_isaac import J0, KD0, KP0, IsaacPendulum  # noqa: E402
+from pendulum_isaac import J0, KD0, KP0, IsaacPendulum, fit_problem  # noqa: E402
 import common as mj  # noqa: E402  (the MuJoCo module supplies the shared reference solution)
 
-F_CTRL_NOMINAL = (10, 20, 50, 100, 200)  # same nominal control frequencies as MuJoCo
+F_CTRL_NOMINAL = args.fctrl  # MuJoCo's are 10, 20, 50, 100 and 200 Hz
 # Each scheme's own first-order prediction, from exp1_pendulum/derive_second_order.py.  An
 # explicitly held torque makes PhysX behave as semi-implicit Euler; its own drive is an implicit
 # spring whose damping is K_D + delta K_P, run at delta = h / 32 under TGS and delta = h under PGS.
@@ -66,7 +68,9 @@ def main():
 
     world = World(physics_dt=1 / 200, stage_units_in_meters=1.0, backend="numpy")
     ndim = 4 if WITH_DELAY else 3
-    sim = IsaacPendulum(world, args.arm, 2 * ndim)   # one env per central-difference probe
+    # The fitter advances all eight starting points at once, each asking for one environment
+    # per central-difference probe, so a round of the fit is a single rollout.
+    sim = IsaacPendulum(world, args.arm, 8 * 2 * ndim)
 
     rows = json.loads(OUT.read_text()) if args.resume and OUT.exists() else []
     done = {(r["f_ctrl_nominal"], round(r["h"], 12)) for r in rows}
@@ -82,29 +86,7 @@ def main():
                 continue
             sim.set_dt(h)
             drives = mj.DRIVES if args.all_drives else (mj.F_REF,)
-            data = [mj.ref_sequence(f_ctrl, f_ref, t_end=args.t_fit) for f_ref in drives]
-            data = [(refs, mj.ground_truth(refs, f_ctrl, dec)[dec - 1::dec]) for refs in data]
-            gt = np.concatenate([g for _, g in data])
-
-            def pack(params):
-                """(J, K_P, K_D, delay) rows -> the (armature, K_P, K_D, delay) Isaac wants."""
-                P = np.atleast_2d(np.asarray(params, float))
-                if P.shape[1] == 3:
-                    P = np.hstack([P, np.zeros((len(P), 1))])
-                return np.column_stack([P[:, 0] - J0, P[:, 1], P[:, 2], P[:, 3]])
-
-            def run(params):
-                P = pack(params)
-                return np.concatenate([sim.rollout(refs, dec, P, f_ctrl=f_ctrl)
-                                       for refs, _ in data], axis=1)
-
-            def rollout(J, kp, kd, delay=0.0):
-                return run([(J, kp, kd, delay)])[0]
-
-            def batch(param_rows):
-                # One Isaac step costs the same for one environment or sixteen, so the whole
-                # central-difference Jacobian comes out of a single batched rollout.
-                return list(run(param_rows))
+            gt, rollout, batch = fit_problem(sim, f_ctrl, dec, drives, args.t_fit)
 
             d = h / SUBSTEPS[args.arm]
             sign = +1 if HELD_TORQUE[args.arm] else -1

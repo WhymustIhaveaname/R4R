@@ -5,6 +5,8 @@ Link 1 is PD-driven; link 2 hangs from its end, hinged 40% along its own length,
 
 import numpy as np
 
+from pendulum_isaac import set_step
+
 M1 = M2 = 0.45359237  # 1 lb
 L1 = L2 = 0.3048  # 1 ft
 HINGE_FRAC = 0.40
@@ -116,7 +118,7 @@ class IsaacDouble:
         self.driven = list(self.view.dof_names).index("j1")
 
     def set_dt(self, h):
-        self.world.set_simulation_dt(physics_dt=h, rendering_dt=h)
+        set_step(self.world, h)
 
     def _apply(self, params):
         p = np.atleast_2d(np.asarray(params, dtype=np.float32))

@@ -114,6 +114,47 @@ def delayed_command(refs, f_ctrl, dec, delays):
     return (integral(t0 + h) - integral(t0)) / h
 
 
+def set_step(world, h):
+    """Set the physics step to h, which must be 1 / (an integer).
+
+    Isaac stores the step as int(1 / dt) steps per second, and int() truncates: 1 / (1 / 210)
+    is 209.99999999999997, so asking for 1 / 210 s runs at 209 Hz.  Asking for a step a little
+    shorter keeps the integer rate exact.
+    """
+    rate = round(1.0 / h)
+    if abs(rate * h - 1.0) > 1e-9:
+        raise ValueError(f"Isaac can only step at an integer rate, not 1 / {1.0 / h} s")
+    dt = 1.0 / (rate + 0.5)
+    world.set_simulation_dt(physics_dt=dt, rendering_dt=dt)
+    assert world.get_physics_dt() == 1.0 / rate
+
+
+def fit_problem(sim, f_ctrl, dec, drives, t_fit):
+    """One grid point as the fitter sees it: (reference, rollout, batch).
+
+    The reference is read once per control step, as the simulator is; rollouts take the
+    fitter's (J, K_P, K_D[, delay]) and every drive's angles come back concatenated.
+    Needs exp1_pendulum on sys.path, for the reference solution.
+    """
+    import common as mj
+
+    data = [mj.ref_sequence(f_ctrl, f_ref, t_end=t_fit) for f_ref in drives]
+    data = [(refs, mj.ground_truth(refs, f_ctrl, dec)[dec - 1::dec]) for refs in data]
+    gt = np.concatenate([g for _, g in data])
+
+    def run(params):
+        P = np.atleast_2d(np.asarray(params, float))
+        if P.shape[1] == 3:
+            P = np.hstack([P, np.zeros((len(P), 1))])
+        P = np.column_stack([P[:, 0] - J0, P[:, 1:]])    # Isaac takes the rotor inertia
+        return np.concatenate([sim.rollout(refs, dec, P, f_ctrl=f_ctrl) for refs, _ in data],
+                              axis=1)
+
+    # One Isaac step costs the same for one environment or sixteen, so the whole
+    # central-difference Jacobian comes out of a single batched rollout.
+    return gt, lambda J, kp, kd, delay=0.0: run([(J, kp, kd, delay)])[0], lambda rows: list(run(rows))
+
+
 class IsaacPendulum:
     """Steps n_envs copies of the pendulum, one parameter set per environment."""
 
@@ -142,13 +183,19 @@ class IsaacPendulum:
         return p
 
     def set_dt(self, h):
-        self.world.set_simulation_dt(physics_dt=h, rendering_dt=h)
+        set_step(self.world, h)
 
     def rollout(self, refs, dec, params, f_ctrl=F_CTRL):
-        """Joint angle after each control step, shape (n_envs, len(refs)).
+        """Joint angle after each control step, shape (len(params), len(refs)).
 
-        `params` is (n_envs, 3) of (armature, K_P, K_D); each environment runs its own set.
+        `params` is rows of (armature, K_P, K_D[, delay]); each environment runs its own row.
+        More rows than environments run as several rollouts, since the fitter batches the
+        probes of every starting point together.
         """
+        if len(np.atleast_2d(params)) > self.n:
+            P = np.atleast_2d(params)
+            return np.concatenate([self.rollout(refs, dec, P[i:i + self.n], f_ctrl)
+                                   for i in range(0, len(P), self.n)])
         self.world.reset()
         k = len(np.atleast_2d(params))
         p = self._apply(params)

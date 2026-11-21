@@ -25,40 +25,46 @@ class _Gang:
     them as a single call.  The optimizer, its tolerances and its iterates are untouched, so
     the answer is the serial answer - what changes is that a simulator which costs the same
     for eight worlds as for sixty-four is asked once instead of seven times.
+    The rollouts run on the thread that serves the gang, never on a fit's thread: Isaac only
+    steps from the thread that created it, and hangs when asked from another.
     """
 
     def __init__(self, batch, n_fits):
         self.batch, self.active = batch, n_fits
         self.cv = threading.Condition()
-        self.pending, self.results, self.round = {}, {}, 0
+        self.pending, self.results = {}, {}
 
     def submit(self, rows):
         me = threading.get_ident()
         with self.cv:
             self.pending[me] = rows
-            mine = self.round
-            if len(self.pending) >= self.active:
-                self._dispatch()
-            while self.round == mine:
+            self.cv.notify_all()
+            while me not in self.results:
                 self.cv.wait()
             return self.results.pop(me)
 
     def retire(self):
         with self.cv:
             self.active -= 1
-            if self.pending and len(self.pending) >= self.active:
-                self._dispatch()
+            self.cv.notify_all()
 
-    def _dispatch(self):
-        order = list(self.pending)
-        out = self.batch([r for t in order for r in self.pending[t]])
-        i = 0
-        for t in order:
-            k = len(self.pending[t])
-            self.results[t], i = out[i:i + k], i + k
-        self.pending.clear()
-        self.round += 1
-        self.cv.notify_all()
+    def serve(self):
+        """Issue one batched rollout whenever every live fit is waiting; return when all are done."""
+        while True:
+            with self.cv:
+                while self.active and len(self.pending) < self.active:
+                    self.cv.wait()
+                if not self.active:
+                    return
+                order, requests = list(self.pending), dict(self.pending)
+                self.pending.clear()
+            out = self.batch([r for t in order for r in requests[t]])
+            with self.cv:
+                i = 0
+                for t in order:
+                    k = len(requests[t])
+                    self.results[t], i = out[i:i + k], i + k
+                self.cv.notify_all()
 
 
 def start_points(h, predicted, prev, rng, with_delay, param0):
@@ -137,7 +143,10 @@ def identify(rollout, gt, h, starts, param0, with_delay=False, batch=None,
             return np.full(n, DIVERGED_RESIDUAL), False
         return (theta - gt).ravel() / np.sqrt(n), True
 
-    eps = 1e-4   # large enough to stay above the float32 noise of a batched simulator
+    # The K_P and K_D columns are nearly parallel, so the Gauss-Newton step hangs on their small
+    # difference.  At 1e-4 the float32 noise of a batched simulator swamps that difference, and
+    # the fit stalls far from the minimum; 1e-2 keeps it above the noise.
+    eps = 1e-2
 
     def solve(p, roll):
         """One start, with `roll(params) -> trajectories` however they get evaluated."""
@@ -181,6 +190,7 @@ def identify(rollout, gt, h, starts, param0, with_delay=False, batch=None,
                    for k, p in enumerate(starts)]
         for t in threads:
             t.start()
+        gang.serve()
         for t in threads:
             t.join()
     rmse, params, x, jac_out = min(fits, key=lambda f: f[0])
@@ -188,3 +198,36 @@ def identify(rollout, gt, h, starts, param0, with_delay=False, batch=None,
     spread = [f[1].tolist() for f in fits if np.isfinite(f[0])]
     return {"rmse": rmse, "params": params.tolist(), "cond": cond,
             "start_rmse": [f[0] for f in fits], "start_params": spread}
+
+
+def cross_seed(rows, problem, param0, key="params", rmse_key="rmse", with_delay=True):
+    """Refit every grid point from the answers the other chains found, and keep the lowest.
+
+    Each chain runs at one nominal control rate and walks up in h, starting every fit from its
+    own previous answer.  If the fit has several minima, chains can settle in different ones,
+    and the flow then scatters by control rate for a reason that is the fitter's, not the
+    simulator's.  So each row is refitted from its own answer and from the best-scoring answer
+    of the other chains near its h, and the lower of the two minima is kept.
+    `problem(row)` returns (gt, rollout, batch) for the row's grid point.  Rows are updated in
+    place; a row whose fit moved gets "reseeded": the RMSE it had.  Returns that count.
+    """
+    chains = {}
+    for r in rows:
+        chains.setdefault(r["f_ctrl_nominal"], []).append(r)
+    moved = 0
+    for r in rows:
+        gt, rollout, batch = problem(r)
+        seeds = [min(c, key=lambda o: abs(o["h"] - r["h"]))[key]
+                 for f, c in chains.items() if f != r["f_ctrl_nominal"]]
+        if not seeds:
+            continue
+        score = [np.inf if t is None else float(np.sqrt(np.mean((np.asarray(t) - gt) ** 2)))
+                 for t in batch(seeds)]
+        best = np.asarray(seeds[int(np.argmin(score))], float)
+        fit = identify(rollout, gt, r["h"], [np.asarray(r[key], float), best], param0,
+                       with_delay=with_delay, batch=batch)
+        if fit["rmse"] < r[rmse_key] * (1 - 1e-3):
+            r["reseeded"] = r[rmse_key]
+            r[key], r[rmse_key] = fit["params"], fit["rmse"]
+            moved += 1
+    return moved
