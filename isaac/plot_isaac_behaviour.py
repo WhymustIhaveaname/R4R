@@ -24,7 +24,7 @@ F_MAX = 1000
 
 def main(stem="isaac_gap"):
     use_house_style()
-    rows = sorted(json.loads((RESULTS / f"{stem}_{SCHEME}.json").read_text()),
+    rows = sorted(json.loads((RESULTS / f"{stem}_{SCHEME}.json").read_text())["main"],
                   key=lambda r: r["h"])
     z = np.load(RESULTS / "isaac_traj.npz")
     gt = z["reference"]
@@ -43,7 +43,8 @@ def main(stem="isaac_gap"):
     lost = [r for r in rows if r.get("rmse_measured") is None]
     row = min(rows, key=lambda r: abs(r["f"] - 200))
     lo, hi = row["rmse_renormalized"], row["rmse_measured"]
-    gap = {"series": series, "ylim": (1e-6, 1),
+    # the fitted error runs along the bottom, so the legend takes the empty top right
+    gap = {"series": series, "ylim": (1e-6, 1), "legend_loc": "upper right",
            "ylabel": "trajectory RMSE, all five commands (rad)",
            "diverge_f": max(r["f"] for r in lost) if lost else None,
            "annotation": (f"{hi / lo:.0f}$\\times$ smaller,\nwithout fitting", row["f"], lo, hi)

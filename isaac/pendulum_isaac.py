@@ -21,6 +21,25 @@ ARM_LABEL = {
 }
 
 
+# Each scheme's own first-order prediction, from exp1_pendulum/derive_second_order.py.  An
+# explicitly held torque makes PhysX behave as semi-implicit Euler; its own drive is an implicit
+# spring whose damping is K_D + delta K_P, run at delta = h / 32 under TGS and delta = h under PGS.
+TGS_ITERS = 32
+SUBSTEPS = {"A": 1, "B": TGS_ITERS, "C": 1}
+HELD_TORQUE = {"A": True, "B": False, "C": False}
+
+
+def first_order_prediction(arm, h, with_delay=True):
+    """(J, K_P, K_D[, d]) to first order in h, J being the total inertia."""
+    d = h / SUBSTEPS[arm]
+    sign = +1 if HELD_TORQUE[arm] else -1
+    p = np.array([J0 + sign * d / 2 * KD0, KP0, KD0 - (0.0 if HELD_TORQUE[arm] else d * KP0)])
+    if with_delay:
+        return np.append(p, d / 2)
+    p[2] += sign * d / 2 * KP0  # without a delay operator the advance lands on K_D
+    return p
+
+
 def build_scene(n_envs, arm, spacing=1.0):
     """One pendulum per environment, all identical; returns the articulation view."""
     from pxr import Gf, PhysxSchema, UsdGeom, UsdPhysics

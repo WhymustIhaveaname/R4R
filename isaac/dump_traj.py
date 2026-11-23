@@ -1,7 +1,7 @@
 """Dump Isaac trajectories at 200 Hz for the behaviour figures and the videos.
 
 Writes one npz per system holding the reference, the measured-parameter run and the
-renormalized-parameter run, for every arm.
+renormalized-parameter run.
 """
 
 import sys
@@ -22,24 +22,20 @@ DEC = 4  # 200 Hz physics at 50 Hz control
 def dump_single():
     sys.path.insert(0, str(ROOT / "exp1_pendulum"))
     import common as mj
-    from pendulum_isaac import F_CTRL, KD0, KP0, IsaacPendulum
+    from pendulum_isaac import F_CTRL, J0, KD0, KP0, IsaacPendulum, first_order_prediction
     from isaacsim.core.api import World
 
+    # Scheme A only, the one the behaviour figure and the video show: the solver is fixed when
+    # the scene is built, so another scheme would need a scene of its own.
     h = 1.0 / (F_CTRL * DEC)
     world = World(physics_dt=h, stage_units_in_meters=1.0, backend="numpy")
-    out = {}
-    sim = IsaacPendulum(world, "A", 2)   # one scene, re-used with each arm's control law
-    for arm in ("A", "B", "C"):
-        sim.arm = arm
-        refs = mj.ref_sequence(F_CTRL, mj.F_REF)
-        gt = mj.ground_truth(refs, F_CTRL, DEC)[DEC - 1::DEC]
-        # The prediction includes the half-step command delay, as the flow figure fits.
-        measured = np.array([0.0, KP0, KD0, 0.0])
-        renorm = np.array([h / 2 * KD0, KP0, KD0, h / 2])
-        out[f"{arm}_measured"] = sim.rollout(refs, DEC, measured[None, :])[0]
-        out[f"{arm}_renormalized"] = sim.rollout(refs, DEC, renorm[None, :])[0]
-        out["reference"] = gt
-        out["refs"] = refs
+    sim = IsaacPendulum(world, "A", 2)
+    refs = mj.ref_sequence(F_CTRL, mj.F_REF)
+    measured = np.array([0.0, KP0, KD0, 0.0])
+    renorm = first_order_prediction("A", h) - np.array([J0, 0.0, 0.0, 0.0])  # rotor inertia
+    out = {"reference": mj.ground_truth(refs, F_CTRL, DEC)[DEC - 1::DEC], "refs": refs,
+           "A_measured": sim.rollout(refs, DEC, measured[None, :])[0],
+           "A_renormalized": sim.rollout(refs, DEC, renorm[None, :])[0]}
     np.savez_compressed(ROOT / "exp1_pendulum" / "results" / "isaac_traj.npz", **out)
     print("wrote isaac_traj.npz")
 

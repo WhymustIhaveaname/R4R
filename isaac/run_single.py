@@ -40,16 +40,11 @@ ROOT = Path(__file__).resolve().parent.parent  # the repo, wherever it is checke
 sys.path.insert(0, str(ROOT / "isaac"))
 sys.path.insert(0, str(ROOT / "exp1_pendulum"))
 
-from pendulum_isaac import J0, KD0, KP0, IsaacPendulum, fit_problem  # noqa: E402
+from pendulum_isaac import (J0, KD0, KP0, IsaacPendulum, first_order_prediction,  # noqa: E402
+                            fit_problem)
 import common as mj  # noqa: E402  (the MuJoCo module supplies the shared reference solution)
 
 F_CTRL_NOMINAL = args.fctrl  # MuJoCo's are 10, 20, 50, 100 and 200 Hz
-# Each scheme's own first-order prediction, from exp1_pendulum/derive_second_order.py.  An
-# explicitly held torque makes PhysX behave as semi-implicit Euler; its own drive is an implicit
-# spring whose damping is K_D + delta K_P, run at delta = h / 32 under TGS and delta = h under PGS.
-TGS_ITERS = 32
-SUBSTEPS = {"A": 1, "B": TGS_ITERS, "C": 1}
-HELD_TORQUE = {"A": True, "B": False, "C": False}
 H_TARGET = np.arange(1, args.points + 1) * args.h_step * 1e-3
 H_TARGET = H_TARGET[H_TARGET >= args.h_min * 1e-3 - 1e-12]
 WITH_DELAY = not args.no_delay
@@ -88,16 +83,8 @@ def main():
             drives = mj.DRIVES if args.all_drives else (mj.F_REF,)
             gt, rollout, batch = fit_problem(sim, f_ctrl, dec, drives, args.t_fit)
 
-            d = h / SUBSTEPS[args.arm]
-            sign = +1 if HELD_TORQUE[args.arm] else -1
-            kd_shift = 0.0 if HELD_TORQUE[args.arm] else -d * KP0
-            measured = np.array([J0, KP0, KD0])
-            predicted = np.array([J0 + sign * d / 2 * KD0, KP0, KD0 + kd_shift])
-            if WITH_DELAY:
-                measured = np.append(measured, 0.0)
-                predicted = np.append(predicted, d / 2)
-            else:                       # without a delay operator the advance lands on K_D
-                predicted[2] += sign * d / 2 * KP0
+            measured = np.append([J0, KP0, KD0], [0.0] * WITH_DELAY)
+            predicted = first_order_prediction(args.arm, h, WITH_DELAY)
             starts = mj.start_points(h, predicted, prev, rng, WITH_DELAY)
             t0 = time.perf_counter()
             out = mj.identify(rollout, gt, h, starts, with_delay=WITH_DELAY, batch=batch)

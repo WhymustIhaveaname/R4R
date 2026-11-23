@@ -57,7 +57,7 @@ This section repeats experiment 1 in Isaac Sim 5.1. PhysX has no RK4, so the thr
 
 ![Isaac behaviour](exp1_pendulum/results/fig_behaviour_isaac_single.png)
 
-At 156 Hz, the formula gives a 22× smaller error. For the same accuracy, it needs 11× less computation.
+At 200 Hz, the formula gives a 29× smaller error. For the same accuracy, it needs 31× less computation.
 
 ### Flow of the effective parameters
 
@@ -105,6 +105,7 @@ Isaac Sim needs its own Python 3.11 environment, with `isaacsim[all]==5.1.0.0` a
 cd isaac
 $ISAAC_VENV/bin/python run_single.py --arm A    # also B and C; about 4 h each
 $ISAAC_VENV/bin/python cross_seed.py A          # also B and C
+$ISAAC_VENV/bin/python run_gap_single.py A      # also B and C
 $ISAAC_VENV/bin/python dump_traj.py single
 $ISAAC_VENV/bin/python probe_step_map_isaac.py A 1 4 32
 $ISAAC_VENV/bin/python probe_drive_law.py B
