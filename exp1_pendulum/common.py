@@ -202,6 +202,24 @@ def second_order_shift(arm, h):
 PARAM0 = np.array([J0, KP0, KD0])
 
 
+def run_many(sim, jobs):
+    """One trajectory per (refs, f_ctrl, dec, params) job, all at the same physics step."""
+    if hasattr(sim, "rollout_many"):
+        return sim.rollout_many(jobs)
+    out = [None] * len(jobs)
+    groups = {}
+    for k, (refs, f_ctrl, dec, _) in enumerate(jobs):
+        groups.setdefault((id(refs), f_ctrl, dec), []).append(k)
+    for ks in groups.values():
+        refs, f_ctrl, dec, _ = jobs[ks[0]]
+        params = [jobs[k][3] for k in ks]
+        got = (sim.rollout_batch(refs, f_ctrl, dec, params) if hasattr(sim, "rollout_batch")
+               else [sim.rollout(refs, f_ctrl, dec, *p) for p in params])
+        for k, t in zip(ks, got):
+            out[k] = t
+    return out
+
+
 def pooled_rmse(sim, datasets, f_ctrl, dec, params):
     """RMSE over every dataset at once; None if any rollout diverged."""
     errs = []

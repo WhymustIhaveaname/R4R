@@ -9,6 +9,12 @@ dependencies = [
     "matplotlib",
     "imageio[ffmpeg]",
     "sympy",
+    "cma>=4.6.0",
+]
+
+[project.optional-dependencies]
+superdex = [
+    "superdex>=1.0.1",
 ]
 
 [tool.uv]

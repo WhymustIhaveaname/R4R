@@ -22,7 +22,7 @@ F_CTRL = 50
 F_MAX = 1000
 
 
-def main(stem="isaac_gap"):
+def main(stem="gap_isaac"):
     use_house_style()
     rows = sorted(json.loads((RESULTS / f"{stem}_{SCHEME}.json").read_text())["main"],
                   key=lambda r: r["h"])
@@ -56,4 +56,4 @@ def main(stem="isaac_gap"):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "isaac_gap")
+    main(sys.argv[1] if len(sys.argv) > 1 else "gap_isaac")

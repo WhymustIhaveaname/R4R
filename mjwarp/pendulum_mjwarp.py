@@ -85,8 +85,8 @@ class WarpPendulum:
         p = np.atleast_2d(np.asarray(params, dtype=float))
         if len(p) > self.n:
             raise ValueError(f"{len(p)} parameter sets but only {self.n} worlds; the fitter "
-                             f"advances every start at once, so nworld must be at least "
-                             f"len(starts) * 2 * ndim")
+                             f"runs a whole generation at once, so nworld must be at least "
+                             f"fitting.POPSIZE")
         if p.shape[1] == 3:
             p = np.hstack([p, np.zeros((len(p), 1))])
         if len(p) < self.n:
@@ -158,8 +158,3 @@ class WarpPendulum:
         mjw.step(self.m, self.d)
         wp.launch(_record, dim=self.n, inputs=[self.d.qpos, self.idx, self.out])
         wp.launch(_advance, dim=1, inputs=[self.idx])
-
-
-def batch_for(sim, refs, f_ctrl, dec):
-    """The hook exp1_pendulum/run_flow.py uses to get a whole Jacobian from one rollout."""
-    return lambda rows: sim.rollout_batch(refs, f_ctrl, dec, rows)

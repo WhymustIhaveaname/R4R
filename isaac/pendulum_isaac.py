@@ -148,32 +148,6 @@ def set_step(world, h):
     assert world.get_physics_dt() == 1.0 / rate
 
 
-def fit_problem(sim, f_ctrl, dec, drives, t_fit):
-    """One grid point as the fitter sees it: (reference, rollout, batch).
-
-    The reference is read once per control step, as the simulator is; rollouts take the
-    fitter's (J, K_P, K_D[, delay]) and every drive's angles come back concatenated.
-    Needs exp1_pendulum on sys.path, for the reference solution.
-    """
-    import common as mj
-
-    data = [mj.ref_sequence(f_ctrl, f_ref, t_end=t_fit) for f_ref in drives]
-    data = [(refs, mj.ground_truth(refs, f_ctrl, dec)[dec - 1::dec]) for refs in data]
-    gt = np.concatenate([g for _, g in data])
-
-    def run(params):
-        P = np.atleast_2d(np.asarray(params, float))
-        if P.shape[1] == 3:
-            P = np.hstack([P, np.zeros((len(P), 1))])
-        P = np.column_stack([P[:, 0] - J0, P[:, 1:]])    # Isaac takes the rotor inertia
-        return np.concatenate([sim.rollout(refs, dec, P, f_ctrl=f_ctrl) for refs, _ in data],
-                              axis=1)
-
-    # One Isaac step costs the same for one environment or sixteen, so the whole
-    # central-difference Jacobian comes out of a single batched rollout.
-    return gt, lambda J, kp, kd, delay=0.0: run([(J, kp, kd, delay)])[0], lambda rows: list(run(rows))
-
-
 class IsaacPendulum:
     """Steps n_envs copies of the pendulum, one parameter set per environment."""
 
@@ -183,9 +157,10 @@ class IsaacPendulum:
         world.scene.add(self.view)
         world.reset()
         self.view.initialize()
+        self.stale = True           # reset once more before the first rollout
 
     def _apply(self, params):
-        """Write the parameters; must run after world.reset(), which restores USD values.
+        """Write the parameters, after any world.reset(), which restores USD values.
 
         Fewer rows than environments is allowed: the rest are padded with the first row and
         their output is discarded, so a short batch costs no more than a full one.
@@ -204,40 +179,80 @@ class IsaacPendulum:
     def set_dt(self, h):
         set_step(self.world, h)
 
-    def rollout(self, refs, dec, params, f_ctrl=F_CTRL):
-        """Joint angle after each control step, shape (len(params), len(refs)).
+    def rollout(self, refs, dec, params, f_ctrl=F_CTRL, every_step=False):
+        """Joint angle after each control step, shape (len(params), len(refs)), or after each
+        physics step with `every_step`, shape (len(params), len(refs) * dec).
 
-        `params` is rows of (armature, K_P, K_D[, delay]); each environment runs its own row.
-        More rows than environments run as several rollouts, since the fitter batches the
-        probes of every starting point together.
+        `params` is rows of (armature, K_P, K_D[, delay]); every row runs the same held command,
+        delayed by its own delay.
         """
-        if len(np.atleast_2d(params)) > self.n:
-            P = np.atleast_2d(params)
-            return np.concatenate([self.rollout(refs, dec, P[i:i + self.n], f_ctrl)
-                                   for i in range(0, len(P), self.n)])
-        self.world.reset()
-        k = len(np.atleast_2d(params))
-        p = self._apply(params)
+        p = np.atleast_2d(np.asarray(params, dtype=float))
+        delays = p[:, 3] if p.shape[1] > 3 else np.zeros(len(p))
+        out = self.rollout_cmd(delayed_command(refs, f_ctrl, dec, delays), p)
+        return out if every_step else out[:, dec - 1::dec]
+
+    def rollout_cmd(self, cmd, params):
+        """Joint angle after each physics step, shape (len(params), cmd.shape[1]).
+
+        Row i of `params`, (armature, K_P, K_D[, ...]), runs the per-step command cmd[i].  More
+        rows than environments run as several rollouts.
+        """
+        cmd, p = np.atleast_2d(cmd), np.atleast_2d(np.asarray(params, dtype=float))
+        if len(p) > self.n:
+            return np.concatenate([self.rollout_cmd(cmd[i:i + self.n], p[i:i + self.n])
+                                   for i in range(0, len(p), self.n)])
+        k = len(p)
+        if self.stale:              # a new physics step leaves the tensor views to rebuild
+            self.world.reset()
+            self.stale = False
+        p = self._apply(p)
+        cmd = np.concatenate([cmd, np.repeat(cmd[:1], self.n - k, axis=0)]).astype(np.float32)
         zeros = np.zeros((self.n, 1), dtype=np.float32)
         self.view.set_joint_positions(zeros)
         self.view.set_joint_velocities(zeros)
-        k_rows = k
-        delays = p[:, 3] if p.shape[1] > 3 else None
-        cmd = (None if delays is None or not np.any(delays)
-               else delayed_command(refs, f_ctrl, dec, delays).astype(np.float32))
-        out = np.empty((self.n, len(refs)))
-        for k, r in enumerate(refs):
-            target = np.full((self.n, 1), r, dtype=np.float32)
-            for j in range(dec):
-                if cmd is not None:
-                    target = cmd[:, k * dec + j][:, None]
-                if self.arm == "A":
-                    q = self.view.get_joint_positions()
-                    v = self.view.get_joint_velocities()
-                    self.view.set_joint_efforts(
-                        (p[:, 1:2] * (target - q) - p[:, 2:3] * v).astype(np.float32))
-                else:
-                    self.view.set_joint_position_targets(target)
-                self.world.step(render=False)
-            out[:, k] = self.view.get_joint_positions().reshape(self.n)
-        return out[:k_rows]
+        out = np.empty((self.n, cmd.shape[1]))
+        for j in range(cmd.shape[1]):
+            target = cmd[:, j:j + 1]
+            if self.arm == "A":
+                q = self.view.get_joint_positions()
+                v = self.view.get_joint_velocities()
+                self.view.set_joint_efforts(
+                    (p[:, 1:2] * (target - q) - p[:, 2:3] * v).astype(np.float32))
+            else:
+                self.view.set_joint_position_targets(target)
+            self.world.step(render=False)
+            out[:, j] = self.view.get_joint_positions().reshape(self.n)
+        return out[:k]
+
+
+class IsaacSim:
+    """The pendulum with MuJoCo's rollout signature (exp1_pendulum/common.py, Sim), so that
+    MuJoCo's sweeps run on it unchanged: total inertia J, the angle after every physics step,
+    and None for a rollout that blew up."""
+
+    def __init__(self, world, arm, n_envs):
+        self.pend, self.h = IsaacPendulum(world, arm, n_envs), None
+
+    def rollout(self, refs, f_ctrl, dec, J, kp, kd, delay=0.0, strict=True):
+        return self.rollout_many([(refs, f_ctrl, dec, (J, kp, kd, delay))])[0]
+
+    def rollout_batch(self, refs, f_ctrl, dec, rows):
+        return self.rollout_many([(refs, f_ctrl, dec, row) for row in rows])
+
+    def rollout_many(self, jobs):
+        """(refs, f_ctrl, dec, (J, K_P, K_D[, delay])) jobs at one physics step, each with its
+        own command, all in the same rollout: one environment per job."""
+        steps = {f_ctrl * dec for _, f_ctrl, dec, _ in jobs}
+        if len(steps) != 1:
+            raise ValueError(f"one rollout steps at one rate, not at {sorted(steps)} Hz")
+        h = 1.0 / steps.pop()
+        if h != self.h:
+            set_step(self.pend.world, h)
+            self.h, self.pend.stale = h, True
+        P = np.array([np.append(row, [0.0] * (4 - len(row))) for *_, row in jobs], float)
+        cmd = np.stack([delayed_command(refs, f_ctrl, dec, [d])[0]
+                        for (refs, f_ctrl, dec, _), d in zip(jobs, P[:, 3])])
+        P[:, 0] -= J0                                    # Isaac takes the rotor inertia
+        out = self.pend.rollout_cmd(cmd, P)
+        ok = np.all(np.isfinite(out), axis=1) & (np.max(np.abs(out), axis=1) < 1e3)
+        return [out[k] if ok[k] else None for k in range(len(P))]

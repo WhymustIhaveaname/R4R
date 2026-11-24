@@ -21,7 +21,7 @@ $$
 
 ## Experiment 1: PD-controlled pendulum
 
-The pendulum is a uniform rod, 1 lb and 1 ft long, under gravity. A PD controller drives it with the ANYmal-C gains of [legged_gym](https://github.com/leggedrobotics/legged_gym): $K_P$ = 80 N m/rad, $K_D$ = 2 N m s/rad. The commands are sines from 0.5 to 8 Hz, held at the control rate. The real pendulum is the exact continuous-time solution. MuJoCo holds an explicit PD torque over each physics step, so $\delta t = h/2$. For each time step $h$, least squares finds the $(J, K_P, K_D)$ that best fits the real trajectory.
+The pendulum is a uniform rod, 1 lb and 1 ft long, under gravity. A PD controller drives it with the ANYmal-C gains of [legged_gym](https://github.com/leggedrobotics/legged_gym): $K_P$ = 80 N m/rad, $K_D$ = 2 N m s/rad. The commands are sines from 0.5 to 8 Hz, held at the control rate. The real pendulum is the exact continuous-time solution. MuJoCo holds an explicit PD torque over each physics step, so $\delta t = h/2$. For each time step $h$, CMA-ES finds the $(J, K_P, K_D)$ with the smallest error against the real trajectory. Every engine uses this fit and this protocol.
 
 ![Result](exp1_pendulum/results/fig_pendulum_mujoco.png)
 
@@ -53,7 +53,7 @@ The theory gives $K_P$ no counterterm. A free $K_P$ moves the rotor inertia by u
 
 ## Isaac Sim: the single pendulum in PhysX
 
-This section repeats experiment 1 in Isaac Sim 5.1. PhysX has no RK4, so the three schemes change the solver and the PD force.
+This section repeats experiment 1 in Isaac Sim 5.1. PhysX has no RK4, so the three schemes change the solver and the PD force. These two figures still come from the earlier fit; a rerun with the shared fit is in progress.
 
 ![Isaac behaviour](exp1_pendulum/results/fig_behaviour_isaac_single.png)
 
@@ -82,8 +82,9 @@ uv run python sanity_check.py
 uv run python run_gap.py
 uv run python plot_pendulum.py
 uv run python run_flow.py
+uv run python run_flow.py --cross-seed
 uv run python run_flow.py --delay
-uv run python run_flow_isaac_pipeline.py   # the MuJoCo sweep, fitted as Isaac is
+uv run python run_flow.py --delay --cross-seed
 uv run python plot_flow.py
 uv run python video.py                 # needs EGL
 uv run python derive_second_order.py
@@ -103,9 +104,7 @@ Isaac Sim needs its own Python 3.11 environment, with `isaacsim[all]==5.1.0.0` a
 
 ```bash
 cd isaac
-$ISAAC_VENV/bin/python run_single.py --arm A    # also B and C; about 4 h each
-$ISAAC_VENV/bin/python cross_seed.py A          # also B and C
-$ISAAC_VENV/bin/python run_gap_single.py A      # also B and C
+./launch.sh                                    # one process per scheme; about 1.5 days
 $ISAAC_VENV/bin/python dump_traj.py single
 $ISAAC_VENV/bin/python probe_step_map_isaac.py A 1 4 32
 $ISAAC_VENV/bin/python probe_drive_law.py B

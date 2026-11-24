@@ -20,6 +20,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from figures import flow_figure, use_house_style  # noqa: E402
+sys.path.insert(0, str(ROOT / "exp1_pendulum"))
+from plot_flow import F_CTRL_COLOR, F_TICKS, H_MAX  # noqa: E402  (MuJoCo's grid)
 
 RESULTS = ROOT / "exp1_pendulum" / "results"
 KP0, KD0 = 80.0, 2.0
@@ -72,7 +74,7 @@ RELATIVE = [(0, r"rotor inertia $/\, J$", J0),
 ROWS = RELATIVE
 KP_ROW = 2  # the third row of the figure, whose y range follows the inertia row above it
 
-CAPTION = ("Isaac Sim 5.1 / PhysX, single pendulum, on the same $h$ grid as the MuJoCo figure.\n"
+CAPTION = ("Isaac Sim 5.1 / PhysX, single pendulum, on the same grid and fit as the MuJoCo figure.\n"
            "First-order theory (solid); fit (dashed), $c_1 h + c_2 h^2$ through the origin, so "
            "$c_1$ is the measured first-order slope.\n"
            "An explicitly held torque makes PhysX behave as semi-implicit Euler; its own drive "
@@ -80,35 +82,23 @@ CAPTION = ("Isaac Sim 5.1 / PhysX, single pendulum, on the same $h$ grid as the 
            f"$\\delta = h/{TGS_ITERS}$ under TGS and $\\delta = h$ under PGS.")
 
 
-def column(key, name, kind, substeps, stem):
-    rows = sorted(json.loads((RESULTS / f"{stem}_{key}.json").read_text()), key=lambda r: r["h"])
-    rows = [r for r in rows if r.get("f_ctrl_nominal", F_CTRL_USED[0]) in F_CTRL_USED]
+def column(key, name, kind, substeps, rows):
+    rows = sorted((r for r in rows if r["arm"] == key), key=lambda r: r["h"])
     h = np.array([r["h"] * 1e3 for r in rows])
-    shift = np.array([r["params_identified"] for r in rows]) - BASE
+    shift = np.array([r["params"] for r in rows]) - BASE
     t = theory(kind, substeps)
-    out = {"title": f"{name}\nfitted: rotor inertia, $K_P$, $K_D$, $d$", "h": h,
-           "rows": [(shift[:, k] / unit, t[k]) for k, _, unit in ROWS],
-           "rmse": np.array([r["rmse_identified"] for r in rows])}
-    if "f_ctrl_nominal" in rows[0]:   # the MuJoCo grid runs several control rates per h
-        out["groups"] = np.array([r["f_ctrl_nominal"] for r in rows])
-    return out
+    return {"title": f"{name}\nfitted: rotor inertia, $K_P$, $K_D$, $d$", "h": h,
+            "rows": [(shift[:, k] / unit, t[k]) for k, _, unit in ROWS],
+            "rmse": np.array([r["rmse"] for r in rows]),
+            "groups": np.array([r["f_ctrl_nominal"] for r in rows])}
 
 
-# 10 and 20 Hz are dropped: the pendulum settles inside each control period there
-# (settling time 2J/K_D = 14 ms against 100 and 50 ms), so those samples carry little
-# information about the parameters and only scatter the fit.
-F_CTRL_USED = (50, 100, 200)
-F_CTRL_COLOR = {50: "#5598e7", 100: "#2a78d6", 200: "#104281"}
-
-
-def main(stem="isaac_single_grid", absolute=False):
+def main(absolute=False):
     global ROWS
     ROWS = ABSOLUTE if absolute else RELATIVE
     use_house_style()
-    columns = [column(*scheme, stem) for scheme in SCHEMES]
-    h_max = max(c["h"].max() for c in columns)
-    f_ticks = [(f, t) for f, t in ((4000, "4k"), (1000, "1k"), (500, "500"), (400, "400"),
-                                   (200, "200")) if 1e3 / f <= h_max]
+    rows = json.loads((RESULTS / "flow_isaac.json").read_text())
+    columns = [column(*scheme, rows) for scheme in SCHEMES]
     # Show K_P on the scale the same scheme's rotor inertia moves on, where it is a flat line.
     ranges = []
     for col in columns:
@@ -117,23 +107,21 @@ def main(stem="isaac_single_grid", absolute=False):
         pad = 0.05 * (hi - lo)
         ranges.append((lo - pad, hi + pad))
     stem_out = "fig_flow_isaac_single_absolute" if absolute else "fig_flow_isaac_single"
-    graded = "groups" in columns[0]
     flow_figure(columns, [label for _, label, _ in ROWS],
                 [RESULTS / f"{stem_out}.{e}" for e in ("png", "pdf")],
-                h_max, CAPTION, f_ticks, quadratic=True, show_rmse=False,
+                H_MAX, CAPTION, F_TICKS, quadratic=True, show_rmse=False,
                 # K_P does flow here: under TGS the h^2 counterterm is -K_P^2/12J.
                 no_fit=(),
                 row_ylim=None if absolute else {KP_ROW: ranges},
-                point_colors=F_CTRL_COLOR if graded else None,
+                point_colors=F_CTRL_COLOR,
                 legend_entries=[(rf"$f_\mathrm{{ctrl}} \approx$ {fc} Hz", c)
-                                for fc, c in F_CTRL_COLOR.items()] if graded else None)
+                                for fc, c in F_CTRL_COLOR.items()])
     print("wrote", RESULTS / f"{stem_out}.png")
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("stem", nargs="?", default="isaac_single_grid")
     ap.add_argument("--absolute", action="store_true",
                     help="plot the raw shifts instead of fractions of the measured value")
     a = ap.parse_args()
-    main(a.stem, a.absolute)
+    main(a.absolute)
