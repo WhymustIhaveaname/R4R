@@ -24,6 +24,12 @@ Three step maps are covered:
             well gives the wrong counterterms for every parameter.  At N = 1 this reduces to
             the PGS expressions exactly.
 
+  mochi     SuperDex's backward Euler, with gravity at the end of the step, and either a held
+            PD torque (explicit) or the pose controller's spring and damper at the end of the
+            step (implicit).  Their counterterms are those of Euler and of the PGS drive, but
+            gravity at the end of the step adds h c cos(theta) theta' at first order, which no
+            parameter absorbs.
+
 Isaac's explicit PD is not the held-torque map: its measured step map (probe_step_map.py and
 isaac/probe_step_map_isaac.py) is semi-implicit Euler, whatever the iteration count.
 
@@ -147,6 +153,26 @@ def tgs_drive_map(n):
     return tuple(sp.simplify(x.coeff(h, k)) for x, k in ((sT, 2), (sV, 2), (sT, 3), (sV, 3)))
 
 
+def mochi_map(pd_implicit):
+    """Taylor coefficients of a backward Euler step as SuperDex's Mochi takes it.
+
+    Gravity is evaluated at the end of the step (rigid_body_assembly.h).  The PD is either a
+    generalized force set before the step from the state at its start, or the pose controller,
+    whose spring and damper act at the end of the step (mochi_constraint.cpp).  The position
+    is advanced with the new velocity.  The link's own inertia is treated as a joint inertia:
+    Mochi's maximal-coordinate version of it adds a term of order h J_link theta'^3, which is
+    outside this map and outside the span of the three parameters.
+    """
+    v1 = v
+    for _ in range(4):                             # fixed point, one power of h per pass
+        th1 = th + h * v1
+        pd = KP * (r - th1) - KD * v1 if pd_implicit else KP * (r - th) - KD * v
+        v1 = sp.series(v + h * (-c * sp.sin(th1) + pd) / J, h, 0, 4).removeO()
+    sv = sp.expand(v1 - v)
+    st = sp.expand(h * v1)
+    return tuple(sp.simplify(e.coeff(h, k)) for e, k in ((st, 2), (sv, 2), (st, 3), (sv, 3)))
+
+
 TGS_ITERS = 32          # Isaac's default solverPositionIterationCount
 ARMS = (("Euler: semi-implicit, explicit PD (MuJoCo A)",
          (f, sp.Integer(0), sp.Integer(0), sp.Integer(0))),
@@ -156,7 +182,9 @@ ARMS = (("Euler: semi-implicit, explicit PD (MuJoCo A)",
          (f / 2, A1 / 2, A1 / 6, A2 / 6)),
         ("drive: PhysX force drive under PGS (Isaac C)", physx_drive_map()),
         (f"tgs: the same drive under TGS, {TGS_ITERS} substeps (Isaac B)",
-         tgs_drive_map(TGS_ITERS)))
+         tgs_drive_map(TGS_ITERS)),
+        ("mochi explicit: backward Euler, held PD torque (SuperDex A)", mochi_map(False)),
+        ("mochi implicit: backward Euler, pose controller (SuperDex B)", mochi_map(True)))
 
 
 def derive():
@@ -171,6 +199,8 @@ def derive():
         for lab, x1, x2 in zip(("J", "K_P", "K_D"), p1, p2):
             print(f"  {lab}* - {lab} = h*({sp.simplify(x1)}) + h^2*({sp.simplify(sp.expand(x2))})")
         print(f"  consistency of the theta and r coefficients: {chk1[0]}, {chk2[0]}")
+        if chk1[1] != 0:
+            print(f"  unrepresentable O(h) remainder: {chk1[1]}")
         print(f"  unrepresentable O(h^2) remainder: {chk2[1]}")
 
 
@@ -193,6 +223,16 @@ def step_map(kind, hh, th0, v0, tend, num):
             for _ in range(n):                          # then the drive, substep by substep
                 v_ += dd * (KPv * (r0 - t_) - (dd * KPv + KDv) * v_) / (Jv + dd * (dd * KPv + KDv))
                 t_ += dd * v_
+        elif kind.startswith("mochi"):
+            implicit = kind.startswith("mochi implicit")
+            v1 = v_
+            for _ in range(30):                         # Newton on the backward Euler residual
+                t1 = t_ + hh * v1
+                pd = KPv * (r0 - t1) - KDv * v1 if implicit else KPv * (r0 - t_) - KDv * v_
+                g = Jv * (v1 - v_) / hh + cv * np.sin(t1) - pd
+                dg = Jv / hh + cv * np.cos(t1) * hh + (KPv * hh + KDv if implicit else 0.0)
+                v1 -= g / dg
+            t_, v_ = t_ + hh * v1, v1
         else:
             denom = Jv + hh * KDv if kind.startswith("implicit") else Jv
             v_ += hh * (-cv * np.sin(t_) + KPv * (r0 - t_) - KDv * v_) / denom

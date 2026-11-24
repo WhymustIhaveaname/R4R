@@ -65,6 +65,20 @@ At 200 Hz, the formula gives a 29× smaller error. For the same accuracy, it nee
 
 The PhysX source is open ([NVIDIA-Omniverse/PhysX](https://github.com/NVIDIA-Omniverse/PhysX)), so the theory comes from the solver code. TGS substeps the drive but applies gravity once per step. With this fact, the first-order slopes of the TGS drive match the theory within 7%.
 
+## SuperDex: the single pendulum in Mochi
+
+This section repeats experiment 1 in [SuperDex](https://github.com/facebookresearch/project_superdex) Physics 1.0.1, Meta's Mochi engine, as shipped. Mochi integrates implicitly. Scheme A is backward Euler with an explicit PD torque. Scheme C is BDF2 with Mochi's own PD.
+
+![SuperDex behaviour](exp1_pendulum/results/fig_behaviour_superdex.png)
+
+At 200 Hz, the formula gives a 16× smaller error. For the same accuracy, it needs 16× less computation.
+
+### Flow of the effective parameters
+
+![SuperDex flow](exp1_pendulum/results/fig_flow_superdex_default_rod.png)
+
+The flow depends on the control rate. Mochi steps the rod in maximal coordinates and applies gravity at the end of the step, and no parameter absorbs these two terms. A joint cannot have less inertia than its link, so scheme B cannot run, and 32 of the 100 fits of C stop at this limit.
+
 ## MuJoCo Warp: the same pendulum on the GPU
 
 This experiment is a high-level sanity check of MuJoCo Warp. It checks whether MuJoCo Warp gives the same results as MuJoCo. It does, so you can safely move from MuJoCo to MuJoCo Warp, and vice versa.
@@ -111,6 +125,12 @@ $ISAAC_VENV/bin/python probe_drive_law.py B
 uv run python plot_isaac_flow.py
 uv run python plot_isaac_behaviour.py
 uv run python video_isaac.py --exp single
+
+cd ../superdex
+uv sync --extra superdex
+./launch.sh                                    # about 7 h on 32 cores
+uv run --extra superdex python plot_superdex_flow.py default rod
+uv run --extra superdex python plot_superdex_behaviour.py
 
 cd ../mjwarp
 ./launch.sh

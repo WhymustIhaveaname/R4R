@@ -95,7 +95,8 @@ def flow_figure(columns, row_labels, out_paths, h_max, caption, f_ticks,
     of a straight line, so that c_1 can be read against the first-order theory on its own.
     """
     n_rows = len(row_labels) + bool(show_rmse)
-    fig, axes = plt.subplots(n_rows, 3, figsize=(13, 3.45 * n_rows))
+    fig, axes = plt.subplots(n_rows, len(columns), figsize=(13 / 3 * len(columns), 3.45 * n_rows),
+                             squeeze=False)
     h_line = np.array([0, h_max])
     h_dense = np.linspace(0, h_max, 200)
 
