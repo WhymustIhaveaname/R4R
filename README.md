@@ -83,6 +83,14 @@ This experiment is a high-level sanity check of MuJoCo Warp. It checks whether M
 
 At the same parameters, the trajectories agree to float32 round-off: 2e-7 rad after 800 steps, 1e-6 rad after 16000. The fitted $J$, $K_P$ and $K_D$ agree within 0.04%, and the delay within 0.14%.
 
+## Genesis: the same pendulum in another MuJoCo-like engine
+
+This section repeats experiment 1 in [Genesis](https://github.com/Genesis-Embodied-AI/Genesis) 1.5.0, as shipped (FP32). Its rigid solver follows MuJoCo's, and its Euler and implicitfast integrators are MuJoCo's. Its default, approximate_implicitfast, differs from implicitfast only in how the constraint solver sees the damping. This pendulum has no constraint, so the two agree to round-off, and only Euler and implicitfast are swept. Genesis adds a rotor inertia of 0.1 kg m², seven times the rod's, to every joint that a model file leaves without one. Here it is turned off.
+
+![Genesis flow](exp1_pendulum/results/fig_flow_genesis.png)
+
+At the same parameters, the trajectories agree with MuJoCo's to float32 round-off, as MuJoCo Warp's do. The fitted $J$, $K_P$ and $K_D$ agree within 0.02%, and the delay within 0.13%.
+
 ## Reproduce
 
 ```bash
@@ -133,6 +141,12 @@ cd ../mjwarp
 ./launch.sh
 cd ../exp1_pendulum
 uv run python plot_flow.py --engine mjwarp
+
+cd ../genesis_world
+uv sync --extra genesis
+uv run --extra genesis python sanity_check.py
+./launch.sh                                    # about 10 min on 10 cores
+uv run --extra genesis python plot_genesis_flow.py
 ```
 
 ## Citation

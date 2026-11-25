@@ -16,6 +16,10 @@ dependencies = [
 superdex = [
     "superdex>=1.0.1",
 ]
+genesis = [
+    "genesis-world==1.5.0",
+    "torch>=2.15.0",
+]
 
 [tool.uv]
 package = false

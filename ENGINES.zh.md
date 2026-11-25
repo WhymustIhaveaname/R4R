@@ -23,9 +23,10 @@
 
 点的颜色是控制频率。排名如下：
 
-**MuJoCo = MuJoCo Warp > Isaac Sim（PhysX）> SuperDex（Mochi）**
+**MuJoCo = MuJoCo Warp = Genesis > Isaac Sim（PhysX）> SuperDex（Mochi）**
 
 - **MuJoCo**：三种 scheme 的点都落在同一条线上，并且贴合理论。MuJoCo Warp 与 MuJoCo 的差别在 float32 round-off 以内。
+- **Genesis**：Euler 和 implicitfast 与 MuJoCo 的差别同样在 float32 round-off 以内。默认的 approximate_implicitfast 只在有约束时与 implicitfast 不同，这个单摆没有约束，所以没有单独扫。
 - **Isaac Sim**：PGS drive 与 MuJoCo 一样好。explicit PD 贴合理论，但点比 MuJoCo 散。PhysX 自己的 drive 在 TGS 下按控制频率散开，而 TGS 是默认的 solver。
 - **SuperDex**：backward Euler + explicit PD 和 BDF2 + native PD 都按控制频率散开，BDF2 + native PD 还沿 $h$ 乱跳。backward Euler + native PD 跑不起来。
 
