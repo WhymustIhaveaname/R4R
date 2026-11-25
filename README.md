@@ -81,7 +81,7 @@ This experiment is a high-level sanity check of MuJoCo Warp. It checks whether M
 
 ![MuJoCo Warp flow](exp1_pendulum/results/fig1_flow_mjwarp.png)
 
-Every flow agrees to four digits, and the trajectories agree to float32 round-off.
+At the same parameters, the trajectories agree to float32 round-off: 2e-7 rad after 800 steps, 1e-6 rad after 16000. The fitted $J$, $K_P$ and $K_D$ agree within 0.04%, and the delay within 0.14%.
 
 ## Reproduce
 
