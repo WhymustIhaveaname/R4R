@@ -49,7 +49,7 @@ Chaos turns a small parameter error into a lost trajectory. At 200 Hz, the formu
 
 ![Flow](exp2_double_pendulum/results/fig_flow_mujoco.png)
 
-The theory gives $K_P$ no counterterm. A free $K_P$ moves the rotor inertia by up to 68%, and the error stays the same.
+The core trick: the theory gives $K_P$ no counterterm, so the fit leaves $K_P$ out. A free $K_P$ makes the condition number very large, and the fit becomes unstable. This is a good example of how theory helps engineering.
 
 ## Isaac Sim: the single pendulum in PhysX
 
