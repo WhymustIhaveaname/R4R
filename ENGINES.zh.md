@@ -11,11 +11,13 @@
 <table align="center">
   <tr>
     <td><img src="exp1_pendulum/results/fig1_flow_mujoco.png" height="320" alt="MuJoCo flow"></td>
+    <td><img src="exp1_pendulum/results/fig_flow_genesis.png" height="320" alt="Genesis flow"></td>
     <td><img src="exp1_pendulum/results/fig_flow_isaac_single.png" height="320" alt="Isaac Sim flow"></td>
     <td><img src="exp1_pendulum/results/fig_flow_superdex_default_rod.png" height="320" alt="SuperDex flow"></td>
   </tr>
   <tr>
     <td align="center">MuJoCo</td>
+    <td align="center">Genesis</td>
     <td align="center">Isaac Sim</td>
     <td align="center">SuperDex</td>
   </tr>
@@ -26,7 +28,7 @@
 **MuJoCo = MuJoCo Warp = Genesis > Isaac Sim（PhysX）> SuperDex（Mochi）**
 
 - **MuJoCo**：三种 scheme 的点都落在同一条线上，并且贴合理论。MuJoCo Warp 与 MuJoCo 的差别在 float32 round-off 以内。
-- **Genesis**：Euler 和 implicitfast 与 MuJoCo 的差别同样在 float32 round-off 以内。默认的 approximate_implicitfast 只在有约束时与 implicitfast 不同，这个单摆没有约束，所以没有单独扫。
+- **Genesis**：Euler 和 implicitfast 与 MuJoCo 的差别同样在 float32 round-off 以内。
 - **Isaac Sim**：PGS drive 与 MuJoCo 一样好。explicit PD 贴合理论，但点比 MuJoCo 散。PhysX 自己的 drive 在 TGS 下按控制频率散开，而 TGS 是默认的 solver。
 - **SuperDex**：backward Euler + explicit PD 和 BDF2 + native PD 都按控制频率散开，BDF2 + native PD 还沿 $h$ 乱跳。backward Euler + native PD 跑不起来。
 
@@ -40,3 +42,7 @@
 | 4 | **阻尼项对命令求差分**：native PD（pose controller）阻尼的是 $\dot q - (r - r_\mathrm{old})/h$ | held command 每跳一次，阻尼项就产生一次 kick。我们每一步都重置目标来绕开它 | 默认行为上的坑 |
 | 5 | **BDF2 的寄生模态**：BDF2 是两步法 | held command 一跳，就激发寄生模态，所以 BDF2 + native PD 按控制频率散开。把 link 惯量减到 1% 也没有用 | 设计 |
 | 6 | **constraint 关节是软的**：constraint 关节是弹簧加阻尼 | 多出自由度。刚性关节要用 articulated actor | 写给用户的提醒 |
+
+## Genesis 的坑
+
+Genesis 读 MJCF 时，会给每个没写 armature 的关节加上 $0.1\ \mathrm{kg\,m^2}$ 的转子惯量，是这根杆惯量的七倍。加载时传 `default_armature=None` 就能关掉。
