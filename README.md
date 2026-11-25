@@ -53,11 +53,11 @@ The theory gives $K_P$ no counterterm. A free $K_P$ moves the rotor inertia by u
 
 ## Isaac Sim: the single pendulum in PhysX
 
-This section repeats experiment 1 in Isaac Sim 5.1. PhysX has no RK4, so the three schemes change the solver and the PD force. The behaviour figure still comes from the earlier fit.
+This section repeats experiment 1 in Isaac Sim 5.1. PhysX has no RK4, so the three schemes change the solver and the PD force.
 
 ![Isaac behaviour](exp1_pendulum/results/fig_behaviour_isaac_single.png)
 
-At 200 Hz, the formula gives a 29× smaller error. For the same accuracy, it needs 31× less computation.
+At 200 Hz, the formula gives a 47× smaller error. For the same accuracy, it needs 47× less computation.
 
 ### Flow of the effective parameters
 
