@@ -53,7 +53,7 @@ The theory gives $K_P$ no counterterm. A free $K_P$ moves the rotor inertia by u
 
 ## Isaac Sim: the single pendulum in PhysX
 
-This section repeats experiment 1 in Isaac Sim 5.1. PhysX has no RK4, so the three schemes change the solver and the PD force. These two figures still come from the earlier fit; a rerun with the shared fit is in progress.
+This section repeats experiment 1 in Isaac Sim 5.1. PhysX has no RK4, so the three schemes change the solver and the PD force. The behaviour figure still comes from the earlier fit.
 
 ![Isaac behaviour](exp1_pendulum/results/fig_behaviour_isaac_single.png)
 
@@ -63,7 +63,7 @@ At 200 Hz, the formula gives a 29× smaller error. For the same accuracy, it nee
 
 ![Isaac flow](exp1_pendulum/results/fig_flow_isaac_single.png)
 
-The PhysX source is open ([NVIDIA-Omniverse/PhysX](https://github.com/NVIDIA-Omniverse/PhysX)), so the theory comes from the solver code. TGS substeps the drive but applies gravity once per step. With this fact, the first-order slopes of the TGS drive match the theory within 7%.
+The PhysX source is open ([NVIDIA-Omniverse/PhysX](https://github.com/NVIDIA-Omniverse/PhysX)), so the theory comes from the solver code. TGS substeps the drive but applies gravity once per step. The explicit PD and the PGS drive follow the theory at every control rate. The TGS drive does not: like SuperDex below, it depends on the control rate as well as on $h$.
 
 ## SuperDex: the single pendulum in Mochi
 
@@ -118,7 +118,8 @@ Isaac Sim needs its own Python 3.11 environment, with `isaacsim[all]==5.1.0.0` a
 
 ```bash
 cd isaac
-./launch.sh                                    # one process per scheme; about 1.5 days
+./launch.sh                                    # one process per scheme; about 3.5 h
+$ISAAC_VENV/bin/python run_single.py --arm A --gap   # the behaviour sweep; also B and C
 $ISAAC_VENV/bin/python dump_traj.py single
 $ISAAC_VENV/bin/python probe_step_map_isaac.py A 1 4 32
 $ISAAC_VENV/bin/python probe_drive_law.py B

@@ -44,9 +44,12 @@ on_row = lambda rows: None
 def chains(arm, f_nominals, done=None):
     """Continuation from small to large h, one chain per nominal control frequency.
 
-    The chains advance together: at each target h, every generation of every fit is rolled
-    out at once, one rollout per distinct physics step, which is what lets a simulator that
-    steps many copies run several chains for the price of one.  `done` maps a nominal frequency
+    The chains advance together: at each target h, the fits that share a physics step run to
+    the end side by side, every generation of all of them in one rollout, which is what lets a
+    simulator that steps many copies run several chains for the price of one; then the next
+    physics step, so that the simulator changes its step once per group, not once per
+    generation.  The fits are independent and each has its own random stream, so the order
+    changes nothing in them.  `done` maps a nominal frequency
     to rows already fitted; those grid points are skipped, but their random starting points are
     still drawn, so a resumed chain is the same chain.
     """
@@ -72,14 +75,14 @@ def chains(arm, f_nominals, done=None):
             tasks.append({"f": f, "f_ctrl": f_ctrl, "dec": dec, "h": h, "refs": refs, "gt": gt,
                           "fit": fitting.fit_steps(gt, h, starts, PARAM0, with_delay=WITH_DELAY),
                           "t0": time.perf_counter()})
-        for t in tasks:
-            t["ask"] = next(t["fit"])
-        active = list(tasks)
-        while active:
-            for group in by_step(active):
-                jobs = [(t["refs"], t["f_ctrl"], t["dec"], p) for t in group for p in t["ask"]]
+        for group in by_step(tasks):
+            for t in group:
+                t["ask"] = next(t["fit"])
+            active = list(group)
+            while active:
+                jobs = [(t["refs"], t["f_ctrl"], t["dec"], p) for t in active for p in t["ask"]]
                 got, i = run_many(sim, jobs), 0
-                for t in group:
+                for t in list(active):
                     answer, i = got[i:i + len(t["ask"])], i + len(t["ask"])
                     try:
                         t["ask"] = t["fit"].send(answer)

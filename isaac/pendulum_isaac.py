@@ -152,6 +152,14 @@ class IsaacPendulum:
     """Steps n_envs copies of the pendulum, one parameter set per environment."""
 
     def __init__(self, world, arm, n_envs):
+        import carb
+
+        # Nothing reads the bodies back from USD - the views read PhysX directly - and writing
+        # every moving body to USD after each step cost 0.1 ms per environment, eight times the
+        # physics.  It is output only: the trajectories are bitwise the same without it.
+        settings = carb.settings.get_settings()
+        settings.set_bool("/physics/updateToUsd", False)
+        settings.set_bool("/physics/updateVelocitiesToUsd", False)
         self.world, self.arm, self.n = world, arm, n_envs
         self.view = build_scene(n_envs, arm)
         world.scene.add(self.view)

@@ -7,11 +7,12 @@ command delay, since every one of them shifts the command.
 
 One process per scheme, because an Isaac app holds 4.6 GB however few environments it steps:
 it runs the five flow chains side by side, where every chain at the same physics step shares
-one rollout, then cross-seeds them, then the behaviour sweep, whose five commands also share
-one rollout.  Each stage saves after every grid point and resumes from what is on disk.
+one rollout, then cross-seeds them, and with --gap the behaviour sweep, whose five commands
+also share one rollout.  Each stage saves after every grid point and resumes from what is on
+disk.
 
 Usage (inside the Isaac venv):
-    python run_single.py --arm A
+    python run_single.py --arm A [--gap]
     python run_single.py --merge
 """
 
@@ -22,6 +23,7 @@ from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--arm", default="A", choices=("A", "B", "C"))
+parser.add_argument("--gap", action="store_true", help="also run the behaviour sweep")
 parser.add_argument("--merge", action="store_true")
 args = parser.parse_args()
 
@@ -70,6 +72,8 @@ def main():
     moved = rf.cross_seed(every, on_row=lambda: [save(f, rs) for f, rs in files.items()])
     print(f"{args.arm}: {moved} of {len(every)} fits moved", flush=True)
 
+    if not args.gap:
+        return app.close()
     gap = RESULTS / f"gap_isaac_{args.arm}.json"
     run_gap.make_sim = lambda arm: sim
     run_gap.WITH_DELAY = {arm: True for arm in "ABC"}
