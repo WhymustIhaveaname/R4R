@@ -10,7 +10,7 @@ share every rollout, whatever their steps, and then the arm is cross-seeded.  Bo
 from the per-chain files on disk.
 
 Usage (inside the MuJoCo Warp venv):
-    python run_single.py --arm A [--delay]
+    python run_single.py --arm euler_explicit [--delay]
     python run_single.py --merge [--delay]                # concatenate the per-chain files
 """
 
@@ -42,8 +42,8 @@ def stem():
 
 
 def merge():
-    # the [ABC] keeps "flow_mjwarp_*" from also matching "flow_mjwarp_delay_*"
-    parts = sorted(PARTS.glob(f"{stem()}_[ABC]_*.json"))
+    # naming the scheme keeps "flow_mjwarp_*" from also matching "flow_mjwarp_delay_*"
+    parts = [p for arm in rf.ARMS for p in sorted(PARTS.glob(f"{stem()}_{arm}_*.json"))]
     rows = [r for f in parts for r in json.loads(f.read_text())]
     out = RESULTS / f"{stem()}.json"
     out.write_text(json.dumps(rows, indent=1, default=float))
@@ -55,7 +55,7 @@ def main():
         return merge()
     from pendulum_mjwarp import WarpPendulum
 
-    arm = flag("arm", "A")
+    arm = flag("arm", "euler_explicit")
     # A generation of CMA-ES for each of the five chains, in one rollout.
     sim = WarpPendulum(arm, nworld=len(rf.F_CTRL) * fitting.POPSIZE, nstep_max=NSTEP_MAX)
     rf.make_sim = lambda a: sim

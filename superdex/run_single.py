@@ -7,12 +7,14 @@ seeds the fit.  Every scheme fits a command delay, since every one of them shift
 Two solver settings:
   default  as shipped: FP32, and Mochi's Newton stops after 4 iterations or at its tolerance
   tight    FP64, with Newton iterated until its step stalls at round-off
-and the three link models of pendulum_superdex.LINKS.  The rod cannot run B, whose inertia
-flows below the rod's own: Mochi's armature cannot be negative.
+and the three link models of pendulum_superdex.LINKS.  The rod cannot run backward Euler with
+Mochi's own PD, whose inertia flows below the rod's own: Mochi's armature cannot be negative.
 
 One (setting, link, arm, nominal control frequency) chain per process.
-Usage:  uv run --extra superdex python run_single.py --setting default --link rod --arm A --fctrl 50
-        uv run --extra superdex python run_single.py --setting default --link rod --arm A --cross-seed
+Usage:  uv run --extra superdex python run_single.py --setting default --link rod \
+            --arm backward_euler_explicit --fctrl 50
+        uv run --extra superdex python run_single.py --setting default --link rod \
+            --arm backward_euler_explicit --cross-seed
         uv run --extra superdex python run_single.py --merge
 """
 
@@ -26,7 +28,9 @@ from pathlib import Path
 ap = argparse.ArgumentParser()
 ap.add_argument("--setting", choices=("default", "tight"), default="tight")
 ap.add_argument("--link", choices=("rod", "quarter", "hundredth"), default="rod")
-ap.add_argument("--arm", choices=("A", "B", "C"), default="A")
+# as in pendulum_superdex, which cannot be imported before the precision is set
+ARMS = ("backward_euler_explicit", "backward_euler_native", "bdf2_native")
+ap.add_argument("--arm", choices=ARMS, default=ARMS[0])
 ap.add_argument("--fctrl", type=int, default=50)
 ap.add_argument("--cross-seed", action="store_true",
                 help="once all five chains of the arm are done: refit from each other's answers")
@@ -51,7 +55,8 @@ def stem(setting, link):
 def merge():
     for setting in ("default", "tight"):
         for link in ("rod", "quarter", "hundredth"):
-            parts = sorted(PARTS.glob(f"{stem(setting, link)}_[ABC]_*.json"))
+            parts = [p for arm in ARMS
+                     for p in sorted(PARTS.glob(f"{stem(setting, link)}_{arm}_*.json"))]
             if not parts:
                 continue
             rows = [r for f in parts for r in json.loads(f.read_text())]
@@ -67,6 +72,7 @@ def main():
     import run_flow as rf
     import pendulum_superdex as sdx
 
+    rf.ARMS = sdx.ARMS
     rf.WITH_DELAY = True
     rf.first_order_prediction_delay = sdx.first_order_prediction_delay
     # one copy per member of a CMA-ES generation

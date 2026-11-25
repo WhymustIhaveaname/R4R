@@ -22,7 +22,7 @@ from figures import MEASURED, RENORM, behaviour_figure, use_house_style  # noqa:
 from run_gap import F_CTRL  # noqa: E402
 
 RESULTS = ROOT / "exp1_pendulum" / "results"
-SCHEME = "A"
+SCHEME = "backward_euler_explicit"
 DEMO_DEC = 4  # h = 5 ms: 200 Hz physics, as in the MuJoCo and Isaac figures
 DEMO_T = 2.0  # s shown
 F_MAX = 1000

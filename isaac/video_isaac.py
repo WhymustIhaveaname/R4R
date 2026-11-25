@@ -64,7 +64,7 @@ def main(exp):
     double = exp == "double"
     d = ROOT / ("exp2_double_pendulum" if double else "exp1_pendulum") / "results"
     z = np.load(d / "isaac_traj.npz")
-    traces = [z["reference"], z["A_measured"], z["A_renormalized"]]
+    traces = [z["reference"], z["tgs_explicit_measured"], z["tgs_explicit_renormalized"]]
     traj = np.stack([t.reshape(len(t), -1) for t in traces], axis=1)  # (sample, trace, dof)
 
     model = mujoco.MjModel.from_xml_string(xml(double))

@@ -8,7 +8,7 @@ learn which map TGS and PGS actually realize.
 Only the explicitly held torque can be probed this way: PhysX's own drive reads a velocity
 that set_joint_velocities does not reach, so its force law is measured by probe_drive_law.py.
 
-Run (inside the Isaac venv):  python probe_step_map_isaac.py A
+Run (inside the Isaac venv):  python probe_step_map_isaac.py tgs_explicit
 """
 import sys
 from pathlib import Path
@@ -26,7 +26,7 @@ sys.path.insert(0, str(ROOT / "exp1_pendulum"))
 from pendulum_isaac import KD0, KP0, IsaacPendulum  # noqa: E402
 from probe_step_map import HS, R, STATES, accel, report  # noqa: E402
 
-ARM = sys.argv[1] if len(sys.argv) > 1 else "A"
+ARM = sys.argv[1] if len(sys.argv) > 1 else "tgs_explicit"
 ITERS = [int(a) for a in sys.argv[2:]] or [32]    # TGS position iterations to test
 
 
@@ -47,7 +47,7 @@ def main():
         sim._apply(params)
         view.set_joint_positions(th0[:, None])
         view.set_joint_velocities(v0[:, None])
-        if ARM == "A":
+        if ARM == "tgs_explicit":
             view.set_joint_efforts((KP0 * (R - th0) - KD0 * v0).astype(np.float32)[:, None])
         else:
             view.set_joint_position_targets(np.full((n, 1), R, dtype=np.float32))

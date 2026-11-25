@@ -30,16 +30,16 @@ T_END = 4.0
 # the response to a single command.
 DRIVES = (0.5, 1.0, 2.0, 4.0, 8.0)
 
-ARMS = ("A", "B", "C")
+ARMS = ("euler_explicit", "rk4_explicit", "implicitfast_native")
 ARM_INTEGRATOR = {
-    "A": mujoco.mjtIntegrator.mjINT_EULER,
-    "B": mujoco.mjtIntegrator.mjINT_RK4,
-    "C": mujoco.mjtIntegrator.mjINT_IMPLICITFAST,
+    "euler_explicit": mujoco.mjtIntegrator.mjINT_EULER,
+    "rk4_explicit": mujoco.mjtIntegrator.mjINT_RK4,
+    "implicitfast_native": mujoco.mjtIntegrator.mjINT_IMPLICITFAST,
 }
 ARM_LABEL = {
-    "A": "A: Euler + explicit PD",
-    "B": "B: RK4 + explicit PD (torque held)",
-    "C": "C: implicitfast + native PD",
+    "euler_explicit": "Euler + explicit PD",
+    "rk4_explicit": "RK4 + explicit PD (torque held)",
+    "implicitfast_native": "implicitfast + native PD",
 }
 
 
@@ -79,7 +79,7 @@ def ground_truth(refs, f_ctrl, dec, J=J0, kp=KP0, kd=KD0):
 
 
 def model_xml(arm):
-    actuator = ('<position name="pd" joint="hinge" kp="80" kv="2"/>' if arm == "C"
+    actuator = ('<position name="pd" joint="hinge" kp="80" kv="2"/>' if arm == "implicitfast_native"
                 else '<motor name="tau" joint="hinge"/>')
     return f"""
 <mujoco model="pendulum">
@@ -119,14 +119,14 @@ class Sim:
         m, d = self.model, self.data
         m.opt.timestep = 1.0 / (f_ctrl * dec)
         m.dof_armature[0] = J - J0  # may be negative; total inertia J must stay positive
-        if self.arm == "C":
+        if self.arm == "implicitfast_native":
             m.actuator_gainprm[0, 0] = kp
             m.actuator_biasprm[0, 1] = -kp
             m.actuator_biasprm[0, 2] = -kd
         mujoco.mj_resetData(m, d)
         cmd = np.repeat(refs, dec) if delay == 0 else delayed_command(refs, f_ctrl, dec, delay)
         out = np.empty(len(cmd))
-        if self.arm == "C":
+        if self.arm == "implicitfast_native":
             for i, r in enumerate(cmd):
                 d.ctrl[0] = r
                 mujoco.mj_step(m, d)
@@ -161,15 +161,16 @@ def delayed_command(refs, f_ctrl, dec, delay):
 def first_order_prediction(arm, h):
     """(J*, K_P*, K_D*) to first order in h.
 
-    B: the torque is held over a step, a delay of h/2 on both feedback terms (the paper's model).
-    A: semi-implicit Euler staggers velocity, so velocity feedback lags h/2 and a held command
-       acts h/2 early; absorbing the command advance into (J, K_P, K_D) adds h/2 K_P to K_D and
-       another h/2 K_D to J.
-    C: implicit damping equals arm A with J -> J + h K_D exactly.
+    rk4_explicit: the torque is held over a step, a delay of h/2 on both feedback terms (the
+       paper's model).
+    euler_explicit: semi-implicit Euler staggers velocity, so velocity feedback lags h/2 and a
+       held command acts h/2 early; absorbing the command advance into (J, K_P, K_D) adds
+       h/2 K_P to K_D and another h/2 K_D to J.
+    implicitfast_native: implicit damping equals euler_explicit with J -> J + h K_D exactly.
     """
-    if arm == "A":
+    if arm == "euler_explicit":
         return J0 + h * KD0, KP0, KD0 + h / 2 * KP0
-    if arm == "B":
+    if arm == "rk4_explicit":
         return J0 + h / 2 * KD0, KP0, KD0 + h / 2 * KP0
     return J0, KP0, KD0 + h / 2 * KP0
 
@@ -177,12 +178,13 @@ def first_order_prediction(arm, h):
 def first_order_prediction_delay(arm, h):
     """(J*, K_P*, K_D*, d*) to first order in h when a command delay d is also identified.
 
-    The delay cancels the half-step command advance of semi-implicit Euler (A, C), leaving
-    only the velocity-feedback lag of h/2 in J; arm B has no advance, so d* = 0.
+    The delay cancels the half-step command advance of semi-implicit Euler (euler_explicit,
+    implicitfast_native), leaving only the velocity-feedback lag of h/2 in J; rk4_explicit has
+    no advance, so d* = 0.
     """
-    if arm == "A":
+    if arm == "euler_explicit":
         return J0 + h / 2 * KD0, KP0, KD0, h / 2
-    if arm == "B":
+    if arm == "rk4_explicit":
         return J0 + h / 2 * KD0, KP0, KD0 + h / 2 * KP0, 0.0
     return J0 - h / 2 * KD0, KP0, KD0, h / 2
 
@@ -190,11 +192,12 @@ def first_order_prediction_delay(arm, h):
 def second_order_shift(arm, h):
     """h^2 part of (J*, K_P*, K_D*), from backward error analysis of the step map.
 
-    Semi-implicit Euler with an explicit PD torque (A) and implicit damping (C) have the same
-    second-order counterterms; only their h^1 inertia shift differs in sign.  RK4 (B) is not
-    covered.  Verified numerically: adding these drops the one-step error from h^2 to h^3.
+    Semi-implicit Euler with an explicit PD torque (euler_explicit) and implicit damping
+    (implicitfast_native) have the same second-order counterterms; only their h^1 inertia shift
+    differs in sign.  RK4 is not covered.  Verified numerically: adding these drops the one-step
+    error from h^2 to h^3.
     """
-    if arm == "B":
+    if arm == "rk4_explicit":
         return None
     return np.array([(J0 * KP0 + KD0**2) / (12 * J0), 0.0, KP0 * KD0 / (12 * J0)]) * h**2
 

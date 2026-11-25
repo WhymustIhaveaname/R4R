@@ -22,7 +22,7 @@ from pendulum_isaac import F_CTRL, J0, KD0, KP0, IsaacPendulum  # noqa: E402
 import common as mj  # noqa: E402
 
 # One arm per process: a second build_scene would collide with the first arm's USD prims.
-ARMS = (sys.argv[1],) if len(sys.argv) > 1 else ("A",)
+ARMS = (sys.argv[1],) if len(sys.argv) > 1 else ("tgs_explicit",)
 NS = (1, 4, 32)                # TGS position iterations; 32 is the Isaac default
 H_MS = (0.25, 0.9, 1.6, 2.25, 3.0, 3.65, 4.35, 5.0)
 
@@ -61,8 +61,8 @@ def sweep(world, arm):
             sim.set_dt(h)
             refs = mj.ref_sequence(fc, mj.F_REF, t_end=1.0)
             gt = mj.ground_truth(refs, fc, dec)[dec - 1::dec]
-            m = 1 if arm == "A" else n          # the drive, not a held torque, sees h / N
-            sgn = +1 if arm == "A" else -1
+            m = 1 if arm == "tgs_explicit" else n   # the drive, not a held torque, sees h / N
+            sgn = +1 if arm == "tgs_explicit" else -1
             pred = np.array([J0 + sgn * h / 2 * KD0 / m, KP0, KD0, h / 2 / m])
 
             def run(rows, _fc=fc, _dec=dec, _refs=refs):

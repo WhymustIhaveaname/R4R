@@ -74,7 +74,8 @@ class WarpPendulum:
         self.mjm.opt.integrator = mj.ARM_INTEGRATOR[arm]
         self.mjd = mujoco.MjData(self.mjm)
         batched = {"dof_armature": nworld}
-        if arm == "C":  # the native position actuator carries K_P and K_D in its gains
+        # the native position actuator carries K_P and K_D in its gains
+        if arm == "implicitfast_native":
             batched |= {"actuator_gainprm": nworld, "actuator_biasprm": nworld}
         self.m = mjw.put_model(self.mjm, batch_sizes=batched)
         # MuJoCo Warp reads the step as timestep[world % len(timestep)], so one per world
@@ -98,7 +99,7 @@ class WarpPendulum:
         if len(p) < self.n:
             p = np.concatenate([p, np.repeat(p[:1], self.n - len(p), axis=0)])
         self.m.dof_armature.assign((p[:, :1] - mj.J0).astype(np.float32))
-        if self.arm == "C":
+        if self.arm == "implicitfast_native":
             gain = self.m.actuator_gainprm.numpy().copy()
             bias = self.m.actuator_biasprm.numpy().copy()
             gain[:, 0, 0] = p[:, 1]
@@ -163,7 +164,7 @@ class WarpPendulum:
         return self.graph
 
     def _one_step(self):
-        if self.arm == "C":
+        if self.arm == "implicitfast_native":
             wp.launch(_held_command, dim=self.n, inputs=[self.cmd, self.idx, self.d.ctrl])
         else:
             wp.launch(_explicit_pd, dim=self.n,

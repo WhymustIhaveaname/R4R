@@ -37,7 +37,7 @@ def one_step(sim, h, th, v):
     m, d = sim.model, sim.data
     m.opt.timestep = h
     m.dof_armature[0] = 0.0
-    if sim.arm == "C":
+    if sim.arm == "implicitfast_native":
         m.actuator_gainprm[0, 0] = KP0
         m.actuator_biasprm[0, 1] = -KP0
         m.actuator_biasprm[0, 2] = -KD0
@@ -45,7 +45,7 @@ def one_step(sim, h, th, v):
     mujoco.mj_resetData(m, d)
     d.qpos[0], d.qvel[0] = th, v
     mujoco.mj_forward(m, d)
-    d.ctrl[0] = R if sim.arm == "C" else KP0 * (R - th) - KD0 * v
+    d.ctrl[0] = R if sim.arm == "implicitfast_native" else KP0 * (R - th) - KD0 * v
     mujoco.mj_step(m, d)
     return float(d.qpos[0]), float(d.qvel[0])
 

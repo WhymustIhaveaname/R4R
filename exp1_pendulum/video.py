@@ -23,7 +23,7 @@ from common import F_REF, G, L, M, PARAM0, Sim, ground_truth, ref_sequence
 from figures import error_strip, gif_font, pi_tick, save_gif
 from run_gap import F_CTRL, renormalized
 
-ARM = "B"
+ARM = "rk4_explicit"
 DEC = 4  # 200 Hz physics, the legged_gym default
 T_SHOW = 2.0  # s, the window of the behaviour figure's panel (a)
 FPS, SPEED = 25, 0.25

@@ -14,11 +14,11 @@ G = 9.81
 KP0, KD0 = 80.0, 2.0
 F_CTRL = 50
 
-ARMS = ("A", "B", "C")
+ARMS = ("tgs_explicit", "tgs_drive", "pgs_drive")
 ARM_LABEL = {
-    "A": "A: TGS + explicit PD",
-    "B": "B: TGS + PhysX joint drive",
-    "C": "C: PGS + PhysX joint drive",
+    "tgs_explicit": "TGS + explicit PD",
+    "tgs_drive": "TGS + PhysX joint drive",
+    "pgs_drive": "PGS + PhysX joint drive",
 }
 
 
@@ -35,7 +35,7 @@ def build_scene(n_envs, arm, spacing=1.0):
     scene.CreateGravityDirectionAttr().Set(Gf.Vec3f(0.0, 0.0, -1.0))
     scene.CreateGravityMagnitudeAttr().Set(G)
     px = PhysxSchema.PhysxSceneAPI.Apply(stage.GetPrimAtPath("/physicsScene"))
-    px.CreateSolverTypeAttr().Set("PGS" if arm == "C" else "TGS")
+    px.CreateSolverTypeAttr().Set("PGS" if arm == "pgs_drive" else "TGS")
     px.CreateEnableGPUDynamicsAttr().Set(False)
     px.CreateEnableStabilizationAttr().Set(False)
 
@@ -129,7 +129,7 @@ class IsaacDouble:
         self.view.set_armatures(arm_col)
         kps = np.zeros((self.n, 2), np.float32)
         kds = np.zeros((self.n, 2), np.float32)
-        if self.arm != "A":  # joint 2 is always free: no drive on it
+        if self.arm != "tgs_explicit":  # joint 2 is always free: no drive on it
             kps[:, self.driven] = p[:, 1]
             kds[:, self.driven] = p[:, 2]
         self.view.set_gains(kps=kps, kds=kds)
@@ -147,7 +147,7 @@ class IsaacDouble:
         other = 1 - self.driven
         for k, r in enumerate(refs):
             for _ in range(dec):
-                if self.arm == "A":
+                if self.arm == "tgs_explicit":
                     q = self.view.get_joint_positions()
                     v = self.view.get_joint_velocities()
                     tau = np.zeros((self.n, 2), np.float32)

@@ -35,7 +35,7 @@ OUT = Path(__file__).parent / "results" / "gap_mujoco.json"
 # common.run_many for the batched forms it may also offer); the sweep itself is shared.
 make_sim = Sim
 # RK4 holds the torque over the step, so it shifts no command and gets no delay to fit.
-WITH_DELAY = {"A": True, "B": False, "C": True}
+WITH_DELAY = {"euler_explicit": True, "rk4_explicit": False, "implicitfast_native": True}
 # Called with the rows so far after every grid point, so a run that is interrupted still
 # leaves behind everything it had finished.
 on_row = lambda rows, fine: None
@@ -52,8 +52,10 @@ def batch_over(sim, data, dec):
 
 def renormalized(arm, h):
     """First-order parameters for this scheme, or None where they are unphysical."""
-    p = first_order_prediction("B", h) if arm == "B" else first_order_prediction_delay(arm, h)
-    return None if p[0] <= 0 else p  # arm C drives the effective inertia negative at h > 2J/K_D
+    p = (first_order_prediction(arm, h) if arm == "rk4_explicit"
+         else first_order_prediction_delay(arm, h))
+    # implicitfast drives the effective inertia negative at h > 2J/K_D
+    return None if p[0] <= 0 else p
 
 
 def datasets(dec):

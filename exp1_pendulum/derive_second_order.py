@@ -8,11 +8,11 @@ theta'), and projecting the discrepancy onto the span of the three tunable opera
 is a genuine obstruction to renormalizability.
 
 Three step maps are covered:
-  Euler     semi-implicit Euler with an explicit PD torque (MuJoCo arm A).
+  Euler     semi-implicit Euler with an explicit PD torque (MuJoCo's Euler).
   implicit  the same map with J -> J + h KD, which is what implicit damping amounts to
-            (MuJoCo's implicitfast, arm C; PhysX's own joint drive).
+            (MuJoCo's implicitfast; PhysX's own joint drive).
   held      the PD torque frozen over the step while the dynamics are integrated exactly
-            (MuJoCo's RK4 arm B).
+            (MuJoCo's RK4).
   drive     PhysX's own joint drive, read off DyCpuGpuArticulation.h: an implicit spring with
             step delta, iterated to its fixed point, after which the position is integrated with
             the new velocity.  PGS uses delta = h.
@@ -174,17 +174,17 @@ def mochi_map(pd_implicit):
 
 
 TGS_ITERS = 32          # Isaac's default solverPositionIterationCount
-ARMS = (("Euler: semi-implicit, explicit PD (MuJoCo A)",
+ARMS = (("Euler: semi-implicit, explicit PD (MuJoCo Euler)",
          (f, sp.Integer(0), sp.Integer(0), sp.Integer(0))),
-        ("implicit damping: J -> J + h K_D (MuJoCo C, PhysX drive)",
+        ("implicit damping: J -> J + h K_D (MuJoCo implicitfast, PhysX drive)",
          (f, -KD*f/J, -KD*f/J, KD**2*f/J**2)),
-        ("held torque: exact dynamics (MuJoCo B)",
+        ("held torque: exact dynamics (MuJoCo RK4)",
          (f / 2, A1 / 2, A1 / 6, A2 / 6)),
-        ("drive: PhysX force drive under PGS (Isaac C)", physx_drive_map()),
-        (f"tgs: the same drive under TGS, {TGS_ITERS} substeps (Isaac B)",
+        ("drive: PhysX force drive under PGS", physx_drive_map()),
+        (f"tgs: the same drive under TGS, {TGS_ITERS} substeps",
          tgs_drive_map(TGS_ITERS)),
-        ("mochi explicit: backward Euler, held PD torque (SuperDex A)", mochi_map(False)),
-        ("mochi implicit: backward Euler, pose controller (SuperDex B)", mochi_map(True)))
+        ("mochi explicit: backward Euler, held PD torque", mochi_map(False)),
+        ("mochi implicit: backward Euler, pose controller", mochi_map(True)))
 
 
 def derive():

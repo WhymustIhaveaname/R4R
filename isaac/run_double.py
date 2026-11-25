@@ -1,6 +1,6 @@
 """Isaac Sim version of experiment 2: effective parameters of the chaotic double pendulum.
 
-Usage (inside the Isaac venv):  python run_double.py --arm A
+Usage (inside the Isaac venv):  python run_double.py --arm tgs_explicit
 The window is 0.3 s: beyond that PhysX decorrelates from the reference and the trajectory
 error saturates for every parameter set.
 """
@@ -14,7 +14,8 @@ from pathlib import Path
 from isaacsim import SimulationApp
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--arm", default="A", choices=("A", "B", "C"))
+parser.add_argument("--arm", default="tgs_explicit",
+                    choices=("tgs_explicit", "tgs_drive", "pgs_drive"))
 parser.add_argument("--t-fit", type=float, default=0.3)
 args = parser.parse_args()
 app = SimulationApp({"headless": True})

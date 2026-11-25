@@ -1,6 +1,6 @@
 #!/bin/bash
 # The whole sweep: one process per arm (see run_single.py), each on whichever GPU has room, then
-# the merge.  B is fitted with three parameters, as it is in MuJoCo, so it takes no --delay.
+# the merge.  RK4 is fitted with three parameters, as it is in MuJoCo, so it takes no --delay.
 # Run it again to resume.
 cd "$(dirname "$0")"
 PY=/data/mjwarp/venv/bin/python
@@ -10,8 +10,8 @@ free_gpu() {
   nvidia-smi --query-gpu=index,memory.free --format=csv,noheader,nounits \
     | sort -t, -k2 -nr | awk -F', ' '$2 > 2000 {print $1; exit}'
 }
-for arm in A B C; do
-  [ "$arm" = B ] && opts="" || opts="--delay"
+for arm in euler_explicit rk4_explicit implicitfast_native; do
+  [ "$arm" = rk4_explicit ] && opts="" || opts="--delay"
   while [ -z "$(free_gpu)" ]; do sleep 20; done
   gpu=$(free_gpu)
   CUDA_VISIBLE_DEVICES=$gpu WARP_CACHE_PATH=/data/mjwarp/cache$gpu \

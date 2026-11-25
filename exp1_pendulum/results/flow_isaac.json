@@ -18,7 +18,7 @@
    0.13975908222229022
   ],
   "rmse_measured": 0.0035358971490181577,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 400,
@@ -47,7 +47,7 @@
    0.003552868400607282
   ],
   "rmse_measured": 0.007088676445109063,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 200,
@@ -76,7 +76,7 @@
    0.00358532424856989
   ],
   "rmse_measured": 0.010675974741717227,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 133,
@@ -105,7 +105,7 @@
    0.0035361552793115557
   ],
   "rmse_measured": 0.014216092337927193,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 100,
@@ -134,7 +134,7 @@
    0.003570089841962308
   ],
   "rmse_measured": 0.01778999742667154,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 80,
@@ -163,7 +163,7 @@
    0.0034685159651857912
   ],
   "rmse_measured": 0.02126516730578173,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 67,
@@ -192,7 +192,7 @@
    0.0037519826039596636
   ],
   "rmse_measured": 0.02502779092400425,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 57,
@@ -221,7 +221,7 @@
    0.0035253553654089674
   ],
   "rmse_measured": 0.028567171558144998,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 50,
@@ -250,7 +250,7 @@
    0.003922689057349643
   ],
   "rmse_measured": 0.032509124390603626,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 44,
@@ -279,7 +279,7 @@
    0.0032740783546615702
   ],
   "rmse_measured": 0.035806113144779404,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 40,
@@ -308,7 +308,7 @@
    0.0040101851354269
   ],
   "rmse_measured": 0.0398492149733703,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 36,
@@ -337,7 +337,7 @@
    0.0036541273369114103
   ],
   "rmse_measured": 0.043540741748512156,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 33,
@@ -366,7 +366,7 @@
    0.00283393587567815
   ],
   "rmse_measured": 0.0464096903186331,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 31,
@@ -395,7 +395,7 @@
    0.003230241923014044
   ],
   "rmse_measured": 0.049687704869305876,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 29,
@@ -424,7 +424,7 @@
    0.003716381204868604
   ],
   "rmse_measured": 0.05346844833321702,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 27,
@@ -453,7 +453,7 @@
    0.004322733518023195
   ],
   "rmse_measured": 0.057879946875462746,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 25,
@@ -482,7 +482,7 @@
    0.0024359480573313465
   ],
   "rmse_measured": 0.060375470095291435,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 24,
@@ -511,7 +511,7 @@
    0.0055538932664093215
   ],
   "rmse_measured": 0.066086971700483,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 22,
@@ -540,7 +540,7 @@
    0.0031805949540675486
   ],
   "rmse_measured": 0.06937851428150278,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 21,
@@ -569,7 +569,7 @@
    0.0035080952800892805
   ],
   "rmse_measured": 0.07302465723115942,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 20,
@@ -597,7 +597,7 @@
    0.06614091120424112
   ],
   "rmse_measured": 0.0022678194368446836,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 200,
@@ -626,7 +626,7 @@
    0.0022891992298456716
   ],
   "rmse_measured": 0.004562494568763011,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 100,
@@ -655,7 +655,7 @@
    0.0022552354865316795
   ],
   "rmse_measured": 0.006835323489574072,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 67,
@@ -684,7 +684,7 @@
    0.0023250730199036
   ],
   "rmse_measured": 0.009187524295198401,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 50,
@@ -713,7 +713,7 @@
    0.002294269636596589
   ],
   "rmse_measured": 0.011515533599655984,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 40,
@@ -742,7 +742,7 @@
    0.0024337091893607034
   ],
   "rmse_measured": 0.014001253595850074,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 33,
@@ -771,7 +771,7 @@
    0.0019178703582361939
   ],
   "rmse_measured": 0.015969713728163623,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 29,
@@ -800,7 +800,7 @@
    0.0025377272038291953
   ],
   "rmse_measured": 0.01858441016609664,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 25,
@@ -829,7 +829,7 @@
    0.002511052425776393
   ],
   "rmse_measured": 0.021187126182437854,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 22,
@@ -858,7 +858,7 @@
    0.0020940506840504613
   ],
   "rmse_measured": 0.0233698918543621,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 20,
@@ -887,7 +887,7 @@
    0.0025653960281533145
   ],
   "rmse_measured": 0.026057180061095284,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 18,
@@ -916,7 +916,7 @@
    0.0015071516789846166
   ],
   "rmse_measured": 0.0276465205996049,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 17,
@@ -945,7 +945,7 @@
    0.0021000305088182685
   ],
   "rmse_measured": 0.02912649977338473,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 21,
   "dec": 15,
@@ -974,7 +974,7 @@
    0.0036831466667704635
   ],
   "rmse_measured": 0.03386384601565362,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 14,
@@ -1003,7 +1003,7 @@
    0.0008253895312843552
   ],
   "rmse_measured": 0.033837010251324615,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 21,
   "dec": 13,
@@ -1032,7 +1032,7 @@
    0.0027615948837171195
   ],
   "rmse_measured": 0.03682336318024174,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 21,
   "dec": 12,
@@ -1061,7 +1061,7 @@
    0.0018435387450273834
   ],
   "rmse_measured": 0.039863083969373575,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 12,
@@ -1090,7 +1090,7 @@
    0.003535595391177046
   ],
   "rmse_measured": 0.043755970468167205,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 11,
@@ -1119,7 +1119,7 @@
    0.002305102180135533
   ],
   "rmse_measured": 0.04768360580886117,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 19,
   "dec": 11,
@@ -1148,7 +1148,7 @@
    0.002013276445091876
   ],
   "rmse_measured": 0.048515142020861914,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 10,
@@ -1176,7 +1176,7 @@
    0.14680261806754438
   ],
   "rmse_measured": 0.001899163949430114,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 80,
@@ -1205,7 +1205,7 @@
    0.0019218182414351963
   ],
   "rmse_measured": 0.003816826419298357,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 40,
@@ -1234,7 +1234,7 @@
    0.0019689835191945564
   ],
   "rmse_measured": 0.005785537937022276,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 49,
   "dec": 27,
@@ -1263,7 +1263,7 @@
    0.0018786985490334977
   ],
   "rmse_measured": 0.007662831571491484,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 20,
@@ -1292,7 +1292,7 @@
    0.0019260992554076474
   ],
   "rmse_measured": 0.009584767696405252,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 16,
@@ -1321,7 +1321,7 @@
    0.00199171836821165
   ],
   "rmse_measured": 0.011568886136093751,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 51,
   "dec": 13,
@@ -1350,7 +1350,7 @@
    0.0018518252268397222
   ],
   "rmse_measured": 0.01341134101439649,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 52,
   "dec": 11,
@@ -1379,7 +1379,7 @@
    0.0019442977389055541
   ],
   "rmse_measured": 0.015357881232147371,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 10,
@@ -1408,7 +1408,7 @@
    0.002069204041284582
   ],
   "rmse_measured": 0.01742667844550621,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 49,
   "dec": 9,
@@ -1437,7 +1437,7 @@
    0.0017993244967384999
   ],
   "rmse_measured": 0.019212219372003046,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 8,
@@ -1466,7 +1466,7 @@
    0.0019150298977218647
   ],
   "rmse_measured": 0.02110569876055645,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 52,
   "dec": 7,
@@ -1495,7 +1495,7 @@
    0.001776087639775844
   ],
   "rmse_measured": 0.022913265550064288,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 48,
   "dec": 7,
@@ -1524,7 +1524,7 @@
    0.0022629044435872837
   ],
   "rmse_measured": 0.025137753108469257,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 51,
   "dec": 6,
@@ -1553,7 +1553,7 @@
    0.0015873750579501282
   ],
   "rmse_measured": 0.026760790957014825,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 48,
   "dec": 6,
@@ -1582,7 +1582,7 @@
    0.0023411209164363234
   ],
   "rmse_measured": 0.02903224160967737,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 53,
   "dec": 5,
@@ -1611,7 +1611,7 @@
    0.0017635822732085093
   ],
   "rmse_measured": 0.03083344688178867,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 5,
@@ -1640,7 +1640,7 @@
    0.0019922304972582365
   ],
   "rmse_measured": 0.03289528203390859,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 47,
   "dec": 5,
@@ -1669,7 +1669,7 @@
    0.0016289410136944718
   ],
   "rmse_measured": 0.03436080267088806,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 56,
   "dec": 4,
@@ -1698,7 +1698,7 @@
    0.0019722700698176876
   ],
   "rmse_measured": 0.03637561117625654,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 53,
   "dec": 4,
@@ -1727,7 +1727,7 @@
    0.0022131890675406627
   ],
   "rmse_measured": 0.03866894611339476,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 4,
@@ -1755,7 +1755,7 @@
    0.05626314346512378
   ],
   "rmse_measured": 0.0018985806519515433,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 40,
@@ -1784,7 +1784,7 @@
    0.001919970380270355
   ],
   "rmse_measured": 0.0038160930377456907,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 20,
@@ -1813,7 +1813,7 @@
    0.0018970984755421378
   ],
   "rmse_measured": 0.005707223807845369,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 103,
   "dec": 13,
@@ -1842,7 +1842,7 @@
    0.0019467612508939944
   ],
   "rmse_measured": 0.007648553389020555,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 10,
@@ -1871,7 +1871,7 @@
    0.001923638745845944
   ],
   "rmse_measured": 0.00956700643051254,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 8,
@@ -1900,7 +1900,7 @@
    0.0019553208345375176
   ],
   "rmse_measured": 0.011514262866330597,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 95,
   "dec": 7,
@@ -1929,7 +1929,7 @@
    0.0019333142153874021
   ],
   "rmse_measured": 0.013437286323596238,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 95,
   "dec": 6,
@@ -1958,7 +1958,7 @@
    0.001895921772715105
   ],
   "rmse_measured": 0.015320813136886371,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 5,
@@ -1987,7 +1987,7 @@
    0.0019484413017905116
   ],
   "rmse_measured": 0.017258373208126888,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 111,
   "dec": 4,
@@ -2016,7 +2016,7 @@
    0.0019155290044923718
   ],
   "rmse_measured": 0.019156612724941843,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 4,
@@ -2045,7 +2045,7 @@
    0.0019121307472900876
   ],
   "rmse_measured": 0.021051845339876658,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 91,
   "dec": 4,
@@ -2074,7 +2074,7 @@
    0.001982784469155065
   ],
   "rmse_measured": 0.023017690670024148,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 111,
   "dec": 3,
@@ -2103,7 +2103,7 @@
    0.0018082849363313697
   ],
   "rmse_measured": 0.02480566775489436,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 103,
   "dec": 3,
@@ -2132,7 +2132,7 @@
    0.0021147813592498786
   ],
   "rmse_measured": 0.02689658210865212,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 95,
   "dec": 3,
@@ -2161,7 +2161,7 @@
    0.0018381154496611883
   ],
   "rmse_measured": 0.0287133163454702,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 89,
   "dec": 3,
@@ -2190,7 +2190,7 @@
    0.0019823061331089957
   ],
   "rmse_measured": 0.030669485930827432,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 125,
   "dec": 2,
@@ -2219,7 +2219,7 @@
    0.0018482642045562073
   ],
   "rmse_measured": 0.03248882081775324,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 118,
   "dec": 2,
@@ -2248,7 +2248,7 @@
    0.002082630930431813
   ],
   "rmse_measured": 0.03454033454793378,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 111,
   "dec": 2,
@@ -2277,7 +2277,7 @@
    0.002008187651820996
   ],
   "rmse_measured": 0.036519181761311546,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 105,
   "dec": 2,
@@ -2306,7 +2306,7 @@
    0.0018606686958375365
   ],
   "rmse_measured": 0.03835066400781849,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 2,
@@ -2334,7 +2334,7 @@
    0.0969586751659618
   ],
   "rmse_measured": 0.0018963036988531399,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 20,
@@ -2363,7 +2363,7 @@
    0.0019229007608165564
   ],
   "rmse_measured": 0.0038161562441941218,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 10,
@@ -2392,7 +2392,7 @@
    0.001939269634519797
   ],
   "rmse_measured": 0.005751104070332476,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 190,
   "dec": 7,
@@ -2421,7 +2421,7 @@
    0.0019113191161545088
   ],
   "rmse_measured": 0.007654366238250701,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 5,
@@ -2450,7 +2450,7 @@
    0.001925021689890019
   ],
   "rmse_measured": 0.009576905437863744,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 4,
@@ -2479,7 +2479,7 @@
    0.0019393082784738588
   ],
   "rmse_measured": 0.01150718989674504,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 222,
   "dec": 3,
@@ -2508,7 +2508,7 @@
    0.001950733486172274
   ],
   "rmse_measured": 0.013447567277702957,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 190,
   "dec": 3,
@@ -2537,7 +2537,7 @@
    0.0018961652968230319
   ],
   "rmse_measured": 0.015335968064446648,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 250,
   "dec": 2,
@@ -2566,7 +2566,7 @@
    0.0019518863841164616
   ],
   "rmse_measured": 0.01726991314562514,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 222,
   "dec": 2,
@@ -2595,7 +2595,7 @@
    0.0019158131450781539
   ],
   "rmse_measured": 0.019169187524590577,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 2,
@@ -2624,7 +2624,7 @@
    0.0019143177330169863
   ],
   "rmse_measured": 0.021065318365666365,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 182,
   "dec": 2,
@@ -2653,7 +2653,7 @@
    0.0019128449121665575
   ],
   "rmse_measured": 0.02295745405981205,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 167,
   "dec": 2,
@@ -2682,7 +2682,7 @@
    0.001960058642153509
   ],
   "rmse_measured": 0.024894183782917786,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 154,
   "dec": 2,
@@ -2711,7 +2711,7 @@
    0.0019405266542279972
   ],
   "rmse_measured": 0.02682116874268149,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 286,
   "dec": 1,
@@ -2740,7 +2740,7 @@
    0.001936104186108267
   ],
   "rmse_measured": 0.02872905594987553,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 267,
   "dec": 1,
@@ -2769,7 +2769,7 @@
    0.001984103697994978
   ],
   "rmse_measured": 0.03068214007353767,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 250,
   "dec": 1,
@@ -2798,7 +2798,7 @@
    0.001990758243029605
   ],
   "rmse_measured": 0.03263871773788563,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 235,
   "dec": 1,
@@ -2827,7 +2827,7 @@
    0.0019442490197909528
   ],
   "rmse_measured": 0.03454960881566427,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 222,
   "dec": 1,
@@ -2856,7 +2856,7 @@
    0.001834254302153638
   ],
   "rmse_measured": 0.036349191930365704,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 211,
   "dec": 1,
@@ -2885,7 +2885,7 @@
    0.0020370794750103555
   ],
   "rmse_measured": 0.03834654788999868,
-  "arm": "A",
+  "arm": "tgs_explicit",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 1,
@@ -2913,7 +2913,7 @@
    0.43643615390007207
   ],
   "rmse_measured": 0.00010293387600652396,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 400,
@@ -2942,7 +2942,7 @@
    7.230714141383921e-05
   ],
   "rmse_measured": 0.00017453267219203646,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 200,
@@ -2971,7 +2971,7 @@
    7.342168970271259e-05
   ],
   "rmse_measured": 0.00024671770667445406,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 133,
@@ -3000,7 +3000,7 @@
    7.27298350924324e-05
   ],
   "rmse_measured": 0.00031797131212174724,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 100,
@@ -3029,7 +3029,7 @@
    7.375699224121702e-05
   ],
   "rmse_measured": 0.0003896234951953667,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 80,
@@ -3058,7 +3058,7 @@
    7.26751280234696e-05
   ],
   "rmse_measured": 0.0004585029617409501,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 67,
@@ -3087,7 +3087,7 @@
    7.93476100159434e-05
   ],
   "rmse_measured": 0.0005332202589162785,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 57,
@@ -3116,7 +3116,7 @@
    7.676816122735572e-05
   ],
   "rmse_measured": 0.0006028314161381489,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 50,
@@ -3145,7 +3145,7 @@
    8.721915619530142e-05
   ],
   "rmse_measured": 0.0006802911310931308,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 44,
@@ -3174,7 +3174,7 @@
    7.927696668036167e-05
   ],
   "rmse_measured": 0.0007444966260908743,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 40,
@@ -3203,7 +3203,7 @@
    9.656306084667829e-05
   ],
   "rmse_measured": 0.0008228502662302798,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 36,
@@ -3232,7 +3232,7 @@
    9.569572747046894e-05
   ],
   "rmse_measured": 0.0008939094920685292,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 33,
@@ -3261,7 +3261,7 @@
    8.833995971519987e-05
   ],
   "rmse_measured": 0.0009489988902455621,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 31,
@@ -3290,7 +3290,7 @@
    0.00010027405319126073
   ],
   "rmse_measured": 0.0010112736016201808,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 29,
@@ -3319,7 +3319,7 @@
    0.00011510955628535075
   ],
   "rmse_measured": 0.0010828350368447574,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 27,
@@ -3348,7 +3348,7 @@
    0.00013337612435669198
   ],
   "rmse_measured": 0.001165642193191397,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 25,
@@ -3377,7 +3377,7 @@
    0.0001166350579664117
   ],
   "rmse_measured": 0.0012120473599294484,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 24,
@@ -3406,7 +3406,7 @@
    0.00016992307895355704
   ],
   "rmse_measured": 0.0013172068233619208,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 22,
@@ -3435,7 +3435,7 @@
    0.0001492470289607056
   ],
   "rmse_measured": 0.0013771008687811484,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 21,
@@ -3464,7 +3464,7 @@
    0.00016279883897969374
   ],
   "rmse_measured": 0.001443007820743843,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 20,
@@ -3492,7 +3492,7 @@
    0.19570037720334343
   ],
   "rmse_measured": 8.375338112120561e-05,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 200,
@@ -3521,7 +3521,7 @@
    5.634606088619443e-05
   ],
   "rmse_measured": 0.00013952928764607775,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 100,
@@ -3550,7 +3550,7 @@
    5.549235257585931e-05
   ],
   "rmse_measured": 0.0001944976420292633,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 67,
@@ -3579,7 +3579,7 @@
    5.694258272492663e-05
   ],
   "rmse_measured": 0.0002513747652148897,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 50,
@@ -3608,7 +3608,7 @@
    5.6770985115657803e-05
   ],
   "rmse_measured": 0.0003072583441910927,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 40,
@@ -3637,7 +3637,7 @@
    6.10812833748547e-05
   ],
   "rmse_measured": 0.00036645604376500613,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 33,
@@ -3666,7 +3666,7 @@
    4.918718950438519e-05
   ],
   "rmse_measured": 0.0004128177547161518,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 29,
@@ -3695,7 +3695,7 @@
    6.508935681862982e-05
   ],
   "rmse_measured": 0.00047422643903600927,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 25,
@@ -3724,7 +3724,7 @@
    6.588438890532818e-05
   ],
   "rmse_measured": 0.0005345829195351548,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 22,
@@ -3753,7 +3753,7 @@
    5.810486788495924e-05
   ],
   "rmse_measured": 0.0005851117572202053,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 20,
@@ -3782,7 +3782,7 @@
    7.149785814094726e-05
   ],
   "rmse_measured": 0.0006466971817879584,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 18,
@@ -3811,7 +3811,7 @@
    5.188176523181109e-05
   ],
   "rmse_measured": 0.0006828954351389253,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 17,
@@ -3840,7 +3840,7 @@
    6.58006492933921e-05
   ],
   "rmse_measured": 0.0007268040602938267,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 21,
   "dec": 15,
@@ -3869,7 +3869,7 @@
    0.00010487573173419567
   ],
   "rmse_measured": 0.000822122261333805,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 14,
@@ -3898,7 +3898,7 @@
    5.569431740261965e-05
   ],
   "rmse_measured": 0.0008335807477232117,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 21,
   "dec": 13,
@@ -3927,7 +3927,7 @@
    9.224315811527442e-05
   ],
   "rmse_measured": 0.0009003080064923305,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 21,
   "dec": 12,
@@ -3956,7 +3956,7 @@
    8.19068889448946e-05
   ],
   "rmse_measured": 0.0009536712833378712,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 12,
@@ -3985,7 +3985,7 @@
    0.00011858373924169519
   ],
   "rmse_measured": 0.00103749916167256,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 11,
@@ -4014,7 +4014,7 @@
    0.0001058181414206714
   ],
   "rmse_measured": 0.0011036541735265617,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 19,
   "dec": 11,
@@ -4043,7 +4043,7 @@
    0.00010668949334709926
   ],
   "rmse_measured": 0.00113794190994045,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 10,
@@ -4071,7 +4071,7 @@
    0.123730208673821
   ],
   "rmse_measured": 8.045347657167328e-05,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 80,
@@ -4100,7 +4100,7 @@
    5.218126299091053e-05
   ],
   "rmse_measured": 0.0001321693169875453,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 40,
@@ -4129,7 +4129,7 @@
    5.3273877151503554e-05
   ],
   "rmse_measured": 0.0001853379357648673,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 49,
   "dec": 27,
@@ -4158,7 +4158,7 @@
    5.05685955126706e-05
   ],
   "rmse_measured": 0.00023564203906822047,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 20,
@@ -4187,7 +4187,7 @@
    5.243430416032451e-05
   ],
   "rmse_measured": 0.0002873157354139036,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 16,
@@ -4216,7 +4216,7 @@
    5.37097793686453e-05
   ],
   "rmse_measured": 0.0003404659433158699,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 51,
   "dec": 13,
@@ -4245,7 +4245,7 @@
    5.042750423094185e-05
   ],
   "rmse_measured": 0.0003897614848575672,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 52,
   "dec": 11,
@@ -4274,7 +4274,7 @@
    5.2913993410383285e-05
   ],
   "rmse_measured": 0.0004417304942292463,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 10,
@@ -4303,7 +4303,7 @@
    5.722497883493428e-05
   ],
   "rmse_measured": 0.000496670386317637,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 49,
   "dec": 9,
@@ -4332,7 +4332,7 @@
    5.110629896775576e-05
   ],
   "rmse_measured": 0.0005445495460691986,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 8,
@@ -4361,7 +4361,7 @@
    5.484483273429557e-05
   ],
   "rmse_measured": 0.0005948530980105044,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 52,
   "dec": 7,
@@ -4390,7 +4390,7 @@
    5.366540492966254e-05
   ],
   "rmse_measured": 0.0006423880990534735,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 48,
   "dec": 7,
@@ -4419,7 +4419,7 @@
    6.682533454114728e-05
   ],
   "rmse_measured": 0.0007021625752554244,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 51,
   "dec": 6,
@@ -4448,7 +4448,7 @@
    5.382334793328865e-05
   ],
   "rmse_measured": 0.0007442759553999298,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 48,
   "dec": 6,
@@ -4477,7 +4477,7 @@
    7.250716080582398e-05
   ],
   "rmse_measured": 0.0008057839183952782,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 53,
   "dec": 5,
@@ -4506,7 +4506,7 @@
    6.3184885011444e-05
   ],
   "rmse_measured": 0.0008526585090033705,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 5,
@@ -4535,7 +4535,7 @@
    7.228039311867983e-05
   ],
   "rmse_measured": 0.0009057856899338283,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 47,
   "dec": 5,
@@ -4564,7 +4564,7 @@
    6.450016881174945e-05
   ],
   "rmse_measured": 0.0009475450465480985,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 56,
   "dec": 4,
@@ -4593,7 +4593,7 @@
    7.540177751768136e-05
   ],
   "rmse_measured": 0.0009999730240691184,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 53,
   "dec": 4,
@@ -4622,7 +4622,7 @@
    8.633618928520647e-05
   ],
   "rmse_measured": 0.0010590339284544743,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 4,
@@ -4650,7 +4650,7 @@
    0.1287428428957112
   ],
   "rmse_measured": 8.027586468668862e-05,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 40,
@@ -4679,7 +4679,7 @@
    5.2140772665432306e-05
   ],
   "rmse_measured": 0.00013186812487202534,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 20,
@@ -4708,7 +4708,7 @@
    5.095832492856777e-05
   ],
   "rmse_measured": 0.00018332972183191816,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 103,
   "dec": 13,
@@ -4737,7 +4737,7 @@
    5.243181334826927e-05
   ],
   "rmse_measured": 0.0002356574394863472,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 10,
@@ -4766,7 +4766,7 @@
    5.182238331800402e-05
   ],
   "rmse_measured": 0.00028699337707846327,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 8,
@@ -4795,7 +4795,7 @@
    5.2657883553318895e-05
   ],
   "rmse_measured": 0.0003395755473041244,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 95,
   "dec": 7,
@@ -4824,7 +4824,7 @@
    5.1820005845077455e-05
   ],
   "rmse_measured": 0.0003909423617809227,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 95,
   "dec": 6,
@@ -4853,7 +4853,7 @@
    5.111257842127244e-05
   ],
   "rmse_measured": 0.00044132716722585636,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 5,
@@ -4882,7 +4882,7 @@
    5.248132762238109e-05
   ],
   "rmse_measured": 0.0004932326199460867,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 111,
   "dec": 4,
@@ -4911,7 +4911,7 @@
    5.214680226375866e-05
   ],
   "rmse_measured": 0.0005438856146420058,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 4,
@@ -4940,7 +4940,7 @@
    5.2427690289138605e-05
   ],
   "rmse_measured": 0.000594627057374377,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 91,
   "dec": 4,
@@ -4969,7 +4969,7 @@
    5.4002916458784115e-05
   ],
   "rmse_measured": 0.0006471434495067406,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 111,
   "dec": 3,
@@ -4998,7 +4998,7 @@
    5.060346602917883e-05
   ],
   "rmse_measured": 0.0006948456303307859,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 103,
   "dec": 3,
@@ -5027,7 +5027,7 @@
    5.9355742223043426e-05
   ],
   "rmse_measured": 0.0007507535020866661,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 95,
   "dec": 3,
@@ -5056,7 +5056,7 @@
    5.39821035751612e-05
   ],
   "rmse_measured": 0.0007992425620986309,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 89,
   "dec": 3,
@@ -5085,7 +5085,7 @@
    5.547134090116741e-05
   ],
   "rmse_measured": 0.0008516161696580936,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 125,
   "dec": 2,
@@ -5114,7 +5114,7 @@
    5.2956045844795895e-05
   ],
   "rmse_measured": 0.0009001739648125248,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 118,
   "dec": 2,
@@ -5143,7 +5143,7 @@
    6.0119435559316145e-05
   ],
   "rmse_measured": 0.000955142091910933,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 111,
   "dec": 2,
@@ -5172,7 +5172,7 @@
    5.983236251808712e-05
   ],
   "rmse_measured": 0.0010080932113904035,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 105,
   "dec": 2,
@@ -5201,7 +5201,7 @@
    5.820777011707322e-05
   ],
   "rmse_measured": 0.0010571885817502785,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 2,
@@ -5229,7 +5229,7 @@
    0.07717375038768291
   ],
   "rmse_measured": 8.0993053439207e-05,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 20,
@@ -5258,7 +5258,7 @@
    5.1156736922593866e-05
   ],
   "rmse_measured": 0.00013249568715624523,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 10,
@@ -5287,7 +5287,7 @@
    5.203222227733094e-05
   ],
   "rmse_measured": 0.0001846576182625549,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 190,
   "dec": 7,
@@ -5316,7 +5316,7 @@
    5.113967409255536e-05
   ],
   "rmse_measured": 0.00023582000280835525,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 5,
@@ -5345,7 +5345,7 @@
    5.1443444181844845e-05
   ],
   "rmse_measured": 0.0002873595281508073,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 4,
@@ -5374,7 +5374,7 @@
    5.226114342123339e-05
   ],
   "rmse_measured": 0.0003393252495361801,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 222,
   "dec": 3,
@@ -5403,7 +5403,7 @@
    5.2208104358128806e-05
   ],
   "rmse_measured": 0.0003912971427970154,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 190,
   "dec": 3,
@@ -5432,7 +5432,7 @@
    5.0818546127941014e-05
   ],
   "rmse_measured": 0.0004416523397403509,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 250,
   "dec": 2,
@@ -5461,7 +5461,7 @@
    5.2247487622594236e-05
   ],
   "rmse_measured": 0.00049350691458968,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 222,
   "dec": 2,
@@ -5490,7 +5490,7 @@
    5.128835927595963e-05
   ],
   "rmse_measured": 0.0005443784472780697,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 2,
@@ -5519,7 +5519,7 @@
    5.153785622454499e-05
   ],
   "rmse_measured": 0.0005951702050941767,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 182,
   "dec": 2,
@@ -5548,7 +5548,7 @@
    5.1410351113400084e-05
   ],
   "rmse_measured": 0.000645492032160695,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 167,
   "dec": 2,
@@ -5577,7 +5577,7 @@
    5.306635698782713e-05
   ],
   "rmse_measured": 0.0006973522960969311,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 154,
   "dec": 2,
@@ -5606,7 +5606,7 @@
    5.1721337032424994e-05
   ],
   "rmse_measured": 0.0007486912114241213,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 286,
   "dec": 1,
@@ -5635,7 +5635,7 @@
    5.1611440248858146e-05
   ],
   "rmse_measured": 0.000799753736256723,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 267,
   "dec": 1,
@@ -5664,7 +5664,7 @@
    5.318366388518777e-05
   ],
   "rmse_measured": 0.0008520691355042372,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 250,
   "dec": 1,
@@ -5693,7 +5693,7 @@
    5.296315893164907e-05
   ],
   "rmse_measured": 0.000904296210308522,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 235,
   "dec": 1,
@@ -5722,7 +5722,7 @@
    5.208533363245919e-05
   ],
   "rmse_measured": 0.0009555471073646049,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 222,
   "dec": 1,
@@ -5751,7 +5751,7 @@
    4.945017180732845e-05
   ],
   "rmse_measured": 0.0010039438057526087,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 211,
   "dec": 1,
@@ -5780,7 +5780,7 @@
    5.4741279415994685e-05
   ],
   "rmse_measured": 0.0010576193488211938,
-  "arm": "B",
+  "arm": "tgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 1,
@@ -5808,7 +5808,7 @@
    0.37315608391346744
   ],
   "rmse_measured": 0.0023268120431280716,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 400,
@@ -5837,7 +5837,7 @@
    0.0022900191723369302
   ],
   "rmse_measured": 0.004593837274674526,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 200,
@@ -5866,7 +5866,7 @@
    0.0023000532460402032
   ],
   "rmse_measured": 0.006848723009589097,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 133,
@@ -5895,7 +5895,7 @@
    0.0022588965415116075
   ],
   "rmse_measured": 0.00904254404585096,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 100,
@@ -5924,7 +5924,7 @@
    0.0022690387784822055
   ],
   "rmse_measured": 0.011226463733806083,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 80,
@@ -5953,7 +5953,7 @@
    0.0021951257893632775
   ],
   "rmse_measured": 0.013320682313203849,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 67,
@@ -5982,7 +5982,7 @@
    0.002361764859515427
   ],
   "rmse_measured": 0.015555502711637557,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 57,
@@ -6011,7 +6011,7 @@
    0.0022093647689307196
   ],
   "rmse_measured": 0.01762802950898609,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 50,
@@ -6040,7 +6040,7 @@
    0.0024444747053143936
   ],
   "rmse_measured": 0.019903271970584842,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 44,
@@ -6069,7 +6069,7 @@
    0.002032469945823646
   ],
   "rmse_measured": 0.021778993530931344,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 40,
@@ -6098,7 +6098,7 @@
    0.002474469563141019
   ],
   "rmse_measured": 0.024047470490579415,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 36,
@@ -6127,7 +6127,7 @@
    0.00224360020173772
   ],
   "rmse_measured": 0.02608732533363447,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 33,
@@ -6156,7 +6156,7 @@
    0.0017340004233600845
   ],
   "rmse_measured": 0.02765235234799793,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 31,
@@ -6185,7 +6185,7 @@
    0.0019671763990508915
   ],
   "rmse_measured": 0.029418525659273328,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 29,
@@ -6214,7 +6214,7 @@
    0.0022507424991453045
   ],
   "rmse_measured": 0.031427641893938776,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 27,
@@ -6243,7 +6243,7 @@
    0.0026005204871423714
   ],
   "rmse_measured": 0.03373358843785009,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 25,
@@ -6272,7 +6272,7 @@
    0.001461916651452128
   ],
   "rmse_measured": 0.035019478100891656,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 24,
@@ -6301,7 +6301,7 @@
    0.0033002101103420823
   ],
   "rmse_measured": 0.03791260759553162,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 22,
@@ -6330,7 +6330,7 @@
    0.0018839741760523785
   ],
   "rmse_measured": 0.039548050108995765,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 21,
@@ -6359,7 +6359,7 @@
    0.0020659365655739145
   ],
   "rmse_measured": 0.041332458273199535,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 10,
   "f_ctrl": 10,
   "dec": 20,
@@ -6387,7 +6387,7 @@
    0.03439888608442351
   ],
   "rmse_measured": 0.001822748205296546,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 200,
@@ -6416,7 +6416,7 @@
    0.0017926217678796725
   ],
   "rmse_measured": 0.003605419321914941,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 100,
@@ -6445,7 +6445,7 @@
    0.0017630879488753524
   ],
   "rmse_measured": 0.005349508162831818,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 67,
@@ -6474,7 +6474,7 @@
    0.0018133023538519587
   ],
   "rmse_measured": 0.007134565221432611,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 50,
@@ -6503,7 +6503,7 @@
    0.0017837277105738419
   ],
   "rmse_measured": 0.008882304328698786,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 40,
@@ -6532,7 +6532,7 @@
    0.0018883119542257819
   ],
   "rmse_measured": 0.010724626709500527,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 33,
@@ -6561,7 +6561,7 @@
    0.0014868802864353482
   ],
   "rmse_measured": 0.012168846345272438,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 29,
@@ -6590,7 +6590,7 @@
    0.001958248057425587
   ],
   "rmse_measured": 0.014065090164485289,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 25,
@@ -6619,7 +6619,7 @@
    0.0019327884582808488
   ],
   "rmse_measured": 0.015929134299803055,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 22,
@@ -6648,7 +6648,7 @@
    0.0016089078216727168
   ],
   "rmse_measured": 0.01747465172657082,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 20,
@@ -6677,7 +6677,7 @@
    0.0019618585548676214
   ],
   "rmse_measured": 0.019354500083333004,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 18,
@@ -6706,7 +6706,7 @@
    0.0011539287002709777
   ],
   "rmse_measured": 0.02045574471156742,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 17,
@@ -6735,7 +6735,7 @@
    0.0016297368028854106
   ],
   "rmse_measured": 0.021851568337162064,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 21,
   "dec": 15,
@@ -6764,7 +6764,7 @@
    0.002787008215801618
   ],
   "rmse_measured": 0.024673646742521507,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 14,
@@ -6793,7 +6793,7 @@
    0.0006378999586792746
   ],
   "rmse_measured": 0.025096804829071395,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 21,
   "dec": 13,
@@ -6822,7 +6822,7 @@
    0.0021208513375961975
   ],
   "rmse_measured": 0.02711279827772176,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 21,
   "dec": 12,
@@ -6851,7 +6851,7 @@
    0.0013897683701776802
   ],
   "rmse_measured": 0.028616399545921958,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 12,
@@ -6880,7 +6880,7 @@
    0.0026443310678961524
   ],
   "rmse_measured": 0.031106041278333153,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 11,
@@ -6909,7 +6909,7 @@
    0.0016856906999220577
   ],
   "rmse_measured": 0.032927529344349844,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 19,
   "dec": 11,
@@ -6938,7 +6938,7 @@
    0.0015000453321589876
   ],
   "rmse_measured": 0.03407477871028385,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 20,
   "f_ctrl": 20,
   "dec": 10,
@@ -6966,7 +6966,7 @@
    0.047283212048719006
   ],
   "rmse_measured": 0.0016925316853989238,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 80,
@@ -6995,7 +6995,7 @@
    0.0016636777602331324
   ],
   "rmse_measured": 0.003354260338872386,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 40,
@@ -7024,7 +7024,7 @@
    0.0017023102461641286
   ],
   "rmse_measured": 0.005052844575699245,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 49,
   "dec": 27,
@@ -7053,7 +7053,7 @@
    0.0016236499044125325
   ],
   "rmse_measured": 0.006669734343038958,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 20,
@@ -7082,7 +7082,7 @@
    0.001662064599026722
   ],
   "rmse_measured": 0.008323784268440977,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 16,
@@ -7111,7 +7111,7 @@
    0.0017163495199823777
   ],
   "rmse_measured": 0.01002917861106355,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 51,
   "dec": 13,
@@ -7140,7 +7140,7 @@
    0.001593878391894039
   ],
   "rmse_measured": 0.011611104440763102,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 52,
   "dec": 11,
@@ -7169,7 +7169,7 @@
    0.001672011932783866
   ],
   "rmse_measured": 0.013271571114637929,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 10,
@@ -7198,7 +7198,7 @@
    0.0017765933359621977
   ],
   "rmse_measured": 0.015033068052915722,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 49,
   "dec": 9,
@@ -7227,7 +7227,7 @@
    0.001542701536286408
   ],
   "rmse_measured": 0.016558353473535244,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 8,
@@ -7256,7 +7256,7 @@
    0.0016402651010726083
   ],
   "rmse_measured": 0.018177950231734134,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 52,
   "dec": 7,
@@ -7285,7 +7285,7 @@
    0.0015188754792458208
   ],
   "rmse_measured": 0.019683315893992182,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 48,
   "dec": 7,
@@ -7314,7 +7314,7 @@
    0.0019343654168660744
   ],
   "rmse_measured": 0.02158747461158994,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 51,
   "dec": 6,
@@ -7343,7 +7343,7 @@
    0.0013541358185486854
   ],
   "rmse_measured": 0.022926138198478566,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 48,
   "dec": 6,
@@ -7372,7 +7372,7 @@
    0.0019957071223709044
   ],
   "rmse_measured": 0.024885652732784345,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 53,
   "dec": 5,
@@ -7401,7 +7401,7 @@
    0.0014995280474265793
   ],
   "rmse_measured": 0.02636325796498196,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 5,
@@ -7430,7 +7430,7 @@
    0.0016908852252982734
   ],
   "rmse_measured": 0.028028871869076696,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 47,
   "dec": 5,
@@ -7459,7 +7459,7 @@
    0.0013824563431846795
   ],
   "rmse_measured": 0.029377368276594113,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 56,
   "dec": 4,
@@ -7488,7 +7488,7 @@
    0.0016712274453288744
   ],
   "rmse_measured": 0.031017756368919513,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 53,
   "dec": 4,
@@ -7517,7 +7517,7 @@
    0.0018712995912798717
   ],
   "rmse_measured": 0.03285296612737918,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 50,
   "f_ctrl": 50,
   "dec": 4,
@@ -7545,7 +7545,7 @@
    0.06560865620968018
   ],
   "rmse_measured": 0.00169131845553844,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 40,
@@ -7574,7 +7574,7 @@
    0.001662411618259439
   ],
   "rmse_measured": 0.0033519624888612336,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 20,
@@ -7603,7 +7603,7 @@
    0.0016408596487523105
   ],
   "rmse_measured": 0.004989420001620617,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 103,
   "dec": 13,
@@ -7632,7 +7632,7 @@
    0.0016824302747126508
   ],
   "rmse_measured": 0.006666463979853812,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 10,
@@ -7661,7 +7661,7 @@
    0.0016609919261898747
   ],
   "rmse_measured": 0.008320543999289167,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 8,
@@ -7690,7 +7690,7 @@
    0.0016852911734879712
   ],
   "rmse_measured": 0.009996624141952832,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 95,
   "dec": 7,
@@ -7719,7 +7719,7 @@
    0.0016639509525399642
   ],
   "rmse_measured": 0.011650304096368207,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 95,
   "dec": 6,
@@ -7748,7 +7748,7 @@
    0.001630289175866487
   ],
   "rmse_measured": 0.013269620420595811,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 5,
@@ -7777,7 +7777,7 @@
    0.0016741336981357957
   ],
   "rmse_measured": 0.014931558971088518,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 111,
   "dec": 4,
@@ -7806,7 +7806,7 @@
    0.001643540552780863
   ],
   "rmse_measured": 0.016558183609052736,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 4,
@@ -7835,7 +7835,7 @@
    0.0016395121903853744
   ],
   "rmse_measured": 0.01817910816745593,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 91,
   "dec": 4,
@@ -7864,7 +7864,7 @@
    0.0016956470720678486
   ],
   "rmse_measured": 0.019860104494040683,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 111,
   "dec": 3,
@@ -7893,7 +7893,7 @@
    0.001545785323990493
   ],
   "rmse_measured": 0.021385390327115315,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 103,
   "dec": 3,
@@ -7922,7 +7922,7 @@
    0.001805297713722457
   ],
   "rmse_measured": 0.023164915495924834,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 95,
   "dec": 3,
@@ -7951,7 +7951,7 @@
    0.0015664333229658469
   ],
   "rmse_measured": 0.024707271895210735,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 89,
   "dec": 3,
@@ -7980,7 +7980,7 @@
    0.0016864100372446572
   ],
   "rmse_measured": 0.026377608091757557,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 125,
   "dec": 2,
@@ -8009,7 +8009,7 @@
    0.0015706732139478762
   ],
   "rmse_measured": 0.027921320333861455,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 118,
   "dec": 2,
@@ -8038,7 +8038,7 @@
    0.001767711157391703
   ],
   "rmse_measured": 0.029657105907798294,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 111,
   "dec": 2,
@@ -8067,7 +8067,7 @@
    0.0017021191597880602
   ],
   "rmse_measured": 0.03132640384897076,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 105,
   "dec": 2,
@@ -8096,7 +8096,7 @@
    0.0015738695066838076
   ],
   "rmse_measured": 0.03286831038883023,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 100,
   "f_ctrl": 100,
   "dec": 2,
@@ -8124,7 +8124,7 @@
    0.07188727475415616
   ],
   "rmse_measured": 0.0016923781243458444,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 20,
@@ -8153,7 +8153,7 @@
    0.0016633809992821806
   ],
   "rmse_measured": 0.0033541747349900425,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 10,
@@ -8182,7 +8182,7 @@
    0.001675396271024518
   ],
   "rmse_measured": 0.005025833781723254,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 190,
   "dec": 7,
@@ -8211,7 +8211,7 @@
    0.0016499577160190816
   ],
   "rmse_measured": 0.0066707940197925615,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 5,
@@ -8240,7 +8240,7 @@
    0.0016620454684119184
   ],
   "rmse_measured": 0.008325965110650108,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 4,
@@ -8269,7 +8269,7 @@
    0.0016715730006986284
   ],
   "rmse_measured": 0.009989427213223967,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 222,
   "dec": 3,
@@ -8298,7 +8298,7 @@
    0.0016800803355288036
   ],
   "rmse_measured": 0.011658185525718224,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 190,
   "dec": 3,
@@ -8327,7 +8327,7 @@
    0.0016315001657457447
   ],
   "rmse_measured": 0.01327989286953194,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 250,
   "dec": 2,
@@ -8356,7 +8356,7 @@
    0.0016750194167656027
   ],
   "rmse_measured": 0.014940351654201278,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 222,
   "dec": 2,
@@ -8385,7 +8385,7 @@
    0.0016446257246201458
   ],
   "rmse_measured": 0.016568801439984696,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 2,
@@ -8414,7 +8414,7 @@
    0.0016406647758905474
   ],
   "rmse_measured": 0.018191606230899146,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 182,
   "dec": 2,
@@ -8443,7 +8443,7 @@
    0.0016367837771745753
   ],
   "rmse_measured": 0.01980885228521842,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 167,
   "dec": 2,
@@ -8472,7 +8472,7 @@
    0.001675717969282856
   ],
   "rmse_measured": 0.02146286488590588,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 154,
   "dec": 2,
@@ -8501,7 +8501,7 @@
    0.0016557688491218696
   ],
   "rmse_measured": 0.023104732237677946,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 286,
   "dec": 1,
@@ -8530,7 +8530,7 @@
    0.001648872586276297
   ],
   "rmse_measured": 0.024729685751924878,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 267,
   "dec": 1,
@@ -8559,7 +8559,7 @@
    0.001687175387786699
   ],
   "rmse_measured": 0.026390479332799515,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 250,
   "dec": 1,
@@ -8588,7 +8588,7 @@
    0.0016907360541237703
   ],
   "rmse_measured": 0.028053146849115446,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 235,
   "dec": 1,
@@ -8617,7 +8617,7 @@
    0.0016491988096754419
   ],
   "rmse_measured": 0.029673341483454914,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 222,
   "dec": 1,
@@ -8646,7 +8646,7 @@
    0.0015536658290537372
   ],
   "rmse_measured": 0.031198118937154323,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 211,
   "dec": 1,
@@ -8675,7 +8675,7 @@
    0.0017239276650787832
   ],
   "rmse_measured": 0.03288805033970255,
-  "arm": "C",
+  "arm": "pgs_drive",
   "f_ctrl_nominal": 200,
   "f_ctrl": 200,
   "dec": 1,

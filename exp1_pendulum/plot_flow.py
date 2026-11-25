@@ -1,6 +1,7 @@
 """Figure 1: parameter shifts and post-fit error versus physics time step h = 1/f.
 
-Arms A and C identify a command delay d as well; arm B uses (J, K_P, K_D).
+Euler + explicit PD and implicitfast + native PD identify a command delay d as well;
+RK4 + explicit PD uses (J, K_P, K_D).
 The drawing itself lives in the shared ../figures.py, so the Isaac version cannot drift from it.
 """
 
@@ -35,8 +36,8 @@ ROWS = RELATIVE
 
 HEAD = ("Target $h$ = 0.25, 0.5, ..., 5 ms ($f$ = 200-4000 Hz), realized with integer "
         "$f_\\mathrm{ctrl}$ (Hz) and integer decimation, within 2.3% of the target.\n")
-CAPTION = (HEAD + "Theory (solid), first order except the $K_D$ row of A and C, which carries "
-           "the derived $h^2$ counterterm $K_P K_D / 12 J$.\n"
+CAPTION = (HEAD + "Theory (solid), first order except the $K_D$ row of Euler and "
+           "implicitfast, which carries the derived $h^2$ counterterm $K_P K_D / 12 J$.\n"
            "Fit (dashed): $c_1 h + c_2 h^2$ through the origin, so $c_1$ is the measured "
            "first-order slope.")
 
@@ -77,10 +78,11 @@ def main(absolute=False, engine="mujoco"):
     ROWS = ABSOLUTE if absolute else RELATIVE
     use_house_style()
     delay, plain = load(f"flow_{engine}_delay.json"), load(f"flow_{engine}.json")
-    # B has no command advance to represent, so it is fitted with three parameters in both
+    # RK4 has no command advance to represent, so it is fitted with three parameters in both
     # engines.  A fourth only lets it absorb the h^2 residual, and because that parameter is
     # not orthogonal to the others it drags J and K_D off their predicted slopes with it.
-    sources = {"A": (delay, True), "B": (plain, False), "C": (delay, True)}
+    sources = {"euler_explicit": (delay, True), "rk4_explicit": (plain, False),
+               "implicitfast_native": (delay, True)}
     columns = [column(arm, *sources[arm], second_order=True) for arm in ARMS]
     stem = f"fig1_flow_{engine}" + ("_absolute" if absolute else "")
     # Show K_P on the scale the same scheme's J moves on, sign included, where it is a flat line.

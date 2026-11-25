@@ -16,7 +16,7 @@ from common import F_REF, PARAM0, Sim, ground_truth, ref_sequence
 from figures import IDENT, MEASURED, RENORM, behaviour_figure, use_house_style
 from run_gap import F_CTRL, renormalized
 
-ARM = "B"
+ARM = "rk4_explicit"
 RESULTS = Path(__file__).parent / "results"
 DEMO_DEC = 4  # h = 5 ms: 200 Hz physics, the legged_gym default
 DEMO_T = 2.0  # s of trajectory to show

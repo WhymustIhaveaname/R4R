@@ -9,7 +9,7 @@ from common import (ARMS, J0, KD0, KP0, MGL2, Sim, first_order_prediction, groun
                     model_xml, ref_sequence)
 
 # Inertia about the hinge and gravity torque.
-m = mujoco.MjModel.from_xml_string(model_xml("A"))
+m = mujoco.MjModel.from_xml_string(model_xml("euler_explicit"))
 d = mujoco.MjData(m)
 d.qpos[0] = np.pi / 2
 mujoco.mj_forward(m, d)
@@ -28,7 +28,7 @@ print(f"J with armature -J0/2: {Mfull[0, 0]:.10f}  expected {0.5 * J0:.10f}")
 f_ctrl, dec = 50, 400
 refs = ref_sequence(f_ctrl)
 gt = ground_truth(refs, f_ctrl, dec)
-sim = Sim("C")
+sim = Sim("implicitfast_native")
 sim.model.opt.integrator = mujoco.mjtIntegrator.mjINT_RK4
 th = sim.rollout(refs, f_ctrl, dec, J0, KP0, KD0)
 print(f"RK4 native PD at 20 kHz vs ground truth: max |err| = {np.max(np.abs(th - gt)):.2e} rad")

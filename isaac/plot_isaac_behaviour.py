@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT))
 from figures import IDENT, MEASURED, RENORM, behaviour_figure, use_house_style  # noqa: E402
 
 RESULTS = ROOT / "exp1_pendulum" / "results"
-SCHEME, SCHEME_NAME = "A", "explicit PD + TGS"
+SCHEME, SCHEME_NAME = "tgs_explicit", "explicit PD + TGS"
 DEMO_T = 2.0  # s shown
 F_CTRL = 50
 F_MAX = 1000

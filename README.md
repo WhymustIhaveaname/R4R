@@ -31,7 +31,7 @@ At the same simulation frequency, the first-order formula of the paper gives a 3
 
 ![Flow](exp1_pendulum/results/fig1_flow_mujoco.png)
 
-At second order, backward error analysis gives the effective parameters of A (upper sign) and C (lower sign):
+At second order, backward error analysis gives the effective parameters of Euler + explicit PD (upper sign) and implicitfast + native PD (lower sign):
 
 $$J_e = J \mp \frac{h K_D}{2} - h^2 \frac{J K_P + K_D^2}{12 J}, \qquad K_{P,e} = K_P, \qquad K_{D,e} = K_D - h^2 \frac{K_P K_D}{12 J}$$
 
@@ -67,13 +67,13 @@ The PhysX source is open ([NVIDIA-Omniverse/PhysX](https://github.com/NVIDIA-Omn
 
 ## SuperDex: the single pendulum in Mochi
 
-This section repeats experiment 1 in [SuperDex](https://github.com/facebookresearch/project_superdex) Physics 1.0.1, Meta's Mochi engine, as shipped. Mochi integrates implicitly. Scheme A is backward Euler with an explicit PD torque. Scheme C is BDF2 with Mochi's own PD.
+This section repeats experiment 1 in [SuperDex](https://github.com/facebookresearch/project_superdex) Physics 1.0.1, Meta's Mochi engine, as shipped. Mochi integrates implicitly. The schemes are backward Euler with an explicit PD torque, and BDF2 with Mochi's own PD.
 
 ![SuperDex behaviour](exp1_pendulum/results/fig_behaviour_superdex.png)
 
 At 200 Hz, the formula gives a 16× smaller error. For the same accuracy, it needs 16× less computation.
 
-The flow depends on the control rate. Mochi steps the rod in maximal coordinates and applies gravity at the end of the step, and no parameter absorbs these two terms. A joint cannot have less inertia than its link, so scheme B cannot run, and 32 of the 100 fits of C stop at this limit.
+The flow depends on the control rate. Mochi steps the rod in maximal coordinates and applies gravity at the end of the step, and no parameter absorbs these two terms. A joint cannot have less inertia than its link, so backward Euler with Mochi's own PD cannot run, and 32 of the 100 fits of BDF2 stop at this limit.
 
 ## MuJoCo Warp: the same pendulum on the GPU
 
@@ -115,10 +115,10 @@ Isaac Sim needs its own Python 3.11 environment, with `isaacsim[all]==5.1.0.0` a
 ```bash
 cd isaac
 ./launch.sh                                    # one process per scheme; about 3.5 h
-$ISAAC_VENV/bin/python run_single.py --arm A --gap   # the behaviour sweep; also B and C
+$ISAAC_VENV/bin/python run_single.py --arm tgs_explicit --gap   # the behaviour sweep; also tgs_drive and pgs_drive
 $ISAAC_VENV/bin/python dump_traj.py single
-$ISAAC_VENV/bin/python probe_step_map_isaac.py A 1 4 32
-$ISAAC_VENV/bin/python probe_drive_law.py B
+$ISAAC_VENV/bin/python probe_step_map_isaac.py tgs_explicit 1 4 32
+$ISAAC_VENV/bin/python probe_drive_law.py tgs_drive
 uv run python plot_isaac_flow.py
 uv run python plot_isaac_behaviour.py
 uv run python video_isaac.py --exp single

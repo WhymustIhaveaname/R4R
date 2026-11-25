@@ -12,7 +12,7 @@ also share one rollout.  Each stage saves after every grid point and resumes fro
 disk.
 
 Usage (inside the Isaac venv):
-    python run_single.py --arm A [--gap]
+    python run_single.py --arm tgs_explicit [--gap]
     python run_single.py --merge
 """
 
@@ -21,8 +21,9 @@ import json
 import sys
 from pathlib import Path
 
+ARMS = ("tgs_explicit", "tgs_drive", "pgs_drive")  # as in pendulum_isaac, in the same order
 parser = argparse.ArgumentParser()
-parser.add_argument("--arm", default="A", choices=("A", "B", "C"))
+parser.add_argument("--arm", default=ARMS[0], choices=ARMS)
 parser.add_argument("--gap", action="store_true", help="also run the behaviour sweep")
 parser.add_argument("--merge", action="store_true")
 args = parser.parse_args()
@@ -35,7 +36,7 @@ N_ENVS = 5 * 32   # five chains or five commands, a CMA-ES generation of 32 each
 
 
 def merge():
-    rows = [r for f in sorted(PARTS.glob("flow_isaac_[ABC]_*.json"))
+    rows = [r for arm in ARMS for f in sorted(PARTS.glob(f"flow_isaac_{arm}_*.json"))
             for r in json.loads(f.read_text())]
     OUT.write_text(json.dumps(rows, indent=1, default=float))
     print(f"merged {len(rows)} fits into {OUT}")
@@ -61,6 +62,7 @@ def main():
     part = lambda f: PARTS / f"flow_isaac_{args.arm}_{f:03d}.json"
     load = lambda path, empty: json.loads(path.read_text()) if path.exists() else empty
 
+    rf.ARMS = ARMS
     rf.WITH_DELAY = True
     rf.first_order_prediction_delay = first_order_prediction
     rf.make_sim = lambda arm: sim
@@ -76,7 +78,7 @@ def main():
         return app.close()
     gap = RESULTS / f"gap_isaac_{args.arm}.json"
     run_gap.make_sim = lambda arm: sim
-    run_gap.WITH_DELAY = {arm: True for arm in "ABC"}
+    run_gap.WITH_DELAY = {arm: True for arm in ARMS}
     run_gap.renormalized = lambda arm, h: (p if (p := first_order_prediction(arm, h))[0] > 0
                                            else None)
     run_gap.on_row = lambda rows, fine: save(gap, {"main": rows, "fine": fine})

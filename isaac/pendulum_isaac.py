@@ -13,11 +13,11 @@ J0 = M * L**2 / 3
 KP0, KD0 = 80.0, 2.0
 F_CTRL = 50
 
-ARMS = ("A", "B", "C")
+ARMS = ("tgs_explicit", "tgs_drive", "pgs_drive")
 ARM_LABEL = {
-    "A": "A: TGS + explicit PD",
-    "B": "B: TGS + PhysX joint drive",
-    "C": "C: PGS + PhysX joint drive",
+    "tgs_explicit": "TGS + explicit PD",
+    "tgs_drive": "TGS + PhysX joint drive",
+    "pgs_drive": "PGS + PhysX joint drive",
 }
 
 
@@ -25,8 +25,8 @@ ARM_LABEL = {
 # explicitly held torque makes PhysX behave as semi-implicit Euler; its own drive is an implicit
 # spring whose damping is K_D + delta K_P, run at delta = h / 32 under TGS and delta = h under PGS.
 TGS_ITERS = 32
-SUBSTEPS = {"A": 1, "B": TGS_ITERS, "C": 1}
-HELD_TORQUE = {"A": True, "B": False, "C": False}
+SUBSTEPS = {"tgs_explicit": 1, "tgs_drive": TGS_ITERS, "pgs_drive": 1}
+HELD_TORQUE = {"tgs_explicit": True, "tgs_drive": False, "pgs_drive": False}
 
 
 def first_order_prediction(arm, h, with_delay=True):
@@ -54,7 +54,7 @@ def build_scene(n_envs, arm, spacing=1.0):
     scene.CreateGravityDirectionAttr().Set(Gf.Vec3f(0.0, 0.0, -1.0))
     scene.CreateGravityMagnitudeAttr().Set(G)
     px = PhysxSchema.PhysxSceneAPI.Apply(stage.GetPrimAtPath("/physicsScene"))
-    px.CreateSolverTypeAttr().Set("PGS" if arm == "C" else "TGS")
+    px.CreateSolverTypeAttr().Set("PGS" if arm == "pgs_drive" else "TGS")
     px.CreateEnableGPUDynamicsAttr().Set(False)  # 1-2 DOF; the CPU pipeline is faster here
     px.CreateEnableStabilizationAttr().Set(False)
 
@@ -177,7 +177,7 @@ class IsaacPendulum:
         if len(p) < self.n:
             p = np.concatenate([p, np.repeat(p[:1], self.n - len(p), axis=0)])
         self.view.set_armatures(p[:, :1])
-        if self.arm == "A":  # torques come from Python, so the PhysX drive stays off
+        if self.arm == "tgs_explicit":  # torques come from Python, so the PhysX drive stays off
             z = np.zeros((self.n, 1), np.float32)
             self.view.set_gains(kps=z, kds=z)
         else:
@@ -221,7 +221,7 @@ class IsaacPendulum:
         out = np.empty((self.n, cmd.shape[1]))
         for j in range(cmd.shape[1]):
             target = cmd[:, j:j + 1]
-            if self.arm == "A":
+            if self.arm == "tgs_explicit":
                 q = self.view.get_joint_positions()
                 v = self.view.get_joint_velocities()
                 self.view.set_joint_efforts(

@@ -5,11 +5,12 @@ starting points and fitter run on it unchanged.  Set SUPERDEX_PRECISION=fp64 bef
 for the double-precision engine.
 
 Mochi integrates implicitly.  The three schemes:
-  A  backward Euler, with the PD torque computed from the state at the start of the step and
-     held over it (set_external_forces_on_dofs), as in MuJoCo's arm A.
-  B  backward Euler, with Mochi's own PD (the pose controller): spring and damper are both
-     evaluated at the end of the step.
-  C  BDF2, with the same PD.
+  backward_euler_explicit  backward Euler, with the PD torque computed from the state at the
+      start of the step and held over it (set_external_forces_on_dofs), as in MuJoCo's
+      euler_explicit.
+  backward_euler_native  backward Euler, with Mochi's own PD (the pose controller): spring and
+      damper are both evaluated at the end of the step.
+  bdf2_native  BDF2, with the same PD.
 The pose controller damps q' - (r - r_old) / dt, so a held command that jumps would also kick
 the damper.  The target is therefore reset every step (reset_articulated_target_pose), which
 leaves the plain PD K_P (r - q) - K_D q' that the other engines run.
@@ -28,13 +29,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "exp1_pendulum")
 
 import common as mj  # noqa: E402
 
-ARMS = ("A", "B", "C")
-ARM_LABEL = {"A": "A: backward Euler + explicit PD",
-             "B": "B: backward Euler + native PD",
-             "C": "C: BDF2 + native PD"}
-ARM_METHOD = {"A": sdp.IntegrationMethod.BACKWARD_EULER,
-              "B": sdp.IntegrationMethod.BACKWARD_EULER,
-              "C": sdp.IntegrationMethod.BDF2}
+ARMS = ("backward_euler_explicit", "backward_euler_native", "bdf2_native")
+ARM_LABEL = {"backward_euler_explicit": "backward Euler + explicit PD",
+             "backward_euler_native": "backward Euler + native PD",
+             "bdf2_native": "BDF2 + native PD"}
+ARM_METHOD = {"backward_euler_explicit": sdp.IntegrationMethod.BACKWARD_EULER,
+              "backward_euler_native": sdp.IntegrationMethod.BACKWARD_EULER,
+              "bdf2_native": sdp.IntegrationMethod.BDF2}
 REAL = np.float64 if sdp.uses_double_precision() else np.float32
 
 _initialized = False
@@ -104,7 +105,7 @@ class SuperDexPendulum:
             name="hinge", type=sdp.ArticulatedJointType.REVOLUTE, axis=[0, 0, 1])]
         params.links = [link]
         actor = self.scene.create_articulated_actor(params)
-        if self.arm != "A":
+        if self.arm != "backward_euler_explicit":
             pc = sdp.PoseControllerParams(1)
             pc.joint_tracking[0] = sdp.PoseTrackingParams(stiffness=mj.KP0, damping=mj.KD0)
             actor.add_articulated_pose_controller(pc)
@@ -121,7 +122,7 @@ class SuperDexPendulum:
         run = np.where(ok[:, None], p, np.append(mj.PARAM0, 0.0))
         for a, (J, kp, kd) in zip(self.actors, run[:, :3]):
             a.set_articulated_joint_inertia_params([J - self.link_inertia])
-            if self.arm != "A":
+            if self.arm != "backward_euler_explicit":
                 pc = sdp.PoseControllerParams(1)
                 pc.joint_tracking[0] = sdp.PoseTrackingParams(stiffness=kp, damping=kd)
                 a.set_articulated_pose_controller_params(pc)
@@ -157,7 +158,7 @@ class SuperDexPendulum:
         unexplained = False
         for j in range(cmd.shape[1]):
             for i, a in enumerate(self.actors):
-                if self.arm == "A":
+                if self.arm == "backward_euler_explicit":
                     q, v = self._state(a)
                     tau = p[i, 1] * (cmd[i, j] - q) - p[i, 2] * v
                     a.set_external_forces_on_dofs(self._dof, np.array([tau], dtype=REAL))
@@ -195,13 +196,14 @@ LINKS = {"rod": None, "quarter": mj.J0 / 4, "hundredth": mj.J0 / 100}
 def first_order_prediction_delay(arm, h):
     """(J*, K_P*, K_D*, d*) to first order in h, from exp1_pendulum/derive_second_order.py.
 
-    A has semi-implicit Euler's counterterms.  B's spring and damper act at the end of the
-    step, which adds h K_P of damping.  Both advance the position with the new velocity, so a
-    held command acts h/2 early.  BDF2 (C) has no first-order shift of its own, but it differences
-    across the step where the command jumps, so a held command acts h/2 late.
+    backward_euler_explicit has semi-implicit Euler's counterterms.  In backward_euler_native,
+    the spring and damper act at the end of the step, which adds h K_P of damping.  Both
+    advance the position with the new velocity, so a held command acts h/2 early.  BDF2 has no
+    first-order shift of its own, but it differences across the step where the command jumps,
+    so a held command acts h/2 late.
     """
-    if arm == "A":
+    if arm == "backward_euler_explicit":
         return mj.J0 + h / 2 * mj.KD0, mj.KP0, mj.KD0, h / 2
-    if arm == "B":
+    if arm == "backward_euler_native":
         return mj.J0 - h / 2 * mj.KD0, mj.KP0, mj.KD0 - h * mj.KP0, h / 2
     return mj.J0, mj.KP0, mj.KD0, -h / 2

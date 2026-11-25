@@ -1,6 +1,7 @@
 """Flow of the effective parameters with the physics time step, for each integration scheme.
 
-Arms A and C identify a command delay d as well; arm B uses (armature, K_P, K_D).
+Euler + explicit PD and implicitfast + native PD identify a command delay d as well;
+RK4 + explicit PD uses (armature, K_P, K_D).
 The drawing itself lives in the shared ../figures.py.
 """
 
@@ -62,7 +63,8 @@ def column(arm, rows, with_delay):
 def main():
     use_house_style()
     plain, delay = load("flow_mujoco.json"), load("flow_mujoco_delay.json")
-    sources = {"A": (delay, True), "B": (plain, False), "C": (delay, True)}
+    sources = {"euler_explicit": (delay, True), "rk4_explicit": (plain, False),
+               "implicitfast_native": (delay, True)}
     columns = [column(arm, *sources[arm]) for arm in ARMS]
     ranges = []
     for col in columns:
@@ -73,9 +75,9 @@ def main():
     flow_figure(columns, [label for _, label, _ in ROWS],
                 [RESULTS / f"fig_flow_mujoco.{e}" for e in ("png", "pdf")],
                 H_MAX, CAPTION, F_TICKS, quadratic=True, show_rmse=False,
-                # A and C have no predicted K_D flow and their points are pure scatter, so
-                # only B's K_D row is fitted, and A's and C's are shown on the inertia's scale
-                # rather than magnifying a residual of a few parts in a thousand.
+                # Euler and implicitfast have no predicted K_D flow and their points are pure
+                # scatter, so only RK4's K_D row is fitted, and theirs are shown on the
+                # inertia's scale rather than magnifying a residual of a few parts in a thousand.
                 no_fit=((KD_ROW, 0), (KD_ROW, 2)),
                 row_ylim={KD_ROW: [ranges[0], None, ranges[2]]},
                 point_colors=F_CTRL_COLOR,

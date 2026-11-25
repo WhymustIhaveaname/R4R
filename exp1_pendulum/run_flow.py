@@ -34,7 +34,8 @@ OUT = Path(__file__).parent / "results" / ("flow_mujoco_delay.json" if WITH_DELA
 # A second engine only has to supply a simulator with the same rollout signature; the sweep
 # itself is shared.  A simulator that can roll several parameter sets out at once offers
 # rollout_batch(refs, f_ctrl, dec, rows), and one that can also give each its own command,
-# rollout_many(jobs) with jobs of (refs, f_ctrl, dec, params) at a common step.
+# rollout_many(jobs) with jobs of (refs, f_ctrl, dec, params) at a common step.  It also
+# supplies its own ARMS: a scheme's place in that list seeds its chains' random starts.
 make_sim = Sim
 # Called with a chain's rows so far after every grid point, so a chain that is interrupted
 # still leaves behind everything it had finished.
@@ -65,8 +66,9 @@ def chains(arm, f_nominals, done=None):
             st = state[f]
             f_ctrl, dec = schedule(f, h_target)
             h = 1.0 / (f_ctrl * dec)
+            # without a delay, the paper's formula, dt = h/2
             predicted = (first_order_prediction_delay(arm, h) if WITH_DELAY
-                         else first_order_prediction("B", h))  # the paper's formula, dt = h/2
+                         else first_order_prediction("rk4_explicit", h))
             starts = start_points(h, predicted, st["prev"], st["rng"], WITH_DELAY)
             if any(r["f_ctrl"] == f_ctrl and r["dec"] == dec for r in st["rows"]):
                 continue

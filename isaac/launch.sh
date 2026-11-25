@@ -10,7 +10,7 @@ free_gpu() {
   nvidia-smi --query-gpu=index,memory.free --format=csv,noheader,nounits \
     | sort -t, -k2 -nr | awk -F', ' '$2 > 3000 {print $1; exit}'
 }
-for arm in A B C; do
+for arm in tgs_explicit tgs_drive pgs_drive; do
   while [ -z "$(free_gpu)" ]; do sleep 30; done
   CUDA_VISIBLE_DEVICES=$(free_gpu) setsid nohup $PY run_single.py --arm $arm \
     > "$LOGS/$arm.log" 2>&1 < /dev/null &

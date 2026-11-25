@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "exp1_pendulum"))
 from pendulum_isaac import J0, KD0, KP0, IsaacPendulum  # noqa: E402
 from common import G as GRAV, L, M  # noqa: E402
 
-ARM = sys.argv[1] if len(sys.argv) > 1 else "B"
+ARM = sys.argv[1] if len(sys.argv) > 1 else "tgs_drive"
 C = M * GRAV * L / 2
 R = 1.0
 HS = np.array([1.0, 0.5, 0.25, 0.125, 0.0625]) * 1e-3
@@ -46,7 +46,7 @@ def main():
         sim._apply(params)
         view.set_joint_positions(th0[:, None])
         view.set_joint_velocities(v0[:, None])
-        if ARM == "A":
+        if ARM == "tgs_explicit":
             view.set_joint_efforts((KP0 * (R - th0) - KD0 * v0).astype(np.float32)[:, None])
         else:
             view.set_joint_position_targets(np.full((n, 1), R, dtype=np.float32))

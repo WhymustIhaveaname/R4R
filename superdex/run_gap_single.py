@@ -4,7 +4,7 @@ The grid, the five commands, the reference solution and the fitter all come from
 code; this supplies the simulator, a batched rollout, and each Mochi scheme's own first-order
 prediction.  Every scheme fits a command delay, since every one of them shifts the command.
 
-Usage:  uv run --extra superdex python run_gap_single.py --link rod --arm A
+Usage:  uv run --extra superdex python run_gap_single.py --link rod --arm backward_euler_explicit
 Writes exp1_pendulum/results/gap_superdex_<setting>_<link>_<arm>.json after every grid point,
 and resumes from it.
 """
@@ -18,7 +18,8 @@ from pathlib import Path
 ap = argparse.ArgumentParser()
 ap.add_argument("--setting", choices=("default", "tight"), default="default")
 ap.add_argument("--link", choices=("rod", "quarter", "hundredth"), default="rod")
-ap.add_argument("--arm", choices=("A", "B", "C"), default="A")
+ap.add_argument("--arm", choices=("backward_euler_explicit", "backward_euler_native",
+                                  "bdf2_native"), default="backward_euler_explicit")
 args = ap.parse_args()
 os.environ["SUPERDEX_PRECISION"] = "fp64" if args.setting == "tight" else "fp32"
 
@@ -37,7 +38,7 @@ OUT = (ROOT / "exp1_pendulum" / "results"
 run_gap.make_sim = lambda arm: sdx.SuperDexPendulum(arm, fitting.POPSIZE,
                                                     tight=args.setting == "tight",
                                                     link_inertia=sdx.LINKS[args.link])
-run_gap.WITH_DELAY = {arm: True for arm in "ABC"}
+run_gap.WITH_DELAY = {arm: True for arm in sdx.ARMS}
 run_gap.renormalized = lambda arm, h: sdx.first_order_prediction_delay(arm, h)
 run_gap.on_row = lambda rows, fine: OUT.write_text(
     json.dumps({"main": rows, "fine": fine}, indent=1, default=float))

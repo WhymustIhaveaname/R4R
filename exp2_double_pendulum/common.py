@@ -54,22 +54,22 @@ PARAM0 = np.array([0.0, KP0, KD0])  # measured: no rotor inertia on the joint
 M11_MIN = 0.05169  # kg m^2, the smallest joint-space inertia of joint 1 over the free angle
 DIVERGED_RESIDUAL = 10.0  # rad, per sample
 
-ARMS = ("A", "B", "C")
+ARMS = ("euler_explicit", "rk4_explicit", "implicitfast_native")
 ARM_INTEGRATOR = {
-    "A": mujoco.mjtIntegrator.mjINT_EULER,
-    "B": mujoco.mjtIntegrator.mjINT_RK4,
-    "C": mujoco.mjtIntegrator.mjINT_IMPLICITFAST,
+    "euler_explicit": mujoco.mjtIntegrator.mjINT_EULER,
+    "rk4_explicit": mujoco.mjtIntegrator.mjINT_RK4,
+    "implicitfast_native": mujoco.mjtIntegrator.mjINT_IMPLICITFAST,
 }
 ARM_LABEL = {
-    "A": "A: Euler + explicit PD",
-    "B": "B: RK4 + explicit PD (torque held)",
-    "C": "C: implicitfast + native PD",
+    "euler_explicit": "Euler + explicit PD",
+    "rk4_explicit": "RK4 + explicit PD (torque held)",
+    "implicitfast_native": "implicitfast + native PD",
 }
 
 
-def model_xml(arm="B"):
+def model_xml(arm="rk4_explicit"):
     a, b = HINGE_FRAC * L2, (1 - HINGE_FRAC) * L2  # link 2 reaches a above and b below its hinge
-    actuator = ('<position name="pd1" joint="j1" kp="80" kv="2"/>' if arm == "C"
+    actuator = ('<position name="pd1" joint="j1" kp="80" kv="2"/>' if arm == "implicitfast_native"
                 else '<motor name="tau1" joint="j1"/>')
     return f"""
 <mujoco model="double_pendulum">
@@ -109,14 +109,14 @@ def ref_sequence(t_end, f_ctrl=F_CTRL, f_drive=F_DRIVE):
 class Sim:
     """One MuJoCo double pendulum; parameters are set per rollout."""
 
-    def __init__(self, arm="B"):
+    def __init__(self, arm="rk4_explicit"):
         self.arm = arm
         self.model = mujoco.MjModel.from_xml_string(model_xml(arm))
         self.model.opt.integrator = ARM_INTEGRATOR[arm]
         self.data = mujoco.MjData(self.model)
         # The reference uses its own torque-driven copy, so it does not depend on how the
         # simulator under test applies the PD force.
-        self._gt_model = mujoco.MjModel.from_xml_string(model_xml("B"))
+        self._gt_model = mujoco.MjModel.from_xml_string(model_xml("rk4_explicit"))
         self._gt_data = mujoco.MjData(self._gt_model)
 
     def rollout(self, refs, dec, armature, kp, kd, delay=0.0, strict=True, f_ctrl=F_CTRL):
@@ -128,7 +128,7 @@ class Sim:
         m, d = self.model, self.data
         m.opt.timestep = 1.0 / (f_ctrl * dec)
         m.dof_armature[0] = armature  # may be negative; total joint inertia must stay positive
-        if self.arm == "C":
+        if self.arm == "implicitfast_native":
             m.actuator_gainprm[0, 0] = kp
             m.actuator_biasprm[0, 1] = -kp
             m.actuator_biasprm[0, 2] = -kd
@@ -139,7 +139,8 @@ class Sim:
         for k in range(len(refs)):
             for j in range(dec):
                 r = cmd[k * dec + j]
-                d.ctrl[0] = r if self.arm == "C" else kp * (r - d.qpos[0]) - kd * d.qvel[0]
+                d.ctrl[0] = (r if self.arm == "implicitfast_native"
+                             else kp * (r - d.qpos[0]) - kd * d.qvel[0])
                 mujoco.mj_step(m, d)
             out[k] = d.qpos
         diverged = (d.warning[mujoco.mjtWarning.mjWARN_BADQACC].number > 0
@@ -209,25 +210,25 @@ def first_order_prediction(arm, h):
     The measured joint has no rotor inertia, so these shifts are the whole prediction; they
     mirror the single pendulum with J_measured replaced by zero.
     """
-    if arm == "A":
+    if arm == "euler_explicit":
         return np.array([h * KD0, KP0, KD0 + h / 2 * KP0])
-    if arm == "B":
+    if arm == "rk4_explicit":
         return np.array([h / 2 * KD0, KP0, KD0 + h / 2 * KP0])
     return np.array([0.0, KP0, KD0 + h / 2 * KP0])
 
 
 def first_order_prediction_delay(arm, h):
     """(armature, K_P, K_D, d) when a command delay is identified as well."""
-    if arm == "A":
+    if arm == "euler_explicit":
         return np.array([h / 2 * KD0, KP0, KD0, h / 2])
-    if arm == "B":
+    if arm == "rk4_explicit":
         return np.array([h / 2 * KD0, KP0, KD0 + h / 2 * KP0, 0.0])
     return np.array([-h / 2 * KD0, KP0, KD0, h / 2])
 
 
 def renormalized(h):
     """The RK4 prediction, used for the behaviour figure and the video."""
-    return first_order_prediction("B", h)
+    return first_order_prediction("rk4_explicit", h)
 
 
 def rmse(sim, refs, dec, params, gt, f_ctrl=F_CTRL):

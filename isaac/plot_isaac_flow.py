@@ -31,9 +31,9 @@ J0 = 0.45359237 * 0.3048 ** 2 / 3  # the measured rod inertia
 BASE = np.array([J0, KP0, KD0, 0.0])
 TGS_ITERS = 32  # Isaac's default solverPositionIterationCount
 # (key, column title, which step map it realizes, substeps the drive sees)
-SCHEMES = [("A", "explicit PD + TGS", "euler", 1),
-           ("B", "PhysX drive + TGS", "drive", TGS_ITERS),
-           ("C", "PhysX drive + PGS", "drive", 1)]
+SCHEMES = [("tgs_explicit", "explicit PD + TGS", "euler", 1),
+           ("tgs_drive", "PhysX drive + TGS", "drive", TGS_ITERS),
+           ("pgs_drive", "PhysX drive + PGS", "drive", 1)]
 # Counterterms from exp1_pendulum/derive_second_order.py, as (per ms, per ms^2) of the
 # relative shift.  PhysX's drive is an implicit spring run at delta = h / N, but gravity is not
 # substepped - eENABLE_EXTERNAL_FORCES_EVERY_ITERATION_TGS is off by default, so it is applied
