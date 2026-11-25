@@ -75,7 +75,7 @@ def chains(arm, f_nominals, done=None):
             tasks.append({"f": f, "f_ctrl": f_ctrl, "dec": dec, "h": h, "refs": refs, "gt": gt,
                           "fit": fitting.fit_steps(gt, h, starts, PARAM0, with_delay=WITH_DELAY),
                           "t0": time.perf_counter()})
-        for group in by_step(tasks):
+        for group in by_step(tasks, sim):
             for t in group:
                 t["ask"] = next(t["fit"])
             active = list(group)
@@ -89,7 +89,7 @@ def chains(arm, f_nominals, done=None):
                     except StopIteration as result:
                         t["result"] = result.value
                         active.remove(t)
-        for group in by_step(tasks):
+        for group in by_step(tasks, sim):
             measured = run_many(sim, [(t["refs"], t["f_ctrl"], t["dec"], PARAM0) for t in group])
             for t, meas in zip(group, measured):
                 t["result"]["rmse_measured"] = (float(np.sqrt(np.mean((meas - t["gt"]) ** 2)))
@@ -109,8 +109,11 @@ def chains(arm, f_nominals, done=None):
     return {f: state[f]["rows"] for f in f_nominals}
 
 
-def by_step(tasks):
-    """The tasks grouped by physics step, so each group is one rollout."""
+def by_step(tasks, sim):
+    """The tasks grouped by physics step, so each group is one rollout; all of them at once for
+    a simulator whose worlds each keep their own step."""
+    if getattr(sim, "mixed_steps", False):
+        return [list(tasks)] if tasks else []
     groups = {}
     for t in tasks:
         groups.setdefault(t["f_ctrl"] * t["dec"], []).append(t)

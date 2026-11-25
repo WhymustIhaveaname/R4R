@@ -60,7 +60,11 @@ class WarpPendulum:
 
     `nworld` worlds are allocated once.  A rollout that is given fewer parameter sets pads the
     rest with the first one and discards their output, which costs nothing extra on the GPU.
+    Each world also has its own time step and command, so jobs at different physics steps
+    share a rollout too (`mixed_steps`): the GPU charges by the step, not by the world.
     """
+
+    mixed_steps = True
 
     CHUNK = 100     # steps per captured graph; the graph is replayed to reach the full length
 
@@ -73,6 +77,8 @@ class WarpPendulum:
         if arm == "C":  # the native position actuator carries K_P and K_D in its gains
             batched |= {"actuator_gainprm": nworld, "actuator_biasprm": nworld}
         self.m = mjw.put_model(self.mjm, batch_sizes=batched)
+        # MuJoCo Warp reads the step as timestep[world % len(timestep)], so one per world
+        self.m.opt.timestep = wp.zeros(nworld, dtype=self.m.opt.timestep.dtype)
         self.d = mjw.put_data(self.mjm, self.mjd, nworld=nworld)
         self.cmd = wp.zeros((nworld, nstep_max + self.CHUNK), dtype=wp.float32)
         self.gain = wp.zeros((nworld, 2), dtype=wp.float32)
@@ -108,32 +114,40 @@ class WarpPendulum:
 
     def rollout_batch(self, refs, f_ctrl, dec, params):
         """One trajectory per parameter row, all stepped together.  A diverged row is None."""
-        p = self._write(params)
-        h = 1.0 / (f_ctrl * dec)
-        self.m.opt.timestep.assign(np.full(1, h, dtype=np.float32))
+        return self.rollout_many([(refs, f_ctrl, dec, p) for p in params])
+
+    def rollout_many(self, jobs):
+        """One trajectory per (refs, f_ctrl, dec, params) job, each world at its own physics step
+        with its own command, all stepped together until the longest is done.  A diverged job
+        is None."""
+        if len(jobs) > self.n:
+            return [t for i in range(0, len(jobs), self.n)
+                    for t in self.rollout_many(jobs[i:i + self.n])]
+        p = self._write([row for *_, row in jobs])
+        h = np.array([1.0 / (f_ctrl * dec) for _, f_ctrl, dec, _ in jobs])
+        self.m.opt.timestep.assign(np.append(h, np.full(self.n - len(h), h[0])).astype(np.float32))
         zeros = np.zeros((self.n, 1), dtype=np.float32)
         self.d.qpos.assign(zeros)
         self.d.qvel.assign(zeros)
-        # The scalar command builder from common.py is reused per row, so the two engines see
-        # exactly the same sequence of held commands.
-        # The command builder from common.py is reused per row, so the two engines see exactly
+        # The command builder from common.py is reused per job, so the two engines see exactly
         # the same sequence of held commands.
-        cmd = np.stack([np.repeat(refs, dec) if d == 0
-                        else mj.delayed_command(refs, f_ctrl, dec, d) for d in p[:, 3]])
-        nstep = cmd.shape[1]
+        cmds = [np.repeat(refs, dec) if d == 0 else mj.delayed_command(refs, f_ctrl, dec, d)
+                for (refs, f_ctrl, dec, _), d in zip(jobs, p[:, 3])]
+        nstep = max(len(c) for c in cmds)
         if nstep > self.nmax:
             raise ValueError(f"{nstep} steps exceeds the {self.nmax} this instance allocated")
         padded = np.zeros((self.n, self.cmd.shape[1]), dtype=np.float32)
-        padded[:, :nstep] = cmd
+        for k, c in enumerate(cmds):
+            padded[k, :len(c)] = c
         self.cmd.assign(padded)
         self.gain.assign(p[:, 1:3].astype(np.float32))
         self.idx.zero_()
         for _ in range((nstep + self.CHUNK - 1) // self.CHUNK):
             wp.capture_launch(self._captured())
-        out = self.out.numpy()[:, :nstep].astype(float)
-        ok = np.all(np.isfinite(out), axis=1) & (np.max(np.abs(out), axis=1) < 1e3)
-        return [out[k] if ok[k] else None for k in range(len(np.atleast_2d(params)))]
-
+        out = self.out.numpy()
+        trajectories = [out[k, :len(c)].astype(float) for k, c in enumerate(cmds)]
+        return [t if np.all(np.isfinite(t)) and np.max(np.abs(t)) < 1e3 else None
+                for t in trajectories]
 
     def _captured(self):
         """A graph of CHUNK steps; the step index advances on the device so one graph serves

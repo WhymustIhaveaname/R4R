@@ -203,7 +203,8 @@ PARAM0 = np.array([J0, KP0, KD0])
 
 
 def run_many(sim, jobs):
-    """One trajectory per (refs, f_ctrl, dec, params) job, all at the same physics step."""
+    """One trajectory per (refs, f_ctrl, dec, params) job, all at the same physics step unless
+    the simulator keeps a step per world (mixed_steps)."""
     if hasattr(sim, "rollout_many"):
         return sim.rollout_many(jobs)
     out = [None] * len(jobs)
