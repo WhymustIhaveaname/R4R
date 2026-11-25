@@ -73,10 +73,6 @@ This section repeats experiment 1 in [SuperDex](https://github.com/facebookresea
 
 At 200 Hz, the formula gives a 16× smaller error. For the same accuracy, it needs 16× less computation.
 
-### Flow of the effective parameters
-
-![SuperDex flow](exp1_pendulum/results/fig_flow_superdex_default_rod.png)
-
 The flow depends on the control rate. Mochi steps the rod in maximal coordinates and applies gravity at the end of the step, and no parameter absorbs these two terms. A joint cannot have less inertia than its link, so scheme B cannot run, and 32 of the 100 fits of C stop at this limit.
 
 ## MuJoCo Warp: the same pendulum on the GPU
