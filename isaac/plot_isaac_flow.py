@@ -76,7 +76,8 @@ KP_ROW = 2  # the third row of the figure, whose y range follows the inertia row
 
 CAPTION = ("Isaac Sim 5.1 / PhysX, single pendulum, on the same grid and fit as the MuJoCo figure.\n"
            "First-order theory (solid); fit (dashed), $c_1 h + c_2 h^2$ through the origin, so "
-           "$c_1$ is the measured first-order slope.\n"
+           "$c_1$ is the measured first-order slope; none for the TGS drive, which depends on "
+           "the control rate.\n"
            "An explicitly held torque makes PhysX behave as semi-implicit Euler; its own drive "
            "is an implicit spring whose damping is $K_D + \\delta K_P$, run at "
            f"$\\delta = h/{TGS_ITERS}$ under TGS and $\\delta = h$ under PGS.")
@@ -110,8 +111,8 @@ def main(absolute=False):
     flow_figure(columns, [label for _, label, _ in ROWS],
                 [RESULTS / f"{stem_out}.{e}" for e in ("png", "pdf")],
                 H_MAX, CAPTION, F_TICKS, quadratic=True, show_rmse=False,
-                # K_P does flow here: under TGS the h^2 counterterm is -K_P^2/12J.
-                no_fit=(),
+                # The TGS drive's flow depends on the control rate, so its column gets no fit.
+                no_fit=tuple((row, 1) for row in range(len(ROWS))),
                 row_ylim=None if absolute else {KP_ROW: ranges},
                 point_colors=F_CTRL_COLOR,
                 legend_entries=[(rf"$f_\mathrm{{ctrl}} \approx$ {fc} Hz", c)

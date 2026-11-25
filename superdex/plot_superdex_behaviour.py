@@ -2,7 +2,7 @@
 
 The pendulum as built and as shipped: the rod, FP32, Mochi's own Newton tolerances, and the
 explicit-PD scheme.  Panel (a) is the trajectory error at 200 Hz, panel (b) the error of the
-measured, predicted and fitted parameter sets against the simulation frequency.
+measured and predicted parameter sets against the simulation frequency.
 """
 
 import json
@@ -18,7 +18,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import pendulum_superdex as sdx  # noqa: E402
 from common import F_REF, PARAM0, ground_truth, ref_sequence  # noqa: E402
-from figures import IDENT, MEASURED, RENORM, behaviour_figure, use_house_style  # noqa: E402
+from figures import MEASURED, RENORM, behaviour_figure, use_house_style  # noqa: E402
 from run_gap import F_CTRL  # noqa: E402
 
 RESULTS = ROOT / "exp1_pendulum" / "results"
@@ -45,9 +45,9 @@ def main():
                                         (renorm, RENORM, "renormalized parameters"))]}
 
     series = []
+    # No fitted parameter set: the flow depends on the control rate, so no fit carries over.
     for key, color, label in (("rmse_measured", MEASURED, "without renormalization"),
-                              ("rmse_renormalized", RENORM, "renormalized (no fitting)"),
-                              ("rmse_identified", IDENT, "identified (fitted)")):
+                              ("rmse_renormalized", RENORM, "renormalized (no fitting)")):
         ok = [r for r in rows if r.get(key) is not None and r["f"] <= F_MAX]
         series.append(([r["f"] for r in ok], [r[key] for r in ok], color, label))
     lost = [r for r in rows if r.get("rmse_measured") is None]

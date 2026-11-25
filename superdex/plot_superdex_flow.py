@@ -63,13 +63,13 @@ def main(setting, link):
         ranges.append((lo - pad, hi + pad))
     caption = (f"SuperDex Physics 1.0.1, {SETTING_LABEL[setting]}; the pendulum's link is "
                f"{LINK_LABEL[link]}.\n" + HEAD +
-               "Theory (solid) to second order for A and B; for C, first order.  "
-               "Fit (dashed): $c_1 h + c_2 h^2$ through the origin.")
+               "Theory (solid) to second order for A and B; for C, first order.  No fits: the "
+               "flow depends on the control rate.")
     stem = f"fig_flow_superdex_{setting}_{link}"
     flow_figure(columns, [label for _, label, _ in RELATIVE],
                 [RESULTS / f"{stem}.{e}" for e in ("png", "pdf")],
                 H_MAX, caption, F_TICKS, point_colors=F_CTRL_COLOR, quadratic=True,
-                show_rmse=False, no_fit=(KP_ROW,), row_ylim={KP_ROW: ranges},
+                show_rmse=False, no_fit=tuple(range(len(RELATIVE))), row_ylim={KP_ROW: ranges},
                 legend_entries=[(rf"$f_\mathrm{{ctrl}} \approx$ {fc} Hz", c)
                                 for fc, c in F_CTRL_COLOR.items()])
     print("wrote", RESULTS / f"{stem}.png")
