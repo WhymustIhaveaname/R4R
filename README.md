@@ -51,6 +51,10 @@ Chaos turns a small parameter error into a lost trajectory. At 200 Hz, the formu
 
 The core trick: the theory gives $K_P$ no counterterm, so the fit leaves $K_P$ out. A free $K_P$ makes the condition number very large, and the fit becomes unstable. This is a good example of how theory helps engineering.
 
+## Experiment 3: a pendulum striking a slider
+
+The pendulum of experiment 1 strikes a cube on a spring through a soft contact. The contact needs one more counterterm. Euler and RK4 follow the theory. implicitfast does not, because its contact solver does not see the implicit damping. Details: [exp3_slider/README.md](exp3_slider/README.md).
+
 ## Isaac Sim: the single pendulum in PhysX
 
 This section repeats experiment 1 in Isaac Sim 5.1. PhysX has no RK4, so the three schemes change the solver and the PD force.

@@ -46,42 +46,49 @@ def start_points(h, predicted, prev, rng, with_delay, param0):
     return starts + ([np.asarray(prev, float)] if prev is not None else [])
 
 
-def fit_steps(gt, h, starts, param0, with_delay=False, inertia_floor=None, fixed=()):
+def fit_steps(gt, h, starts, param0, with_delay=False, inertia_floor=None, fixed=(),
+              with_contact=False):
     """Fit (J, K_P, K_D), and the command delay if asked, by CMA-ES on the trajectory RMSE.
 
     A generator: it yields the parameter rows it wants rolled out, is sent back one trajectory
     per row (None where the rollout blew up), and returns the fit.  Written this way, several
     fits can have their rows rolled out together; identify() drives a single one.
     The coordinates are log J, log K_P, log K_D and the delay in units of h.
+    `with_contact` appends a fifth parameter after the delay, the factor lam by which a soft
+    contact's stiffness, damping and regularization are scaled, fitted as log lam.
     `inertia_floor` switches the first parameter from log space to a linear coordinate in units
     of h K_D / 2, bounded so the total inertia stays above zero.  A joint that carries no rotor
     inertia of its own has nothing to take a logarithm of, and its counterterm may be negative.
-    `fixed` holds indices into (J, K_P, K_D, delay) that are held at their measured value
+    `fixed` holds indices into (J, K_P, K_D, delay, lam) that are held at their measured value
     instead of being fitted.  An operator whose counterterm the theory says is zero is not free
     to help: it is not orthogonal to the others, so letting it absorb higher-order residual
     drags the ones that do flow off their predicted slopes.
-    `starts` are parameter vectors (J, K_P, K_D) or (J, K_P, K_D, delay); the search starts
+    `starts` are parameter vectors (J, K_P, K_D), (J, K_P, K_D, delay) or (J, K_P, K_D,
+    delay, lam); the search starts
     from whichever of them has the lowest error.
     """
     gt = np.asarray(gt)
     unit = h / 2 * param0[2]                  # the predicted rotor inertia
     linear = inertia_floor is not None
-    ndim = 4 if with_delay else 3
+    assert with_delay or not with_contact, "the contact's parameter comes after the delay"
+    ndim = 3 + with_delay + with_contact
     free = [k for k in range(ndim) if k not in fixed]
-    lo = np.array([-0.9 * inertia_floor / unit, -2.0, -2.0, -5.0])[:ndim] if linear else None
+    lo = np.array([-0.9 * inertia_floor / unit, -2.0, -2.0, -5.0, -2.0])[:ndim] if linear else None
     hi = -lo if linear else None
 
     def unpack(x):
         full = np.zeros(ndim)
         full[free] = x
         head = ((full[0] * unit,) if linear else (param0[0] * np.exp(full[0]),))
-        return (*head, *(np.asarray(param0[1:3]) * np.exp(full[1:3])), *(full[3:] * h))
+        return (*head, *(np.asarray(param0[1:3]) * np.exp(full[1:3])), *(full[3:4] * h),
+                *np.exp(full[4:]))
 
     def pack(p):
         p = np.asarray(p, dtype=float)
         first = p[0] / unit if linear else np.log(p[0] / param0[0])
         x = np.append(first, np.log(p[1:3] / np.asarray(param0[1:3])))
         x = np.append(x, (p[3] if len(p) > 3 else 0.0) / h) if with_delay else x
+        x = np.append(x, np.log(p[4]) if len(p) > 4 else 0.0) if with_contact else x
         x = np.clip(x, lo * 0.99, hi * 0.99) if linear else x
         return x[free]
 
@@ -122,12 +129,12 @@ def drive(fit, run):
 
 
 def identify(rollout, gt, h, starts, param0, with_delay=False, batch=None,
-             inertia_floor=None, fixed=()):
+             inertia_floor=None, fixed=(), with_contact=False):
     """fit_steps for a single fit.  `rollout(J, kp, kd, delay)` returns the simulated angles,
     already concatenated over every command, so that one parameter set is fitted to all of them
     at once; None means it diverged.  `batch(params)`, if given, returns one trajectory per
     parameter vector from a single rollout; it changes what a generation costs, not the fit."""
-    return drive(fit_steps(gt, h, starts, param0, with_delay, inertia_floor, fixed),
+    return drive(fit_steps(gt, h, starts, param0, with_delay, inertia_floor, fixed, with_contact),
                  batch or (lambda rows: [rollout(*row) for row in rows]))
 
 
