@@ -80,9 +80,10 @@ def flow_figure(columns, row_labels, out_paths, h_max, caption, f_ticks,
     `columns` is one dict per scheme:
         title   two-line column heading
         h       (n,) time steps in ms
-        rows    list, one per parameter row, of either None (not fitted in this scheme) or
-                (values in display units, theory), where theory is the slope per ms or a pair
-                (slope per ms, curvature per ms^2) when a second-order prediction is known
+        rows    list, one per parameter row, of either None (not fitted in this scheme), a
+                string (not fitted; the string, shown as it is, says why), or (values in
+                display units, theory), where theory is the slope per ms or a pair (slope per
+                ms, curvature per ms^2) when a second-order prediction is known
         rmse    (n,) post-fit RMSE
         groups  optional (n,) keys into `point_colors` for colouring the points
     `row_labels` is the y label of each parameter row; with `show_rmse` a post-fit error row is
@@ -122,9 +123,9 @@ def flow_figure(columns, row_labels, out_paths, h_max, caption, f_ticks,
             if j == 0:
                 ax.set_ylabel(label)
             entry = col["rows"][i]
-            if entry is None:
-                ax.text(0.5, 0.5, "not fitted:\nno command advance in this scheme", ha="center",
-                        va="center", transform=ax.transAxes, color=INK2, fontsize=9)
+            if entry is None or isinstance(entry, str):
+                ax.text(0.5, 0.5, entry or "no command advance in this scheme",
+                        ha="center", va="center", transform=ax.transAxes, color=INK2, fontsize=9)
                 ax.set_yticks([])
                 continue
             y = np.asarray(entry[0])
