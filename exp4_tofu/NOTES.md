@@ -80,6 +80,19 @@ Literature, checked against the papers:
   - Kinugoshi (silken) tofu, unconfined compression at 1 mm/s.
   - Nominal fracture stress 7.1 to 8.4 kPa; engineering fracture strain 0.44 to 0.56.
   - Nearly the same from 5 to 30 °C.
+- Tofu under a ball probe: Brookfield application note "Tofu Texture Analysis" (CTX analyzer).
+  - A 25.4 mm sphere (TA43), 7 mm deep at 2 mm/s, twice. The tofu is out of its package, on the table. The block's size is not given.
+  - Peak force of the first press: 173 / 278 / 289.5 / 479 / 183 g for Gourmet Soft / House Firm / Ichiban Firm / Ichiban Regular / Longlife Soft.
+- Deep indentation: Mu, Linghu, Liu, Leng, Gao and Hsia, J. Mech. Phys. Solids 212:106572 (2026), doi 10.1016/j.jmps.2026.106572. In `papers/`, with its supplementary files, the three appendix figures.
+  - A rigid sphere on a neo-Hookean half-space: $F = F_H\,[1 - \tfrac{11}{60}\,\delta/R - \tfrac{1}{350}(\delta/R)^2 + \dots]$ (Eq. 16), checked against FEA up to δ/R = 2.5.
+  - Tofu is among its experiments (Fig. 7, F/F_H only). Neither the article nor its supplement gives the tofu's sphere, sample or modulus.
+- Tofu under a ball, in its jar: Huang, Kaletunc, St. Martin, Feller and McHale, Plant Breeding 133:67–73 (2014), doi 10.1111/pbr.12122. In `papers/`.
+  - Lab-made CaSO₄ tofu, pressed to failure in the glass jar it set in, by a 19.05 mm ball at 1.00 mm/s. The jar's size is not given.
+  - Only BLUPs, deviations from the mean, are reported: no absolute force.
+- Tofu compression: Mullin et al., Food Research International 34:669–677 (2001), doi 10.1016/S0963-9969(01)00087-4. In `papers/`.
+  - Cylinders 22 mm across (printed "22 cm") and 2 cm high, compressed to half their height by a 57 mm plate at 10 mm/min. Hardness (N) and firmness (N/mm) in Tables 6 and 7.
+  - Its penetration test uses an "8 mm cell", not a ball, though Huang et al. cite it for their ball.
+- Khoder et al., J. Food Sci. 89:2843–2856 (2024), doi 10.1111/1750-3841.17067. In `papers/`. Breaking force and penetration distance of acid-set tofu; neither the probe nor the sample size is given.
 - Gelatin: Gravelle and Marangoni, Data in Brief 38:107410 (2021). 250 Bloom, about 8 °C, at 2 / 4 / 6 / 8%:
   - E = 3.2–4.0 / 10.6–14.6 / 22.9–34.2 / 40.4–50.2 kPa;
   - true fracture stress 7–10 / 21–30 / 33–51 / 52–63 kPa;
