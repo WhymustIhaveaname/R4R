@@ -1,4 +1,4 @@
-# Experiment 5: rope, shoelace, cable (notes, 2026-11-25)
+# Experiment 6: rope, shoelace, cable (notes, 2026-11-25)
 
 Notes taken before any code. Versions: MuJoCo 4.0.0 and Genesis 1.5.0, the latest on 2026-11-25.
 
