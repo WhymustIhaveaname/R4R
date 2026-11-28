@@ -74,7 +74,8 @@ def short(coef, k, h_max):
 
 def flow_figure(columns, row_labels, out_paths, h_max, caption, f_ticks,
                 point_colors=None, legend_entries=None, rmse_label="post-fit RMSE (rad)",
-                quadratic=False, show_rmse=True, no_fit=(), row_ylim=None):
+                quadratic=False, show_rmse=True, no_fit=(), row_ylim=None, point_sizes=None, width=None,
+                horizontal=False, extra_panels=()):
     """Parameter flow against the physics time step.
 
     `columns` is one dict per scheme:
@@ -85,35 +86,60 @@ def flow_figure(columns, row_labels, out_paths, h_max, caption, f_ticks,
                 display units, theory), where theory is the slope per ms or a pair (slope per
                 ms, curvature per ms^2) when a second-order prediction is known
         rmse    (n,) post-fit RMSE
-        groups  optional (n,) keys into `point_colors` for colouring the points
+        groups  optional (n,) keys into `point_colors` for colouring the points, and into
+                `point_sizes`, if given, for their sizes: groups that fall on one another are
+                drawn largest first, so that each shows as a ring around the next
+        h_max, f_ticks   optional, this column's own range and top ticks, for a scheme whose
+                stable steps span a range of their own
     `row_labels` is the y label of each parameter row; with `show_rmse` a post-fit error row is
     appended below them.
     `no_fit` holds cells that get the theory line only, because a fit there would suggest a law
     where the theory says there is none: an int means that row in every column, a (row, column)
     pair means that one cell.  `row_ylim` maps a row index to one y range per column, None for
     a column that keeps its own; a range is widened if the data would otherwise fall outside it.
+    `width` (inches) overrides the figure's width, 13/3 per column, for a figure of one column.
+    With `horizontal`, a figure of one column lays its rows side by side instead, under one
+    title, and `extra_panels`, functions of an Axes, draw further panels to their right.
     With `quadratic`, rows that do have a predicted slope are fitted as c_1 h + c_2 h^2 instead
     of a straight line, so that c_1 can be read against the first-order theory on its own.
     """
     n_rows = len(row_labels) + bool(show_rmse)
-    fig, axes = plt.subplots(n_rows, len(columns), figsize=(13 / 3 * len(columns), 3.45 * n_rows),
-                             squeeze=False)
-    h_line = np.array([0, h_max])
-    h_dense = np.linspace(0, h_max, 200)
+    n_lines = caption.count("\n") + 1
+    if horizontal:
+        assert len(columns) == 1, "a horizontal flow figure has one column"
+        n_panels = n_rows + len(extra_panels)
+        fig_h = 3.6 + 0.75 + 0.16 * n_lines + 0.06      # panels, title and legend, caption
+        fig, grid = plt.subplots(1, n_panels, figsize=(width or 13 / 3 * n_panels, fig_h), squeeze=False)
+        axes = grid[0, :n_rows].reshape(n_rows, 1)      # axes[i, 0] is row i, as when stacked
+        for ax, draw in zip(grid[0, n_rows:], extra_panels):
+            style(ax)
+            draw(ax)
+    else:
+        fig_h = 3.45 * n_rows
+        fig, axes = plt.subplots(n_rows, len(columns), figsize=(width or 13 / 3 * len(columns), fig_h),
+                                 squeeze=False)
 
     def draw_points(ax, x, y, groups):
         if point_colors is None or groups is None:
             ax.plot(x, y, "o", ms=6, color=SINGLE_POINT, mec="white", mew=0.7, zorder=3)
         else:
-            for key, color in point_colors.items():
+            sizes = point_sizes or {}
+            for key, color in sorted(point_colors.items(), key=lambda kc: -sizes.get(kc[0], 6)):
                 m = np.asarray(groups) == key
-                ax.plot(np.asarray(x)[m], np.asarray(y)[m], "o", ms=6, color=color, mec="white",
-                        mew=0.7, zorder=3)
+                ax.plot(np.asarray(x)[m], np.asarray(y)[m], "o", ms=sizes.get(key, 6), color=color,
+                        mec="white", mew=0.7, zorder=3)
 
+    h_max_all, f_ticks_all = h_max, f_ticks
     for j, col in enumerate(columns):
         h = np.asarray(col["h"])
         groups = col.get("groups")
-        axes[0, j].set_title(col["title"], fontsize=11, pad=14)
+        h_max, f_ticks = col.get("h_max", h_max_all), col.get("f_ticks", f_ticks_all)
+        h_line = np.array([0, h_max])
+        h_dense = np.linspace(0, h_max, 200)
+        if horizontal:
+            fig.text(0.5, 1 - 0.1 / fig_h, col["title"].replace("\n", " "), ha="center", va="top", fontsize=11)
+        else:
+            axes[0, j].set_title(col["title"], fontsize=11, pad=14)
 
         for i, label in enumerate(row_labels):
             ax = axes[i, j]
@@ -160,10 +186,11 @@ def flow_figure(columns, row_labels, out_paths, h_max, caption, f_ticks,
                 loc = "upper left" if hi > -lo else "lower left"
             ax.legend(loc=loc, frameon=False, fontsize=9, handlelength=2.2)
 
-        top = axes[0, j].secondary_xaxis("top")
-        top.set_xticks([1e3 / f for f, _ in f_ticks])
-        top.set_xticklabels([t for _, t in f_ticks], fontsize=8, color=INK2)
-        top.set_xlabel("$f$ (Hz)", fontsize=8, color=INK2, labelpad=2)
+        for i in range(len(row_labels) if horizontal else 1):   # the frequency along every top edge
+            top = axes[i, j].secondary_xaxis("top")
+            top.set_xticks([1e3 / f for f, _ in f_ticks])
+            top.set_xticklabels([t for _, t in f_ticks], fontsize=8, color=INK2)
+            top.set_xlabel("$f$ (Hz)", fontsize=8, color=INK2, labelpad=2)
 
         if not show_rmse:
             continue
@@ -182,13 +209,16 @@ def flow_figure(columns, row_labels, out_paths, h_max, caption, f_ticks,
 
     rect_top = 1.0
     if legend_entries:
-        dots = [plt.Line2D([], [], ls="none", marker="o", ms=6, color=c, mec="white")
-                for _, c in legend_entries]
-        fig.legend(dots, [t for t, _ in legend_entries], loc="upper center", ncol=len(dots),
-                   frameon=False, fontsize=9, bbox_to_anchor=(0.5, 1.0))
+        # an entry is (text, colour) or (text, colour, marker size)
+        dots = [plt.Line2D([], [], ls="none", marker="o", ms=(e[2] if len(e) > 2 else 6), color=e[1],
+                           mec="white") for e in legend_entries]
+        fig.legend(dots, [e[0] for e in legend_entries], loc="upper center", ncol=len(dots),
+                   frameon=False, fontsize=9, bbox_to_anchor=(0.5, 1 - 0.38 / fig_h if horizontal else 1.0))
         rect_top = 0.975
+    if horizontal:
+        rect_top = 1 - 0.75 / fig_h
     # Reserve room for however many lines the caption runs to, in figure fractions.
-    bottom = (0.16 * (caption.count("\n") + 1) + 0.06) / (3.45 * n_rows)
+    bottom = (0.16 * n_lines + 0.06) / fig_h
     fig.text(0.5, 0.004, caption, ha="center", fontsize=8.5, color=INK2)
     fig.tight_layout(rect=(0, bottom, 1, rect_top))
     clear_legends(fig)

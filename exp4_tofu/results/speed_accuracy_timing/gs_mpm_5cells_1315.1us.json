@@ -1,0 +1,42 @@
+{
+ "method": "gs_mpm",
+ "cells": 5,
+ "dx_m": 0.00939432281305358,
+ "h_s": 0.0013150543500095647,
+ "step_index": 2,
+ "E": 11772.174683020196,
+ "E_ratio": null,
+ "damping_name": null,
+ "damping_value": {},
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "theory_seconds": 4.616379499435425,
+ "T": 0.9996349680089865,
+ "h_limit": 0.0014611715000106273,
+ "w_max_Erho1": 414.58380368144424,
+ "n_particles": 1000,
+ "n_grid_nodes_free": 384,
+ "particle_size": 0.00469716140652679,
+ "build_seconds": 9.647592306137085,
+ "hardware": {
+  "node": "usw2-gpu06-n6-tg",
+  "python": "3.13.16",
+  "genesis": "1.5.0",
+  "slurm_job": "28534",
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA B300 SXM6 AC"
+ },
+ "wall_s": 1.2227248300332576,
+ "sim_s": 1.5004770133609133,
+ "speed": 1.2271583732540223,
+ "cut": false,
+ "f_sway_timed_run": 7.684892309297434,
+ "zeta_sway_timed_run": 0.01515843450010263,
+ "seconds_total": 15.506225109100342
+}

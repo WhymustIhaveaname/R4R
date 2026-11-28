@@ -1,0 +1,79 @@
+{
+ "method": "gs_ipc",
+ "cells": 4,
+ "dx_m": 0.011742903516316974,
+ "h_s": 0.00025,
+ "E": 11772.174683020196,
+ "E_ratio": 0.8123874861879976,
+ "damping_name": "none (backward Euler's own)",
+ "damping_value": null,
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "S": 0.8123339012994849,
+ "T": 1.0000659641170053,
+ "zeta_sway_theory": 0.006290956295396562,
+ "tolerances": {
+  "newton_tolerance": 1e-09,
+  "newton_semi_implicit_enable": false,
+  "linear_system_tolerance": 1e-08
+ },
+ "f_sway_model_Erho1": 2.6918369847658212,
+ "f_twist_model_Erho1": 3.344020043275147,
+ "n_vertices": 125,
+ "n_elements": 384,
+ "hardware": {
+  "node": "youran-9950X3D",
+  "python": "3.13.13",
+  "genesis": "1.5.0",
+  "slurm_job": null,
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "libuipc": "pyuipc 0.0.30, CUDA"
+ },
+ "wall_s": 17.419414111005608,
+ "sim_s": 1.5,
+ "speed": 0.08611081810451351,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.009999949057358,
+  "zeta_sway": 0.006291004445465766,
+  "f_twist": 9.95049894911455,
+  "zeta_twist": 0.007814946600308141
+ },
+ "lam": 1.004157985226331,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.009999949057358,
+   "zeta_sway": 0.006291004445465766,
+   "f_twist": 9.95049894911455,
+   "zeta_twist": 0.007814946600308141
+  },
+  {
+   "lam": 1.004157985226331,
+   "f_sway": 8.026634328236637,
+   "zeta_sway": 0.006304067892353096,
+   "f_twist": 9.971162404690066,
+   "zeta_twist": 0.007831174624472036
+  }
+ ],
+ "f_sway": 8.026634328236637,
+ "zeta_sway": 0.006304067892353096,
+ "f_twist": 9.971162404690066,
+ "zeta_twist": 0.007831174624472036,
+ "err_sway_f": 0.20766951606290274,
+ "err_sway_zeta": -58.25120601090666,
+ "err_twist_f": -0.20854278732921339,
+ "err_twist_zeta": -49.14821672420756,
+ "err_freq_pct": 0.20810660975667947,
+ "err_damp_pct": 53.89225458678994,
+ "err_pct": 0.20810660975667947,
+ "n_runs": 4,
+ "seconds_total": 87.31133985519409
+}

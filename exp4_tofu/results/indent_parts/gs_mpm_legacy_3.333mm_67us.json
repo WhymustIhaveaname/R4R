@@ -1,0 +1,34 @@
+{
+ "arm": "gs_mpm",
+ "dx": 0.0033333333333333335,
+ "h": 6.667e-05,
+ "contact": "legacy",
+ "depths": [
+  0.00025,
+  0.0005,
+  0.00075,
+  0.001,
+  0.00125,
+  0.0015,
+  0.00175,
+  0.002,
+  0.0022500000000000003,
+  0.0025
+ ],
+ "speed": 0.005195502828203417,
+ "cut": true,
+ "step": {
+  "rule": "0.02 dx"
+ },
+ "reference_model": "fixed_corotated",
+ "build_seconds": 11.400423049926758,
+ "hardware": {
+  "node": "usw2-gpu11-o1-tg",
+  "python": "3.13.16",
+  "slurm_job": "29093",
+  "gpu": "NVIDIA B300 SXM6 AC"
+ },
+ "sphere_mass": 85.8024664605096,
+ "force_read": "sphere: m (v_after - v_set) / h",
+ "seconds": 17.185607433319092
+}

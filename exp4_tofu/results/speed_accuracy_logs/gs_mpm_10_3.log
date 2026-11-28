@@ -1,0 +1,3 @@
+gs_mpm n 10 h 93.9 us: speed 0.025, renormalized {'f_sway': 8.009434280827236, 'zeta_sway': 0.0152685264761967, 'f_twist': 9.992220330733112, 'zeta_twist': 0.03189738983153326}
+gs_mpm n 10 h 93.9 us: lam 1.000049, damping {}, final {'f_sway': 8.009628155829914, 'zeta_sway': 0.015268218263356875, 'f_twist': 9.992461886918752, 'zeta_twist': 0.03189667578688659}, err_freq 0.004632 %, err_damp 75.75 %
+done gs_mpm_10cells_93.9us.json

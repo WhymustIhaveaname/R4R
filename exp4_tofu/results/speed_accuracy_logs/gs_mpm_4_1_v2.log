@@ -1,0 +1,3 @@
+gs_mpm n 4 h 117.4 us: speed 0.0703, renormalized {'f_sway': 8.019026557213943, 'zeta_sway': 0.16533752676029867, 'f_twist': 9.3950906886848, 'zeta_twist': 0.5969218680936287}
+gs_mpm n 4 h 117.4 us: lam 1.062484, damping {}, final {'f_sway': 8.248498534290672, 'zeta_sway': 0.1618094459867135, 'f_twist': 9.675606476938494, 'zeta_twist': 0.5802330218858363}, err_freq 3.073 %, err_damp 2683 %
+done gs_mpm_4cells_117.4us.json

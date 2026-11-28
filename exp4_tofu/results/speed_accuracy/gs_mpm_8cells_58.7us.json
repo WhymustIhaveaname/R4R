@@ -1,0 +1,102 @@
+{
+ "method": "gs_mpm",
+ "cells": 8,
+ "dx_m": 0.005871451758158487,
+ "h_s": 5.871451758158487e-05,
+ "step_index": 1,
+ "step_rule": "0.5 x 0.02 dx",
+ "E": 11772.174683020196,
+ "E_ratio": 1.0393489834396137,
+ "damping_name": null,
+ "damping_value": {},
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "theory_seconds": 2.811357259750366,
+ "T": 0.9999992723299225,
+ "h_limit": 0.0009038316426400172,
+ "w_max_Erho1": 670.2332710281088,
+ "n_particles": 4080,
+ "n_grid_nodes_free": 968,
+ "particle_size": 0.0029357258790792436,
+ "build_seconds": 9.718400716781616,
+ "hardware": {
+  "node": "usw2-gpu13-o3-tg",
+  "python": "3.13.16",
+  "genesis": "1.5.0",
+  "slurm_job": "28775",
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA B300 SXM6 AC"
+ },
+ "at_E": {
+  "f_sway": 7.856910721759929,
+  "zeta_sway": 0.0442482960605166,
+  "speed": 0.025736063314838725
+ },
+ "S": 1.0393497397433193,
+ "wall_s": 42.321888922015205,
+ "sim_s": 1.4999797806567488,
+ "speed": 0.03544217469642481,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.007971910907408,
+  "zeta_sway": 0.04354691907552508,
+  "f_twist": 9.961090332306513,
+  "zeta_twist": 0.1050816698435127
+ },
+ "lam": 1.0034054742393672,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.007971910907408,
+   "zeta_sway": 0.04354691907552508,
+   "f_twist": 9.961090332306513,
+   "zeta_twist": 0.1050816698435127
+  },
+  {
+   "lam": 1.00335099434237,
+   "f_sway": 8.021203176876105,
+   "zeta_sway": 0.04348654257967269,
+   "f_twist": 9.977441439391942,
+   "zeta_twist": 0.10492509153868146
+  },
+  {
+   "lam": 1.0034054742393672,
+   "f_sway": 8.02141810712157,
+   "zeta_sway": 0.043485563407982375,
+   "f_twist": 9.977707045566456,
+   "zeta_twist": 0.1049225520976742
+  }
+ ],
+ "damping_fit": {},
+ "f_sway": 8.02141810712157,
+ "zeta_sway": 0.043485563407982375,
+ "f_twist": 9.977707045566456,
+ "zeta_twist": 0.1049225520976742,
+ "err_sway_f": 0.14254815382734876,
+ "err_sway_zeta": 187.98386362902235,
+ "err_twist_f": -0.1430439795190641,
+ "err_twist_zeta": 581.3152733615208,
+ "err_freq_pct": 0.14279628187777846,
+ "err_damp_pct": 432.01005776965104,
+ "err_pct": 0.14279628187777846,
+ "n_runs": 7,
+ "seconds_total": 417.3005893230438,
+ "fit_hardware": {
+  "node": "youran-9950X3D",
+  "python": "3.13.13",
+  "genesis": "1.5.0",
+  "slurm_job": null,
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA GeForce RTX 4060 Ti"
+ },
+ "fit_speed_untimed": 0.025594816302874294,
+ "timing_from": "speed_accuracy_timing",
+ "finite": true
+}

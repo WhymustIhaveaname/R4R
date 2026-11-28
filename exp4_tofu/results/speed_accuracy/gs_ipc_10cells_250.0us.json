@@ -1,0 +1,91 @@
+{
+ "method": "gs_ipc",
+ "cells": 10,
+ "dx_m": 0.00469716140652679,
+ "h_s": 0.00025,
+ "E": 11772.174683020196,
+ "E_ratio": 0.9250041963171589,
+ "damping_name": "none (backward Euler's own)",
+ "damping_value": null,
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "S": 0.9249431832567953,
+ "T": 1.0000659641170053,
+ "zeta_sway_theory": 0.006290956295396562,
+ "tolerances": {
+  "newton_tolerance": 1e-09,
+  "newton_semi_implicit_enable": false,
+  "linear_system_tolerance": 1e-08
+ },
+ "f_sway_model_Erho1": 2.522658814725448,
+ "f_twist_model_Erho1": 3.140185153426926,
+ "n_vertices": 1331,
+ "n_elements": 6000,
+ "hardware": {
+  "node": "usw2-gpu11-o1-tg",
+  "python": "3.13.16",
+  "genesis": "1.5.0",
+  "slurm_job": "28620",
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA B300 SXM6 AC",
+  "libuipc": "pyuipc 0.0.30, CUDA"
+ },
+ "wall_s": 18.41715016006492,
+ "sim_s": 1.5,
+ "speed": 0.08144582560077865,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.00999990087661,
+  "zeta_sway": 0.006290909686368452,
+  "f_twist": 9.970602219300488,
+  "zeta_twist": 0.007830736555677092
+ },
+ "lam": 1.0021427868048882,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.00999990087661,
+   "zeta_sway": 0.006290909686368452,
+   "f_twist": 9.970602219300488,
+   "zeta_twist": 0.007830736555677092
+  },
+  {
+   "lam": 1.0021427868048882,
+   "f_sway": 8.018576589394964,
+   "zeta_sway": 0.006297645841748571,
+   "f_twist": 9.981277852117678,
+   "zeta_twist": 0.007839120633600287
+  }
+ ],
+ "f_sway": 8.018576589394964,
+ "zeta_sway": 0.006297645841748571,
+ "f_twist": 9.981277852117678,
+ "zeta_twist": 0.007839120633600287,
+ "err_sway_f": 0.1070735255301436,
+ "err_sway_zeta": -58.29373614736046,
+ "err_twist_f": -0.10730732468297033,
+ "err_twist_zeta": -49.09661926233581,
+ "err_freq_pct": 0.10719048885062221,
+ "err_damp_pct": 53.89173265450297,
+ "err_pct": 0.10719048885062221,
+ "n_runs": 4,
+ "seconds_total": 63.090630769729614,
+ "fit_hardware": {
+  "node": "youran-9950X3D",
+  "python": "3.13.13",
+  "genesis": "1.5.0",
+  "slurm_job": null,
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "libuipc": "pyuipc 0.0.30, CUDA"
+ },
+ "fit_speed_untimed": 0.11524931503823903,
+ "timing_from": "speed_accuracy_timing"
+}

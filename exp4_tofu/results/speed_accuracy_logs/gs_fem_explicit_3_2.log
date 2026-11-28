@@ -1,0 +1,3 @@
+gs_fem_explicit n 3 h 1579.7 us: speed 8.54, renormalized {'f_sway': 8.010002086770543, 'zeta_sway': 0.014999996168989008, 'f_twist': 10.059670209537456, 'zeta_twist': 0.011943731501260785}
+gs_fem_explicit n 3 h 1579.7 us: lam 0.993244, damping {'c': 1.6757646001148303}, final {'f_sway': 7.982358671617862, 'zeta_sway': 0.016705978172175603, 'f_twist': 10.024942680098928, 'zeta_twist': 0.013302131949880301}, err_freq 0.3375 %, err_damp 12.22 %
+done gs_fem_explicit_3cells_1579.7us.json

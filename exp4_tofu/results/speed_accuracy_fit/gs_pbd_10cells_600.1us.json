@@ -1,0 +1,84 @@
+{
+ "method": "gs_pbd",
+ "cells": 10,
+ "dx_m": 0.00469716140652679,
+ "h_s": 0.0006001,
+ "step_index": 3,
+ "step_rule": "own sway zeta 0.0151",
+ "E": 11772.174683020196,
+ "E_ratio": 39.70542098497739,
+ "damping_name": null,
+ "damping_value": {},
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "theory_seconds": 17.113736152648926,
+ "h_limit": 0.0006177890256717945,
+ "n_particles": 1331,
+ "dx_nominal": 0.00469716140652679,
+ "alpha_nominal": 0.018084554648927977,
+ "theory": {
+  "f_sway": 8.010000000000435,
+  "zeta_sway": 0.0150998628629853,
+  "f_twist": 11.570863463903732,
+  "zeta_twist": 0.021810738943100174
+ },
+ "mode_twist_metrics": {
+  "sway": 0.3997729009628888,
+  "twist": 0.714102123765354
+ },
+ "build_seconds": 8.805946826934814,
+ "hardware": {
+  "node": "youran-9950X3D",
+  "python": "3.13.13",
+  "genesis": "1.5.0",
+  "slurm_job": null,
+  "backend": "cpu",
+  "precision": "float64"
+ },
+ "wall_s": 54.56787106298725,
+ "sim_s": 1.50025,
+ "speed": 0.027493284432304015,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.009999460104783,
+  "zeta_sway": 0.015099934097462795,
+  "f_twist": 11.57086334393455,
+  "zeta_twist": 0.021810705472024725
+ },
+ "lam": 0.24089845439978744,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.009999460104783,
+   "zeta_sway": 0.015099934097462795,
+   "f_twist": 11.57086334393455,
+   "zeta_twist": 0.021810705472024725
+  },
+  {
+   "lam": 0.24089845439978744,
+   "f_sway": 7.380771621683921,
+   "zeta_sway": 0.013913933093020426,
+   "f_twist": 10.686198217806643,
+   "zeta_twist": 0.020143619007362747
+  }
+ ],
+ "damping_fit": {},
+ "f_sway": 7.380771621683921,
+ "zeta_sway": 0.013913933093020426,
+ "f_twist": 10.686198217806643,
+ "zeta_twist": 0.020143619007362747,
+ "err_sway_f": -7.85553530981371,
+ "err_sway_zeta": -7.8547477283415486,
+ "err_twist_f": 6.947540210234604,
+ "err_twist_zeta": 30.802720827030818,
+ "err_freq_pct": 7.415448401025952,
+ "err_damp_pct": 22.47781875787645,
+ "err_pct": 7.415448401025952,
+ "n_runs": 4,
+ "seconds_total": 238.9103615283966
+}

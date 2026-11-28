@@ -1,0 +1,3 @@
+gs_fem_implicit n 4 h 250.0 us: speed 0.441, renormalized {'f_sway': 8.00996046998604, 'zeta_sway': 0.01500725024018343, 'f_twist': 9.950203470954463, 'zeta_twist': 0.018633208307154935}
+gs_fem_implicit n 4 h 250.0 us: lam 1.004192, damping {'alpha': 0.774405867852808, 'beta': 4.4371734288590034e-05}, final {'f_sway': 8.02675850968108, 'zeta_sway': 0.015099999963429101, 'f_twist': 9.971287742421964, 'zeta_twist': 0.015399999963509728}, err_freq 0.2083 %, err_damp 2.396e-07 %
+done gs_fem_implicit_4cells_250.0us.json

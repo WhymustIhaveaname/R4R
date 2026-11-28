@@ -1,0 +1,85 @@
+{
+ "method": "gs_mpm",
+ "cells": 5,
+ "dx_m": 0.00939432281305358,
+ "h_s": 0.001307,
+ "step_index": 0,
+ "step_rule": "own sway zeta 0.0151",
+ "E": 11772.174683020196,
+ "E_ratio": 1.0863484029451986,
+ "damping_name": null,
+ "damping_value": {},
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "theory_seconds": 3.989518404006958,
+ "T": 0.9996394257590074,
+ "h_limit": 0.0014611715000106295,
+ "w_max_Erho1": 414.5838036814436,
+ "n_particles": 1000,
+ "n_grid_nodes_free": 384,
+ "particle_size": 0.00469716140652679,
+ "build_seconds": 7.2556374073028564,
+ "hardware": {
+  "node": "youran-9950X3D",
+  "python": "3.13.13",
+  "genesis": "1.5.0",
+  "slurm_job": null,
+  "backend": "cpu",
+  "precision": "float64"
+ },
+ "at_E": {
+  "f_sway": 7.685072182055473,
+  "zeta_sway": 0.015210093273255672,
+  "speed": 0.4590900103225901
+ },
+ "S": 1.086740253487256,
+ "wall_s": 3.1861090490128845,
+ "sim_s": 1.500436,
+ "speed": 0.47093052275309377,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.008701658064348,
+  "zeta_sway": 0.014879931296805638,
+  "f_twist": 9.614185800561234,
+  "zeta_twist": 0.033266011993123235
+ },
+ "lam": 1.0397335401130048,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.008701658064348,
+   "zeta_sway": 0.014879931296805638,
+   "f_twist": 9.614185800561234,
+   "zeta_twist": 0.033266011993123235
+  },
+  {
+   "lam": 1.0383185037648341,
+   "f_sway": 8.247164183009952,
+   "zeta_sway": 0.008763463010762891,
+   "f_twist": 9.914585278591538,
+   "zeta_twist": -0.02745564468973459
+  },
+  {
+   "lam": 1.015293498852447,
+   "f_sway": 8.061820886235514,
+   "zeta_sway": 0.014440598158239676,
+   "f_twist": 9.684054941538374,
+   "zeta_twist": 0.03301610533859287
+  }
+ ],
+ "damping_fit": {},
+ "f_sway": NaN,
+ "zeta_sway": NaN,
+ "f_twist": NaN,
+ "zeta_twist": NaN,
+ "err_freq_pct": NaN,
+ "err_damp_pct": NaN,
+ "err_pct": NaN,
+ "n_runs": 9,
+ "seconds_total": 38.93465256690979
+}

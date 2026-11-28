@@ -1,0 +1,3 @@
+gs_pbd n 12 h 257.9 us: speed 0.372, renormalized {'f_sway': 8.009999213549147, 'zeta_sway': 0.006489954531494082, 'f_twist': 11.780520493475244, 'zeta_twist': 0.00954470725586022}
+gs_pbd n 12 h 257.9 us: lam 0.786593, damping {}, final {'f_sway': 7.3017370137971085, 'zeta_sway': 0.0059161299243399605, 'f_twist': 10.745512656299708, 'zeta_twist': 0.008706171854575472}, err_freq 8.217 %, err_damp 52.86 %
+done gs_pbd_12cells_257.9us.json

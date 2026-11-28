@@ -1,0 +1,3 @@
+gs_mpm n 5 h 187.9 us: speed 0.0656, renormalized {'f_sway': 8.005971142478455, 'zeta_sway': 0.0628375295395162, 'f_twist': 9.709621702494294, 'zeta_twist': 0.17767213901788959}
+gs_mpm n 5 h 187.9 us: lam 1.029730, damping {}, final {'f_sway': 8.121718478641585, 'zeta_sway': 0.062097505083095354, 'f_twist': 9.848632829765144, 'zeta_twist': 0.175377172936023}, err_freq 1.415 %, err_damp 766.8 %
+done gs_mpm_5cells_187.9us.json

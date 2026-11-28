@@ -1,0 +1,3 @@
+gs_pbd n 6 h 600.1 us: speed 0.0304, renormalized {'f_sway': 8.009999488067738, 'zeta_sway': 0.015099929206871551, 'f_twist': 11.390172621904375, 'zeta_twist': 0.02147021000631584}
+gs_pbd n 6 h 600.1 us: lam 0.808005, damping {}, final {'f_sway': 7.452815769636566, 'zeta_sway': 0.014049717652605875, 'f_twist': 10.610663286050116, 'zeta_twist': 0.020001260110267587}, err_freq 6.585 %, err_damp 21.69 %
+done gs_pbd_6cells_600.1us.json

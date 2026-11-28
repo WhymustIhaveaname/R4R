@@ -1,0 +1,29 @@
+{
+ "arm": "gs_ipc",
+ "dx": 0.0025,
+ "h": 0.004,
+ "E_ratio": 1.0387883166018421,
+ "zeta": 0.17844626561879848,
+ "misfit": 3.6619285375084406e-10,
+ "nfev": 2,
+ "S_theory": 0.9839689911263148,
+ "time_theory": [
+  1.055712481379981,
+  0.178446226374352
+ ],
+ "nominal": [
+  88.58213838598262,
+  0.1753189687868131
+ ],
+ "q_rmse": {
+  "nominal": 0.10890656863288278,
+  "fitted": 0.11159367022763064
+ },
+ "tol": {
+  "newton_tolerance": 1e-09,
+  "newton_semi_implicit_enable": false,
+  "linear_system_tolerance": 1e-08
+ },
+ "integrator": "bdf1",
+ "seconds": 17.977633714675903
+}

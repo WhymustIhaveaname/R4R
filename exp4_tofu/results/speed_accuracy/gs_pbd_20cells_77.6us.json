@@ -1,0 +1,97 @@
+{
+ "method": "gs_pbd",
+ "cells": 20,
+ "dx_m": 0.002348580703263395,
+ "h_s": 7.758092249944765e-05,
+ "step_index": 0,
+ "E": 11772.174683020196,
+ "E_ratio": 2.5749728707399897,
+ "damping_name": null,
+ "damping_value": {},
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "theory_seconds": 412.47003054618835,
+ "h_limit": 0.0003103236899977906,
+ "n_particles": 9261,
+ "dx_nominal": 0.002348580703263395,
+ "alpha_nominal": 0.03616910929785595,
+ "theory": {
+  "f_sway": 8.009999999986057,
+  "zeta_sway": 0.0019522560458137951,
+  "f_twist": 11.960684462480588,
+  "zeta_twist": 0.0029151413326455435
+ },
+ "mode_twist_metrics": {
+  "sway": 0.3902610857093389,
+  "twist": 0.7475768908546985
+ },
+ "build_seconds": 10.257837533950806,
+ "hardware": {
+  "node": "usw2-gpu09-n9-tg",
+  "python": "3.13.16",
+  "genesis": "1.5.0",
+  "slurm_job": "28609",
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA B300 SXM6 AC"
+ },
+ "wall_s": 9.57561695703771,
+ "sim_s": 1.5000271365268203,
+ "speed": 0.15665070389269886,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.00999889907009,
+  "zeta_sway": 0.0019522142055741329,
+  "f_twist": 11.960684165611404,
+  "zeta_twist": 0.0029151313722879475
+ },
+ "lam": 0.8055533440097631,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.00999889907009,
+   "zeta_sway": 0.0019522142055741329,
+   "f_twist": 11.960684165611404,
+   "zeta_twist": 0.0029151313722879475
+  },
+  {
+   "lam": 0.8055533440097631,
+   "f_sway": 7.233316680891188,
+   "zeta_sway": 0.0017629133358046183,
+   "f_twist": 10.802080858560172,
+   "zeta_twist": 0.002632749457693694
+  }
+ ],
+ "damping_fit": {},
+ "f_sway": 7.233316680891188,
+ "zeta_sway": 0.0017629133358046183,
+ "f_twist": 10.802080858560172,
+ "zeta_twist": 0.002632749457693694,
+ "err_sway_f": -9.696420962656827,
+ "err_sway_zeta": -88.32507724632703,
+ "err_twist_f": 8.107294421138622,
+ "err_twist_zeta": -82.9042243006903,
+ "err_freq_pct": 8.937247963329545,
+ "err_damp_pct": 85.65754396861027,
+ "err_pct": 8.937247963329545,
+ "n_runs": 4,
+ "seconds_total": 1040.2207803726196,
+ "fit_hardware": {
+  "node": "usw2-gpu04-n4-tg",
+  "python": "3.13.16",
+  "genesis": "1.5.0",
+  "slurm_job": "28714",
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA B300 SXM6 AC"
+ },
+ "fit_speed_untimed": 0.07215847384844173,
+ "timing_from": "speed_accuracy_timing",
+ "finite": true,
+ "step_rule": "0.25 x h_max"
+}

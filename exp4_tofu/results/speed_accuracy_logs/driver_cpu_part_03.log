@@ -1,0 +1,6 @@
+02:50:30 gs_fem_explicit 3 2 exit 0 done gs_fem_explicit_3cells_1579.7us.json
+02:50:52 gs_fem_explicit 4 1 exit 0 done gs_fem_explicit_4cells_644.6us.json
+02:51:27 gs_fem_explicit 5 0 exit 0 done gs_fem_explicit_5cells_253.3us.json
+02:52:10 gs_fem_implicit 6 2 exit 0 done gs_fem_implicit_6cells_1000.0us.json
+02:54:01 gs_fem_implicit 8 1 exit 0 done gs_fem_implicit_8cells_500.0us.json
+02:54:43 gs_mpm 5 2 exit 0 Please decrease the simulation timestep or adjust the material parameters.[0m

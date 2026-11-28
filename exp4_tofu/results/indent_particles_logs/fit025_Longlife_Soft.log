@@ -1,0 +1,10 @@
+[38;5;226m[Genesis] [07:40:44] [WARNING] Link 'ball' has dubious mass 62.879 compared to the estimate from geometry 0.009.[0m
+ceiling 10.209096726799089 N, speed 0.10158926541527676
+  alpha/alpha_nom 0.0001: F7 10.17472 N
+  alpha/alpha_nom 1: F7 0.29166 N
+  alpha/alpha_nom 0.00899315: F7 7.82844 N
+  alpha/alpha_nom 0.0741286: F7 2.90704 N
+  alpha/alpha_nom 0.182759: F7 1.41901 N
+  alpha/alpha_nom 0.136006: F7 1.81987 N
+  alpha/alpha_nom 0.138281: F7 1.79542 N
+Longlife Soft {'measured_N': 1.7946169499999998, 'alpha_over_alpha_nom': 0.13828137503077584, 'E_star_over_E': 7.23163187940126, 'E_star': 81717.44023723424, 'F7': 1.7954156656791744, 'error': 0.0004450619276579193}

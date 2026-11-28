@@ -1,0 +1,24 @@
+{
+ "arm": "gs_fem_explicit",
+ "E": 11772.174683023268,
+ "C": 2.4261410434125192,
+ "C_P1": 2.5226588147254443,
+ "S": 0.9249431832565563,
+ "T": 1.0001690457078503,
+ "E_ratio": 0.9250995409316912,
+ "h": 0.00024,
+ "h_max": 0.00048336530552180526,
+ "damping_nominal": 1.5098494293152545,
+ "damping_renormalized": 1.5098494293152545,
+ "cells": [
+  10,
+  10,
+  10
+ ],
+ "n_vertices": 1331,
+ "n_tets": 6000,
+ "theory_seconds": 0.2804999351501465
+}
+gs_fem_explicit nominal: f 8.3280 Hz (+3.97%), zeta 0.01443  (7 s, base moved 0.00e+00 m)
+gs_fem_explicit renormalized: f 8.0100 Hz (+0.00%), zeta 0.01500  (7 s, base moved 0.00e+00 m)
+wrote /home/youran/R4R/exp4_tofu/results/jello_gs_fem_explicit.json

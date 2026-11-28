@@ -1,0 +1,41 @@
+{
+ "arm": "gs_pbd",
+ "E": 11772.174683023268,
+ "C": 2.4261410434125192,
+ "h": 0.0005961,
+ "h_max": 0.0006177890256717945,
+ "cells": [
+  10,
+  10,
+  10
+ ],
+ "n_particles": 1331,
+ "dx_nominal": 0.004697161406526791,
+ "alpha_nominal": 0.01808455464892325,
+ "E_ratio": 32.48824088021397,
+ "f_theory": 8.010000000000945,
+ "zeta_theory": 0.014999229034348764,
+ "f_theory_nominal": 4.499819453718932,
+ "zeta_theory_nominal": 0.008426627638909027,
+ "damping_nominal": null,
+ "damping_renormalized": null,
+ "theory_seconds": 23.465677976608276,
+ "build_seconds": 7.819088935852051,
+ "nominal": {
+  "f": 4.499816951200329,
+  "zeta": 0.008426695126422641,
+  "seconds": 84.87796401977539,
+  "base_max_displacement": 0.0,
+  "steps": 4286,
+  "q_max": 0.0006343278513889828
+ },
+ "renormalized": {
+  "f": 8.009999600656744,
+  "zeta": 0.014999268265123602,
+  "seconds": 96.32839608192444,
+  "base_max_displacement": 0.0,
+  "steps": 4286,
+  "q_max": 0.0003528598478433147
+ },
+ "total_seconds": 212.4917130470276
+}

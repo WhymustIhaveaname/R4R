@@ -1,0 +1,87 @@
+{
+ "method": "gs_mpm",
+ "cells": 5,
+ "dx_m": 0.00939432281305358,
+ "h_s": 0.0013150543500095666,
+ "step_index": 2,
+ "E": 11772.174683020196,
+ "E_ratio": 1.0863992586263282,
+ "damping_name": null,
+ "damping_value": {},
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "theory_seconds": 6.439863920211792,
+ "T": 0.9996349680089865,
+ "h_limit": 0.0014611715000106295,
+ "w_max_Erho1": 414.5838036814436,
+ "n_particles": 1000,
+ "n_grid_nodes_free": 384,
+ "particle_size": 0.00469716140652679,
+ "build_seconds": 9.647592306137085,
+ "hardware": {
+  "node": "usw2-gpu06-n6-tg",
+  "python": "3.13.16",
+  "genesis": "1.5.0",
+  "slurm_job": "28534",
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA B300 SXM6 AC"
+ },
+ "at_E": {
+  "f_sway": 7.68489230612535,
+  "zeta_sway": 0.015158434392590152,
+  "speed": 0.43290924306296275
+ },
+ "S": 1.0867959739245152,
+ "wall_s": 1.2227248300332576,
+ "sim_s": 1.5004770133609133,
+ "speed": 1.2271583732540223,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.008778788679344,
+  "zeta_sway": 0.01504232579750241,
+  "f_twist": 9.614161914142013,
+  "zeta_twist": 0.03308287839783661
+ },
+ "lam": 1.0383103570493741,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.008778788679344,
+   "zeta_sway": 0.01504232579750241,
+   "f_twist": 9.614161914142013,
+   "zeta_twist": 0.03308287839783661
+  }
+ ],
+ "damping_fit": {},
+ "f_sway": NaN,
+ "zeta_sway": NaN,
+ "f_twist": NaN,
+ "zeta_twist": NaN,
+ "err_freq_pct": NaN,
+ "err_damp_pct": NaN,
+ "err_pct": NaN,
+ "n_runs": 5,
+ "seconds_total": 31.954127311706543,
+ "fit_hardware": {
+  "node": "youran-9950X3D",
+  "python": "3.13.13",
+  "genesis": "1.5.0",
+  "slurm_job": null,
+  "backend": "cpu",
+  "precision": "float64"
+ },
+ "fit_speed_untimed": 0.41583854810044313,
+ "timing_from": "speed_accuracy_timing",
+ "finite": false,
+ "err_sway_f": NaN,
+ "err_sway_zeta": NaN,
+ "err_twist_f": NaN,
+ "err_twist_zeta": NaN,
+ "step_rule": "0.9 x 2/w_max (first sweep, not in the spec)"
+}

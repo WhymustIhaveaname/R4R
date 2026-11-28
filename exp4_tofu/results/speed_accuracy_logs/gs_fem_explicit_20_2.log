@@ -1,0 +1,3 @@
+gs_fem_explicit n 20 h 211.8 us: speed 0.971, renormalized {'f_sway': 8.01000001692793, 'zeta_sway': 0.014999999999643167, 'f_twist': 10.045235860017254, 'zeta_twist': 0.011960893875666566}
+gs_fem_explicit n 20 h 211.8 us: lam 0.994679, damping {'c': 1.67630470496324}, final {'f_sway': 7.9885916748413, 'zeta_sway': 0.0166983237959359, 'f_twist': 10.018387813078379, 'zeta_twist': 0.01331512543845619}, err_freq 0.2657 %, err_damp 12.15 %
+done gs_fem_explicit_20cells_211.8us.json

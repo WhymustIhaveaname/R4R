@@ -1,0 +1,96 @@
+{
+ "method": "gs_pbd",
+ "cells": 6,
+ "dx_m": 0.007828602344211316,
+ "h_s": 0.0006001,
+ "step_index": 3,
+ "step_rule": "own sway zeta 0.0151",
+ "E": 11772.174683020196,
+ "E_ratio": 3.1260263227033165,
+ "damping_name": null,
+ "damping_value": {},
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "theory_seconds": 1.2746071815490723,
+ "h_limit": 0.0010188507750719105,
+ "n_particles": 343,
+ "dx_nominal": 0.007828602344211316,
+ "alpha_nominal": 0.010850732789356785,
+ "theory": {
+  "f_sway": 8.010000000000435,
+  "zeta_sway": 0.0150998628629853,
+  "f_twist": 11.390172733173014,
+  "zeta_twist": 0.02147024774107696
+ },
+ "mode_twist_metrics": {
+  "sway": 0.4107575007145111,
+  "twist": 0.7028537863785647
+ },
+ "build_seconds": 9.183717489242554,
+ "hardware": {
+  "node": "usw2-gpu13-o3-tg",
+  "python": "3.13.16",
+  "genesis": "1.5.0",
+  "slurm_job": "28806",
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA B300 SXM6 AC"
+ },
+ "wall_s": 1.2432794920168817,
+ "sim_s": 1.50025,
+ "speed": 1.206687643151142,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.009999488067738,
+  "zeta_sway": 0.015099929206871551,
+  "f_twist": 11.390172621904375,
+  "zeta_twist": 0.02147021000631584
+ },
+ "lam": 0.8080054099516925,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.009999488067738,
+   "zeta_sway": 0.015099929206871551,
+   "f_twist": 11.390172621904375,
+   "zeta_twist": 0.02147021000631584
+  },
+  {
+   "lam": 0.8080054099516925,
+   "f_sway": 7.452815769636566,
+   "zeta_sway": 0.014049717652605875,
+   "f_twist": 10.610663286050116,
+   "zeta_twist": 0.020001260110267587
+  }
+ ],
+ "damping_fit": {},
+ "f_sway": 7.452815769636566,
+ "zeta_sway": 0.014049717652605875,
+ "f_twist": 10.610663286050116,
+ "zeta_twist": 0.020001260110267587,
+ "err_sway_f": -6.956107744861839,
+ "err_sway_zeta": -6.955512234398176,
+ "err_twist_f": 6.191586129404669,
+ "err_twist_zeta": 29.878312404334984,
+ "err_freq_pct": 6.584951547124821,
+ "err_damp_pct": 21.692080381718814,
+ "err_pct": 6.584951547124821,
+ "n_runs": 4,
+ "seconds_total": 210.7329967021942,
+ "fit_hardware": {
+  "node": "youran-9950X3D",
+  "python": "3.13.13",
+  "genesis": "1.5.0",
+  "slurm_job": null,
+  "backend": "cpu",
+  "precision": "float64"
+ },
+ "fit_speed_untimed": 0.030423787447102495,
+ "timing_from": "speed_accuracy_timing",
+ "finite": true
+}

@@ -1,0 +1,3 @@
+gs_pbd n 3 h 489.6 us: speed 0.0189, renormalized {'f_sway': 8.009999478428128, 'zeta_sway': 0.012320286308810333, 'f_twist': 10.917319318521029, 'zeta_twist': 0.016791366594344465}
+gs_pbd n 3 h 489.6 us: lam 0.904407, damping {}, final {'f_sway': 7.640347701285792, 'zeta_sway': 0.011751780652515767, 'f_twist': 10.415956974564732, 'zeta_twist': 0.016020378560948356}, err_freq 4.433 %, err_damp 15.94 %
+done gs_pbd_3cells_489.6us.json

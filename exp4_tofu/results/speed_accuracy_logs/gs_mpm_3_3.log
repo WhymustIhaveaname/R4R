@@ -1,0 +1,3 @@
+gs_mpm n 3 h 313.1 us: speed 0.373, renormalized {'f_sway': 8.008153849082122, 'zeta_sway': 0.1597500089212305, 'f_twist': 8.879603981359173, 'zeta_twist': 0.629340341654026}
+gs_mpm n 3 h 313.1 us: lam 1.120215, damping {}, final {'f_sway': 8.443553753930384, 'zeta_sway': 0.15340546324362628, 'f_twist': 9.385015185435586, 'zeta_twist': 0.5965195687284919}, err_freq 5.753 %, err_damp 2746 %
+done gs_mpm_3cells_313.1us.json

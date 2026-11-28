@@ -1,0 +1,46 @@
+{
+ "arm": "gs_fem_implicit",
+ "E": 11772.174683023268,
+ "C": 2.4261410434125192,
+ "C_P1": 2.522658814725447,
+ "S": 0.9249431832565543,
+ "T": 1.000544226387096,
+ "E_ratio": 0.9254465617434472,
+ "h": 0.001,
+ "h_max": null,
+ "damping_nominal": 0.0005960859291831287,
+ "damping_renormalized": -0.0004037882500310951,
+ "cells": [
+  10,
+  10,
+  10
+ ],
+ "n_vertices": 1331,
+ "n_tets": 6000,
+ "theory_seconds": 0.32995128631591797
+}
+/home/youran/R4R/.venv/lib/python3.13/site-packages/genesis/engine/solvers/fem_solver.py:2063: SyntaxWarning: You are unrolling more than
+                        32 iterations, so the compile time may be extremely long.
+                        You can use a non-static for loop if you want to decrease the compile time.
+                        You can disable this warning by setting qd.init(unrolling_limit=0).
+  for i_r in qd.static(range(n_rows_max)):
+/home/youran/R4R/.venv/lib/python3.13/site-packages/genesis/engine/solvers/fem_solver.py:2071: SyntaxWarning: You are unrolling more than
+                        32 iterations, so the compile time may be extremely long.
+                        You can use a non-static for loop if you want to decrease the compile time.
+                        You can disable this warning by setting qd.init(unrolling_limit=0).
+  for i_r in qd.static(range(n_rows_max)):
+/home/youran/R4R/.venv/lib/python3.13/site-packages/quadrants/lang/ast/ast_transformers/call_transformer.py:295: DeprecationWarning: keyword.__init__ got an unexpected keyword argument 'ctx'. Support for arbitrary keyword arguments is deprecated and will be removed in Python 3.15.
+  kwarg_node = ast.keyword(
+/home/youran/R4R/.venv/lib/python3.13/site-packages/genesis/engine/solvers/fem_solver.py:2063: SyntaxWarning: You are unrolling more than
+                        32 iterations, so the compile time may be extremely long.
+                        You can use a non-static for loop if you want to decrease the compile time.
+                        You can disable this warning by setting qd.init(unrolling_limit=0).
+  for i_r in qd.static(range(n_rows_max)):
+/home/youran/R4R/.venv/lib/python3.13/site-packages/genesis/engine/solvers/fem_solver.py:2071: SyntaxWarning: You are unrolling more than
+                        32 iterations, so the compile time may be extremely long.
+                        You can use a non-static for loop if you want to decrease the compile time.
+                        You can disable this warning by setting qd.init(unrolling_limit=0).
+  for i_r in qd.static(range(n_rows_max)):
+gs_fem_implicit nominal: f 8.3205 Hz (+3.88%), zeta 0.04171  (18 s, base moved 0.00e+00 m)
+gs_fem_implicit renormalized: f 8.0100 Hz (+0.00%), zeta 0.01500  (13 s, base moved 0.00e+00 m)
+wrote /home/youran/R4R/exp4_tofu/results/jello_gs_fem_implicit.json

@@ -1,0 +1,15 @@
+03:21:58 gs_fem_explicit 12 2 exit 0 done gs_fem_explicit_12cells_359.3us.json
+03:22:39 gs_fem_explicit 12 1 exit 0 done gs_fem_explicit_12cells_199.6us.json
+03:23:38 gs_fem_explicit 12 0 exit 0 done gs_fem_explicit_12cells_99.8us.json
+03:24:19 gs_fem_explicit 16 2 exit 0 done gs_fem_explicit_16cells_266.5us.json
+03:25:01 gs_fem_explicit 16 1 exit 0 done gs_fem_explicit_16cells_148.0us.json
+03:26:03 gs_fem_explicit 16 0 exit 0 done gs_fem_explicit_16cells_74.0us.json
+03:26:48 gs_fem_explicit 20 2 exit 0 done gs_fem_explicit_20cells_211.8us.json
+03:27:39 gs_fem_explicit 20 1 exit 0 done gs_fem_explicit_20cells_117.7us.json
+03:28:50 gs_fem_explicit 20 0 exit 0 done gs_fem_explicit_20cells_58.8us.json
+03:29:48 gs_fem_implicit 12 2 exit 0 done gs_fem_implicit_12cells_1000.0us.json
+03:31:17 gs_fem_implicit 12 1 exit 0 done gs_fem_implicit_12cells_500.0us.json
+03:33:39 gs_fem_implicit 12 0 exit 0 done gs_fem_implicit_12cells_250.0us.json
+03:47:07 gs_mpm 12 3 exit 0 done gs_mpm_12cells_78.3us.json
+03:49:16 gs_mpm 12 2 exit 0 done gs_mpm_12cells_538.9us.json
+03:52:57 gs_mpm 12 1 exit 0 done gs_mpm_12cells_299.4us.json

@@ -1,0 +1,5 @@
+[38;5;226m[Genesis] [03:06:54] [WARNING] Current `substep_dt` (0.00030353) is greater than suggested_dt
+(0.000156572, calculated based on `grid_density`). Simulation might be unstable.[0m
+gs_mpm n 6 h 303.5 us: speed 0.084, renormalized {'f_sway': 8.008465217534008, 'zeta_sway': 0.02517270430993665, 'f_twist': 9.76912729658634, 'zeta_twist': 0.06275085088699192}
+gs_mpm n 6 h 303.5 us: lam 1.022798, damping {}, final {'f_sway': 8.098722731156466, 'zeta_sway': 0.024946687200477668, 'f_twist': 9.87880283071369, 'zeta_twist': 0.06211959096468714}, err_freq 1.12 %, err_damp 219.4 %
+done gs_mpm_6cells_303.5us.json

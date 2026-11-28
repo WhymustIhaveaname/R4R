@@ -1,0 +1,79 @@
+{
+ "method": "gs_ipc",
+ "cells": 4,
+ "dx_m": 0.011742903516316974,
+ "h_s": 0.002,
+ "E": 11772.174683020196,
+ "E_ratio": 0.815770409020411,
+ "damping_name": "none (backward Euler's own)",
+ "damping_value": null,
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "S": 0.8123339012994857,
+ "T": 1.0042304127839894,
+ "zeta_sway_theory": 0.05028583587760961,
+ "tolerances": {
+  "newton_tolerance": 1e-09,
+  "newton_semi_implicit_enable": false,
+  "linear_system_tolerance": 1e-08
+ },
+ "f_sway_model_Erho1": 2.69183698476582,
+ "f_twist_model_Erho1": 3.344020043275146,
+ "n_vertices": 125,
+ "n_elements": 384,
+ "hardware": {
+  "node": "youran-9950X3D",
+  "python": "3.13.13",
+  "genesis": "1.5.0",
+  "slurm_job": null,
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA GeForce RTX 5080",
+  "libuipc": "pyuipc 0.0.30, CUDA"
+ },
+ "wall_s": 5.0640452269872185,
+ "sim_s": 1.5,
+ "speed": 0.2962058853673397,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.010000133857522,
+  "zeta_sway": 0.05028559255053466,
+  "f_twist": 9.93934727298007,
+  "zeta_twist": 0.06236963520440743
+ },
+ "lam": 1.005298630877932,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.010000133857522,
+   "zeta_sway": 0.05028559255053466,
+   "f_twist": 9.93934727298007,
+   "zeta_twist": 0.06236963520440743
+  },
+  {
+   "lam": 1.005298630877932,
+   "f_sway": 8.03110367205481,
+   "zeta_sway": 0.05041785295990171,
+   "f_twist": 9.965474452471538,
+   "zeta_twist": 0.06253315573431582
+  }
+ ],
+ "f_sway": 8.03110367205481,
+ "zeta_sway": 0.05041785295990171,
+ "f_twist": 9.965474452471538,
+ "zeta_twist": 0.06253315573431582,
+ "err_sway_f": 0.26346656747577857,
+ "err_sway_zeta": 233.89306595961398,
+ "err_twist_f": -0.2654678495642826,
+ "err_twist_zeta": 306.05945282023265,
+ "err_freq_pct": 0.26446910153149605,
+ "err_damp_pct": 272.3769033569188,
+ "err_pct": 0.26446910153149605,
+ "n_runs": 4,
+ "seconds_total": 17.327155113220215
+}

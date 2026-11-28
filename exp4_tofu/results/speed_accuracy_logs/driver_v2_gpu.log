@@ -1,0 +1,8 @@
+04:15:18 gs_mpm 8 0 exit 0 done gs_mpm_8cells_207.9us.json
+04:20:28 gs_mpm 10 0 exit 0 done gs_mpm_10cells_95.2us.json
+04:27:29 gs_mpm 8 1 exit 0 done gs_mpm_8cells_58.7us.json
+04:41:36 gs_mpm 10 1 exit 0 done gs_mpm_10cells_47.0us.json
+05:02:47 gs_mpm 12 0 exit 0 done gs_mpm_12cells_49.2us.json
+05:29:19 gs_mpm 12 1 exit 0 done gs_mpm_12cells_39.1us.json
+05:29:27 gs_mpm 16 0 exit 0 done gs_mpm_16cells_15.6us.json skipped: the cluster's timing cut it
+05:29:33 gs_mpm 16 1 exit 0 done gs_mpm_16cells_29.4us.json skipped: the cluster's timing cut it

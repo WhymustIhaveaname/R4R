@@ -1,0 +1,19 @@
+02:51:02 gs_mpm 8 2 exit 0 done gs_mpm_8cells_813.4us.json
+02:52:20 gs_mpm 8 1 exit 0 done gs_mpm_8cells_451.9us.json
+02:54:35 gs_mpm 8 0 exit 0 done gs_mpm_8cells_226.0us.json
+02:58:31 gs_mpm 8 3 exit 0 done gs_mpm_8cells_117.4us.json
+02:59:03 gs_pbd 10 2 exit 0 done gs_pbd_10cells_556.0us.json
+02:59:39 gs_pbd 10 1 exit 0 done gs_pbd_10cells_308.9us.json
+03:00:29 gs_pbd 10 0 exit 0 done gs_pbd_10cells_154.4us.json
+03:00:51 gs_fem_explicit 10 2 exit 0 done gs_fem_explicit_10cells_435.0us.json
+03:01:15 gs_fem_explicit 10 1 exit 0 done gs_fem_explicit_10cells_241.7us.json
+03:01:51 gs_fem_explicit 10 0 exit 0 done gs_fem_explicit_10cells_120.8us.json
+03:02:53 gs_mpm 10 2 exit 0 done gs_mpm_10cells_647.6us.json
+03:04:27 gs_mpm 10 1 exit 0 done gs_mpm_10cells_359.8us.json
+03:07:20 gs_mpm 10 0 exit 0 done gs_mpm_10cells_179.9us.json
+03:12:33 gs_mpm 10 3 exit 0 done gs_mpm_10cells_93.9us.json
+03:13:09 gs_fem_implicit 10 2 exit 0 [38;5;9m[Genesis] [03:13:07] [ERROR] GenesisException: NaN detected in FEM states. Try reducing the time step size or adjusting simulation parameters.[0m
+03:14:09 gs_fem_implicit 10 1 exit 0 done gs_fem_implicit_10cells_500.0us.json
+03:17:14 gs_fem_implicit 10 0 exit 0 done gs_fem_implicit_10cells_250.0us.json
+03:19:06 gs_pbd 12 2 exit 0 done gs_pbd_12cells_464.2us.json
+03:20:11 gs_pbd 12 1 exit 0 done gs_pbd_12cells_257.9us.json

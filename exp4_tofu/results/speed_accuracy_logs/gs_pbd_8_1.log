@@ -1,0 +1,3 @@
+gs_pbd n 8 h 384.8 us: speed 0.0136, renormalized {'f_sway': 8.009999342021295, 'zeta_sway': 0.009682417790193094, 'f_twist': 11.593385092484603, 'zeta_twist': 0.014013539862471109}
+gs_pbd n 8 h 384.8 us: lam 0.806445, damping {}, final {'f_sway': 7.373998936652625, 'zeta_sway': 0.00891365676275247, 'f_twist': 10.681345247278745, 'zeta_twist': 0.012911232386507905}, err_freq 7.438 %, err_damp 31.14 %
+done gs_pbd_8cells_384.8us.json

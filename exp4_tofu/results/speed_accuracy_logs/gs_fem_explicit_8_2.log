@@ -1,0 +1,3 @@
+gs_fem_explicit n 8 h 550.7 us: speed 0.833, renormalized {'f_sway': 8.010000100347757, 'zeta_sway': 0.014999999813038498, 'f_twist': 9.94753355042397, 'zeta_twist': 0.012078370885061735}
+gs_fem_explicit n 8 h 550.7 us: lam 1.004455, damping {'c': 1.6791820572615688}, final {'f_sway': 8.02763689316165, 'zeta_sway': 0.016645628618095282, 'f_twist': 9.96943725009725, 'zeta_twist': 0.013403470800342657}, err_freq 0.223 %, err_damp 11.68 %
+done gs_fem_explicit_8cells_550.7us.json

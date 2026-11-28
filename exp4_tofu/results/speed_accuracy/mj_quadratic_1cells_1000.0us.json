@@ -1,0 +1,142 @@
+{
+ "method": "mj_quadratic",
+ "cells": 1,
+ "dx_m": 0.04700000000000001,
+ "h_s": 0.001,
+ "speed": 18.76063711544707,
+ "cut": false,
+ "E_ratio": 0.9291672171349823,
+ "damping_name": "beta (s)",
+ "damping_value": -0.0003998135050313024,
+ "S": 0.9286571389204337,
+ "T": 1.0005492643012917,
+ "f_twist_ref": 9.992,
+ "hardware": {
+  "node": "usw2-cpu06-o6-sc",
+  "cpu": "AMD EPYC 7763 64-Core Processor",
+  "mujoco": "4.0.0",
+  "python": "3.13.16",
+  "slurm_job": "28238",
+  "slurm_cpus": "1"
+ },
+ "wall_s": 0.07995464070700109,
+ "sim_s": 1.5,
+ "nv": 54,
+ "f_sway_model_Erho1": 2.517609357437411,
+ "f_twist_model_Erho1": 2.9702928191940674,
+ "w_max_Erho1": 285.91612387294987,
+ "euler_h_limit_s": null,
+ "f_sway": 8.227151178596959,
+ "zeta_sway": 0.013930056881833613,
+ "f_twist": 9.705503828372807,
+ "zeta_twist": 0.01643178250040851,
+ "err_sway_f": 2.711000981235445,
+ "err_sway_zeta": -7.747967669976075,
+ "err_twist_f": -2.867255520688494,
+ "err_pct": 2.7902222618617856,
+ "seconds_total": 0.19581270217895508,
+ "err_twist_zeta": 6.699886366289021,
+ "lam": 1.0549005334388644,
+ "mu": 1.1528468296586079,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "error_definition": "err_pct = err_freq_pct: 100 RMS of the relative errors of f_sway and f_twist with lam fitted to them; err_damp_pct: 100 RMS of those of zeta_sway and zeta_twist with mu fitted to them at that lam; both from the runs at the final (lam, mu)",
+ "renormalized": {
+  "f_sway": 8.010000479351485,
+  "zeta_sway": 0.015100001875740144,
+  "f_twist": 9.449237647725436,
+  "zeta_twist": 0.017811738764772145
+ },
+ "E_fit_ratio": 0.9801789930095979,
+ "damping_fit": -0.00046092373173003287,
+ "rms4": {
+  "lam": 1.054926316765894,
+  "mu": 1.1528671540247741,
+  "E_fit_ratio": 0.9802029500318226,
+  "damping_fit": -0.00046093185768610734,
+  "f_sway": 8.227251714183428,
+  "zeta_sway": 0.013930017030837684,
+  "f_twist": 9.705622377649377,
+  "zeta_twist": 0.016431735445953995,
+  "err_sway_f": 2.7122561071589057,
+  "err_sway_zeta": -7.748231583856402,
+  "err_twist_f": -2.866069078769262,
+  "err_twist_zeta": 6.6995808178830885,
+  "err_pct": 5.488400517626127,
+  "fit": {
+   "start_single_mode": [
+    1.0549223858961614,
+    1.1528622085912823
+   ],
+   "iterations": [
+    {
+     "x": [
+      1.0549223858961614,
+      1.1528622085912823
+     ],
+     "rms": 0.054884009993062095
+    },
+    {
+     "x": [
+      1.054926316765894,
+      1.1528671540247741
+     ],
+     "rms": 0.054884005176261276,
+     "step_rel": 4.2897004125992495e-06
+    }
+   ],
+   "runs": 10,
+   "gradient_norm": 1.5491358644369093e-08,
+   "seconds": 0.7257819175720215,
+   "single_mode_rms_at_fit": 5.488321497856774
+  }
+ },
+ "err_rms4_pct": 5.488400517626127,
+ "err_max_pct": 6.325758478665177,
+ "err_max_definition": "100 max(|f_sway/8.01 - 1|, |zeta_sway/0.015 - 1|, |f_twist/10.087 - 1|) at the renormalized parameters (zeta 0.015), from the cluster's runs",
+ "err_freq_pct": 2.7902222618617856,
+ "err_damp_pct": 7.242909647930864,
+ "fit_split": {
+  "start_single_mode": [
+   1.0549005487772771,
+   1.1528455071330224
+  ],
+  "iterations": [
+   {
+    "x": [
+     1.0549005487772771,
+     1.1528455071330224
+    ],
+    "r": [
+     0.02711001727111939,
+     -0.07747876442416401,
+     -0.028672548441827206,
+     0.06699990856854154
+    ]
+   },
+   {
+    "x": [
+     1.0549005334388644,
+     1.1528468296586079
+    ],
+    "r": [
+     0.027110009812354452,
+     -0.07747967669976075,
+     -0.028672555206884942,
+     0.0669988636628902
+    ],
+    "step_rel": 1.1471823936291477e-06
+   }
+  ],
+  "runs": 8,
+  "stationarity": [
+   -2.610333162016475e-10,
+   -6.32557472228366e-09
+  ],
+  "seconds": 0.6958532333374023
+ }
+}

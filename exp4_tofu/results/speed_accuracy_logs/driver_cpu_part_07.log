@@ -1,0 +1,6 @@
+02:50:41 gs_fem_implicit 3 1 exit 0 done gs_fem_implicit_3cells_500.0us.json
+02:51:30 gs_fem_implicit 4 0 exit 0 done gs_fem_implicit_4cells_250.0us.json
+02:55:04 gs_pbd 6 2 exit 0 done gs_pbd_6cells_917.0us.json
+03:01:52 gs_pbd 8 1 exit 0 done gs_pbd_8cells_384.8us.json
+03:02:38 gs_mpm 3 0 exit 0 done gs_mpm_3cells_607.7us.json
+03:04:07 gs_mpm 6 2 exit 0 done gs_mpm_6cells_1092.7us.json

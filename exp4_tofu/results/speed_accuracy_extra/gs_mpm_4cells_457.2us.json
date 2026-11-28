@@ -1,0 +1,108 @@
+{
+ "method": "gs_mpm",
+ "cells": 4,
+ "dx_m": 0.011742903516316974,
+ "h_s": 0.00045723755322903044,
+ "step_index": 0,
+ "E": 11772.174683020196,
+ "E_ratio": 1.07663656826826,
+ "damping_name": null,
+ "damping_value": {},
+ "f_twist_ref": 10.087348262729162,
+ "targets": {
+  "f_sway": 8.01,
+  "zeta_sway": 0.0151,
+  "f_twist": 9.992,
+  "zeta_twist": 0.0154
+ },
+ "theory_seconds": 3.7597925662994385,
+ "T": 0.9999558706727177,
+ "h_limit": 0.0018289502129161218,
+ "w_max_Erho1": 331.2162540168113,
+ "n_particles": 512,
+ "n_grid_nodes_free": 245,
+ "particle_size": 0.005871451758158487,
+ "build_seconds": 9.87502908706665,
+ "hardware": {
+  "node": "usw2-gpu06-n6-tg",
+  "python": "3.13.16",
+  "genesis": "1.5.0",
+  "slurm_job": "28528",
+  "backend": "gpu",
+  "precision": "float64",
+  "gpu": "NVIDIA B300 SXM6 AC"
+ },
+ "at_E": {
+  "f_sway": 7.719656085830465,
+  "zeta_sway": 0.05796858542176726,
+  "speed": 0.2850107777243883
+ },
+ "S": 1.076684081612477,
+ "wall_s": 3.0058787270681933,
+ "sim_s": 1.5001964121444475,
+ "speed": 0.4990874710396835,
+ "cut": false,
+ "renormalized": {
+  "f_sway": 8.004913789853953,
+  "zeta_sway": 0.05631958735299719,
+  "f_twist": 9.439549805917586,
+  "zeta_twist": 0.1663894472772766
+ },
+ "lam": 1.0579180773030954,
+ "lam_history": [
+  {
+   "lam": 1.0,
+   "f_sway": 8.004913789853953,
+   "zeta_sway": 0.05631958735299719,
+   "f_twist": 9.439549805917586,
+   "zeta_twist": 0.1663894472772766
+  },
+  {
+   "lam": 1.0566895098803022,
+   "f_sway": 8.22491218291,
+   "zeta_sway": 0.05512075750782021,
+   "f_twist": 9.696625140408246,
+   "zeta_twist": 0.16236464016226496
+  },
+  {
+   "lam": 1.0578935459913266,
+   "f_sway": 8.229520080350543,
+   "zeta_sway": 0.05509628719529699,
+   "f_twist": 9.702009252561371,
+   "zeta_twist": 0.16228257368680224
+  },
+  {
+   "lam": 1.0579180773030954,
+   "f_sway": 8.229613929263932,
+   "zeta_sway": 0.05509578899148716,
+   "f_twist": 9.702118901626676,
+   "zeta_twist": 0.16228090280759194
+  }
+ ],
+ "damping_fit": {},
+ "f_sway": 8.229613929263932,
+ "zeta_sway": 0.05509578899148716,
+ "f_twist": 9.702118901626676,
+ "zeta_twist": 0.16228090280759194,
+ "err_sway_f": 2.7417469321339816,
+ "err_sway_zeta": 264.87277477806066,
+ "err_twist_f": -2.901131889244646,
+ "err_twist_zeta": 953.7720961531944,
+ "err_freq_pct": 2.822564656359382,
+ "err_damp_pct": 699.9424255676632,
+ "err_pct": 2.822564656359382,
+ "n_runs": 9,
+ "seconds_total": 62.69731163978577,
+ "fit_hardware": {
+  "node": "youran-9950X3D",
+  "python": "3.13.13",
+  "genesis": "1.5.0",
+  "slurm_job": null,
+  "backend": "cpu",
+  "precision": "float64"
+ },
+ "fit_speed_untimed": 0.2677328090089632,
+ "timing_from": "speed_accuracy_timing",
+ "finite": true,
+ "step_rule": "0.25 x 2/w_max (first sweep, not in the spec)"
+}

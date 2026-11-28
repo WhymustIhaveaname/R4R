@@ -1,0 +1,3 @@
+[38;5;226m[Genesis] [18:30:14] [WARNING] Current `substep_dt` (0.0001333) is greater than suggested_dt
+(6.66667e-05, calculated based on `grid_density`). Simulation might be unstable.[0m
+done gs_mpm_3.333mm_133.3us.json

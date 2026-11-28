@@ -1,0 +1,3 @@
+gs_mpm n 8 h 58.7 us: speed 0.0256, renormalized {'f_sway': 8.007971910907408, 'zeta_sway': 0.04354691907552508, 'f_twist': 9.961090332306513, 'zeta_twist': 0.1050816698435127}
+gs_mpm n 8 h 58.7 us: lam 1.003405, damping {}, final {'f_sway': 8.02141810712157, 'zeta_sway': 0.043485563407982375, 'f_twist': 9.977707045566456, 'zeta_twist': 0.1049225520976742}, err_freq 0.1428 %, err_damp 432 %
+done gs_mpm_8cells_58.7us.json

@@ -1,0 +1,26 @@
+{
+ "arm": "gs_pbd",
+ "E": 11772.174683023268,
+ "C": 2.4261410434125192,
+ "h": 0.0005961,
+ "h_max": 0.0006177890256717945,
+ "cells": [
+  10,
+  10,
+  10
+ ],
+ "n_particles": 1331,
+ "dx_nominal": 0.004697161406526791,
+ "alpha_nominal": 0.01808455464892325,
+ "E_ratio": 32.48824088021397,
+ "f_theory": 8.010000000000945,
+ "zeta_theory": 0.014999229034348764,
+ "f_theory_nominal": 4.499819453718932,
+ "zeta_theory_nominal": 0.008426627638909027,
+ "damping_nominal": null,
+ "damping_renormalized": null,
+ "theory_seconds": 23.465677976608276
+}
+gs_pbd nominal: f 4.4998 Hz (-43.82%), zeta 0.00843  (85 s, base moved 0.00e+00 m)
+gs_pbd renormalized: f 8.0100 Hz (-0.00%), zeta 0.01500  (96 s, base moved 0.00e+00 m)
+wrote /home/youran/R4R/exp4_tofu/results/jello_gs_pbd.json

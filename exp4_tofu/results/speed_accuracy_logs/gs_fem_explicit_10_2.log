@@ -1,0 +1,5 @@
+/home/youran/R4R/exp4_tofu/jello_sim.py:85: OptimizeWarning: Covariance of the parameters could not be estimated
+  p, _ = curve_fit(model, t, q, p0=[np.abs(q).max(), ZETA_VIDEO * w0, w0, 0.0], maxfev=20000)
+gs_fem_explicit n 10 h 435.0 us: speed 1.7, renormalized {'f_sway': 8.010000049922988, 'zeta_sway': 0.014999999906553218, 'f_twist': 9.970892249773017, 'zeta_twist': 0.012050075044528454}
+gs_fem_explicit n 10 h 435.0 us: lam 1.002114, damping {'c': 1.678514682477038}, final {'f_sway': 8.018313680803375, 'zeta_sway': 0.016658359814921638, 'f_twist': 9.981241325784962, 'zeta_twist': 0.013382298878121944}, err_freq 0.1057 %, err_damp 11.79 %
+done gs_fem_explicit_10cells_435.0us.json

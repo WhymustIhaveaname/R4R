@@ -1,0 +1,21 @@
+[38;5;226m[Genesis] [07:45:40] [WARNING] Link 'ball' has dubious mass 62.879 compared to the estimate from geometry 0.009.[0m
+ceiling 10.209096726799068 N, speed 0.10101396891269843
+  alpha/alpha_nom 0.0001: F7 10.17472 N
+  alpha/alpha_nom 1: F7 0.29166 N
+  alpha/alpha_nom 0.00273782: F7 9.34436 N
+  alpha/alpha_nom 0.0207952: F7 5.99266 N
+  alpha/alpha_nom 0.096524: F7 2.39094 N
+  alpha/alpha_nom 0.0724441: F7 2.95529 N
+  alpha/alpha_nom 0.0764906: F7 2.84241 N
+Ichiban Firm {'measured_N': 2.8390251749999997, 'alpha_over_alpha_nom': 0.0764906080139604, 'E_star_over_E': 13.073500472338887, 'E_star': 147730.55533742942, 'F7': 2.842412441835968, 'error': 0.001193109122735514}
+[38;5;226m[Genesis] [07:50:18] [WARNING] Link 'ball' has dubious mass 62.879 compared to the estimate from geometry 0.009.[0m
+ceiling 10.209096726799094 N, speed 0.10005638388382732
+  alpha/alpha_nom 0.0001: F7 10.17472 N
+  alpha/alpha_nom 1: F7 0.29166 N
+  alpha/alpha_nom 0.000741929: F7 9.95938 N
+  alpha/alpha_nom 0.00343959: F7 9.14583 N
+  alpha/alpha_nom 0.0216222: F7 5.89563 N
+  alpha/alpha_nom 0.0556193: F7 3.54059 N
+  alpha/alpha_nom 0.0329405: F7 4.82689 N
+  alpha/alpha_nom 0.0344901: F7 4.71017 N
+Ichiban Regular {'measured_N': 4.697385349999999, 'alpha_over_alpha_nom': 0.034490068273369714, 'E_star_over_E': 28.993853884949093, 'E_star': 327630.54889992473, 'F7': 4.7101735681904495, 'error': 0.0027224119882882647}

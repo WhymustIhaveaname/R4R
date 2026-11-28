@@ -1,0 +1,248 @@
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 3 h 250.0 us: speed 0.131, renormalized {'f_sway': 8.009999958539796, 'zeta_sway': 0.00629100031266542, 'f_twist': 10.057947039071566, 'zeta_twist': 0.007899330106029402}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 3 h 250.0 us: lam 0.993411, final {'f_sway': 7.983567574024723, 'zeta_sway': 0.006270241323143177, 'f_twist': 10.02475789286357, 'zeta_twist': 0.007873264963855901}, err_freq 0.3289 %, err_damp 53.89 %
+done gs_ipc_3cells_250.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 3 h 500.0 us: speed 0.261, renormalized {'f_sway': 8.00999995983653, 'zeta_sway': 0.012581464494857041, 'f_twist': 10.05737332329315, 'zeta_twist': 0.015796771667079483}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 3 h 500.0 us: lam 0.993467, final {'f_sway': 7.983797506873427, 'zeta_sway': 0.012540312375178312, 'f_twist': 10.02447846764519, 'zeta_twist': 0.015745113348948046}, err_freq 0.3261 %, err_damp 12.09 %
+done gs_ipc_3cells_500.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 3 h 1000.0 us: speed 0.469, renormalized {'f_sway': 8.00999995111533, 'zeta_sway': 0.025158928059948748, 'f_twist': 10.055082521809625, 'zeta_twist': 0.03157846517394868}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 3 h 1000.0 us: lam 0.993690, final {'f_sway': 7.9847155624773345, 'zeta_sway': 0.025079544922616992, 'f_twist': 10.023361788895322, 'zeta_twist': 0.031478910687054294}, err_freq 0.3148 %, err_damp 87.38 %
+done gs_ipc_3cells_1000.0us.json
+done gs_ipc_3cells_2000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 4 h 250.0 us: speed 0.0861, renormalized {'f_sway': 8.009999949057358, 'zeta_sway': 0.006291004445465766, 'f_twist': 9.95049894911455, 'zeta_twist': 0.007814946600308141}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 4 h 250.0 us: lam 1.004158, final {'f_sway': 8.026634328236637, 'zeta_sway': 0.006304067892353096, 'f_twist': 9.971162404690066, 'zeta_twist': 0.007831174624472036}, err_freq 0.2081 %, err_damp 53.89 %
+done gs_ipc_4cells_250.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 4 h 500.0 us: speed 0.219, renormalized {'f_sway': 8.009999947666126, 'zeta_sway': 0.01258146919481092, 'f_twist': 9.949964328057833, 'zeta_twist': 0.015628097849369246}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 4 h 500.0 us: lam 1.004212, final {'f_sway': 8.026848592451001, 'zeta_sway': 0.012607930458625263, 'f_twist': 9.970890565344616, 'zeta_twist': 0.01566096065840737}, err_freq 0.2108 %, err_damp 11.73 %
+done gs_ipc_4cells_500.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 4 h 1000.0 us: speed 0.377, renormalized {'f_sway': 8.00999993911354, 'zeta_sway': 0.02515893575551694, 'f_twist': 9.947829544904852, 'zeta_twist': 0.03124186484057585}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 4 h 1000.0 us: lam 1.004430, final {'f_sway': 8.027704163589243, 'zeta_sway': 0.02521451987160729, 'f_twist': 9.969804277141186, 'zeta_twist': 0.03131083289622844}, err_freq 0.2216 %, err_damp 87.07 %
+done gs_ipc_4cells_1000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 4 h 2000.0 us: speed 0.296, renormalized {'f_sway': 8.010000133857522, 'zeta_sway': 0.05028559255053466, 'f_twist': 9.93934727298007, 'zeta_twist': 0.06236963520440743}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 4 h 2000.0 us: lam 1.005299, final {'f_sway': 8.03110367205481, 'zeta_sway': 0.05041785295990171, 'f_twist': 9.965474452471538, 'zeta_twist': 0.06253315573431582}, err_freq 0.2645 %, err_damp 272.4 %
+done gs_ipc_4cells_2000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 5 h 250.0 us: speed 0.0866, renormalized {'f_sway': 8.009999938507265, 'zeta_sway': 0.006291006609691414, 'f_twist': 9.925166682425925, 'zeta_twist': 0.007795052962024636}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 5 h 250.0 us: lam 1.006700, final {'f_sway': 8.036787566105, 'zeta_sway': 0.006312043434701135, 'f_twist': 9.958357931743393, 'zeta_twist': 0.007821119666862475}, err_freq 0.3356 %, err_damp 53.89 %
+done gs_ipc_5cells_250.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 5 h 500.0 us: speed 0.219, renormalized {'f_sway': 8.009999953107416, 'zeta_sway': 0.01258135903499329, 'f_twist': 9.924641116890669, 'zeta_twist': 0.015588333115448896}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 5 h 500.0 us: lam 1.006754, final {'f_sway': 8.03699814081207, 'zeta_sway': 0.01262376161810197, 'f_twist': 9.958087979133628, 'zeta_twist': 0.0156408584517723}, err_freq 0.3382 %, err_damp 11.65 %
+done gs_ipc_5cells_500.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 5 h 1000.0 us: speed 0.347, renormalized {'f_sway': 8.009999993150066, 'zeta_sway': 0.025158754275629414, 'f_twist': 9.922542517436094, 'zeta_twist': 0.03116249452531494}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 5 h 1000.0 us: lam 1.006971, final {'f_sway': 8.037839150468368, 'zeta_sway': 0.02524615807134974, 'f_twist': 9.957009280609263, 'zeta_twist': 0.03127066945749399}, err_freq 0.3489 %, err_damp 86.99 %
+done gs_ipc_5cells_1000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 5 h 2000.0 us: speed 0.521, renormalized {'f_sway': 8.009999823805302, 'zeta_sway': 0.050286092871187654, 'f_twist': 9.914203644838286, 'zeta_twist': 0.062212260972176074}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 5 h 2000.0 us: lam 1.007834, final {'f_sway': 8.04118051488822, 'zeta_sway': 0.05048150977787032, 'f_twist': 9.952710269168126, 'zeta_twist': 0.06245326356563906}, err_freq 0.3912 %, err_damp 272.3 %
+done gs_ipc_5cells_2000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 6 h 250.0 us: speed 0.123, renormalized {'f_sway': 8.009999910642732, 'zeta_sway': 0.006290906103805712, 'f_twist': 9.926058784944075, 'zeta_twist': 0.0077957547734998234}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 6 h 250.0 us: lam 1.006611, final {'f_sway': 8.036429933270794, 'zeta_sway': 0.006311664658090522, 'f_twist': 9.958809973112874, 'zeta_twist': 0.007821475975327853}, err_freq 0.3311 %, err_damp 53.89 %
+done gs_ipc_6cells_250.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 6 h 500.0 us: speed 0.19, renormalized {'f_sway': 8.009999942117298, 'zeta_sway': 0.012581472727595765, 'f_twist': 9.925532942858379, 'zeta_twist': 0.015589732076857977}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 6 h 500.0 us: lam 1.006665, final {'f_sway': 8.036640724552074, 'zeta_sway': 0.012623312669167093, 'f_twist': 9.958539974466646, 'zeta_twist': 0.0156415668873166}, err_freq 0.3337 %, err_damp 11.65 %
+done gs_ipc_6cells_500.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 6 h 1000.0 us: speed 0.438, renormalized {'f_sway': 8.009999990454256, 'zeta_sway': 0.02515875271638616, 'f_twist': 9.923433068916474, 'zeta_twist': 0.03116529300214055}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 6 h 1000.0 us: lam 1.006881, final {'f_sway': 8.037482231732124, 'zeta_sway': 0.02524503596554628, 'f_twist': 9.957460990279543, 'zeta_twist': 0.031272090649922285}, err_freq 0.3444 %, err_damp 87 %
+done gs_ipc_6cells_1000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 6 h 2000.0 us: speed 0.812, renormalized {'f_sway': 8.010000134422135, 'zeta_sway': 0.05028557758878569, 'f_twist': 9.915089158362077, 'zeta_twist': 0.0622177906470779}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 6 h 2000.0 us: lam 1.007744, final {'f_sway': 8.040825784278857, 'zeta_sway': 0.05047876793394811, 'f_twist': 9.953160696369709, 'zeta_twist': 0.062456069929301514}, err_freq 0.3868 %, err_damp 272.3 %
+done gs_ipc_6cells_2000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 8 h 250.0 us: speed 0.12, renormalized {'f_sway': 8.009999926671851, 'zeta_sway': 0.006291006770766242, 'f_twist': 9.947183031979277, 'zeta_twist': 0.007812344267708861}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 8 h 250.0 us: lam 1.004491, final {'f_sway': 8.027963369565235, 'zeta_sway': 0.006305113959999645, 'f_twist': 9.969490023524596, 'zeta_twist': 0.007829863033473994}, err_freq 0.2248 %, err_damp 53.89 %
+done gs_ipc_8cells_250.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 8 h 500.0 us: speed 0.168, renormalized {'f_sway': 8.009999930451329, 'zeta_sway': 0.012581471927195859, 'f_twist': 9.94664957753404, 'zeta_twist': 0.015622894929259537}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 8 h 500.0 us: lam 1.004545, final {'f_sway': 8.02817715736166, 'zeta_sway': 0.01261001973365488, 'f_twist': 9.96921841912826, 'zeta_twist': 0.015658337254665027}, err_freq 0.2275 %, err_damp 11.72 %
+done gs_ipc_8cells_500.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 8 h 1000.0 us: speed 0.37, renormalized {'f_sway': 8.009999989145026, 'zeta_sway': 0.02515875407658714, 'f_twist': 9.944519556138676, 'zeta_twist': 0.031231471363340667}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 8 h 1000.0 us: lam 1.004762, final {'f_sway': 8.02903084294419, 'zeta_sway': 0.02521850337042457, 'f_twist': 9.968133075883406, 'zeta_twist': 0.03130558287706805}, err_freq 0.2382 %, err_damp 87.06 %
+done gs_ipc_8cells_1000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 8 h 2000.0 us: speed 0.744, renormalized {'f_sway': 8.010000124670256, 'zeta_sway': 0.05028558125923836, 'f_twist': 9.936056141625976, 'zeta_twist': 0.06234902026099287}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 8 h 2000.0 us: lam 1.005630, final {'f_sway': 8.0324227145334, 'zeta_sway': 0.05042610839108253, 'f_twist': 9.963807267501908, 'zeta_twist': 0.06252270478404919}, err_freq 0.281 %, err_damp 272.4 %
+done gs_ipc_8cells_2000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 10 h 250.0 us: speed 0.115, renormalized {'f_sway': 8.00999990087661, 'zeta_sway': 0.006290909686368452, 'f_twist': 9.970602219300488, 'zeta_twist': 0.007830736555677092}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 10 h 250.0 us: lam 1.002143, final {'f_sway': 8.018576589394964, 'zeta_sway': 0.006297645841748571, 'f_twist': 9.981277852117678, 'zeta_twist': 0.007839120633600287}, err_freq 0.1072 %, err_damp 53.89 %
+done gs_ipc_10cells_250.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 10 h 500.0 us: speed 0.197, renormalized {'f_sway': 8.009999928758912, 'zeta_sway': 0.01258146865036476, 'f_twist': 9.970060367992428, 'zeta_twist': 0.01565965923911623}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 10 h 500.0 us: lam 1.002198, final {'f_sway': 8.018793805476722, 'zeta_sway': 0.01259527970491181, 'f_twist': 9.981004511565834, 'zeta_twist': 0.015676846029569615}, err_freq 0.1099 %, err_damp 11.8 %
+done gs_ipc_10cells_500.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 10 h 1000.0 us: speed 0.33, renormalized {'f_sway': 8.009999986574693, 'zeta_sway': 0.025158759441454907, 'f_twist': 9.967896720268957, 'zeta_twist': 0.031304841054170716}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 10 h 1000.0 us: lam 1.002416, final {'f_sway': 8.019661031447708, 'zeta_sway': 0.025189091278840448, 'f_twist': 9.979912266492471, 'zeta_twist': 0.03134255196004064}, err_freq 0.1208 %, err_damp 87.12 %
+done gs_ipc_10cells_1000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 10 h 2000.0 us: speed 0.693, renormalized {'f_sway': 8.010000118676244, 'zeta_sway': 0.05028559611993509, 'f_twist': 9.959300021335535, 'zeta_twist': 0.062494499235325594}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 10 h 2000.0 us: lam 1.003289, final {'f_sway': 8.023106642884933, 'zeta_sway': 0.05036773771310876, 'f_twist': 9.975558713176087, 'zeta_twist': 0.06259625527304302}, err_freq 0.1641 %, err_damp 272.5 %
+done gs_ipc_10cells_2000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 12 h 250.0 us: speed 0.0897, renormalized {'f_sway': 8.009999894736577, 'zeta_sway': 0.006290913779122568, 'f_twist': 9.99104891171859, 'zeta_twist': 0.007846794331873715}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 12 h 250.0 us: lam 1.000095, final {'f_sway': 8.01038116394898, 'zeta_sway': 0.00629121320904619, 'f_twist': 9.991524427208601, 'zeta_twist': 0.007847167751030929}, err_freq 0.004759 %, err_damp 53.89 %
+done gs_ipc_12cells_250.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 12 h 500.0 us: speed 0.197, renormalized {'f_sway': 8.00999992644039, 'zeta_sway': 0.012581463966199866, 'f_twist': 9.990499671038446, 'zeta_twist': 0.015691756941017654}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 12 h 500.0 us: lam 1.000150, final {'f_sway': 8.010601328157351, 'zeta_sway': 0.012582408541363499, 'f_twist': 9.991249644063938, 'zeta_twist': 0.015692934645121833}, err_freq 0.007508 %, err_damp 11.87 %
+done gs_ipc_12cells_500.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 12 h 1000.0 us: speed 0.317, renormalized {'f_sway': 8.009999981890978, 'zeta_sway': 0.02515876699287106, 'f_twist': 9.988306515177248, 'zeta_twist': 0.03136889717665906}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 12 h 1000.0 us: lam 1.000370, final {'f_sway': 8.011480411672323, 'zeta_sway': 0.025163414958990136, 'f_twist': 9.990151495953949, 'zeta_twist': 0.031374687755976766}, err_freq 0.01849 %, err_damp 87.18 %
+done gs_ipc_12cells_1000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 12 h 2000.0 us: speed 0.54, renormalized {'f_sway': 8.009999834568553, 'zeta_sway': 0.05028605812024323, 'f_twist': 9.97959281954139, 'zeta_twist': 0.06262150018417131}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 12 h 2000.0 us: lam 1.001247, final {'f_sway': 8.014972932016654, 'zeta_sway': 0.0503172259583645, 'f_twist': 9.985774381586381, 'zeta_twist': 0.06266018740203082}, err_freq 0.0622 %, err_damp 272.6 %
+done gs_ipc_12cells_2000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 16 h 250.0 us: speed 0.0633, renormalized {'f_sway': 8.009999892382854, 'zeta_sway': 0.006290921715677469, 'f_twist': 10.022673622891359, 'zeta_twist': 0.00787163066178215}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 16 h 250.0 us: lam 0.996932, final {'f_sway': 7.99770538836986, 'zeta_sway': 0.0062812658630209605, 'f_twist': 10.00729044607934, 'zeta_twist': 0.007859549478871235}, err_freq 0.1533 %, err_damp 53.89 %
+done gs_ipc_16cells_250.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 16 h 500.0 us: speed 0.146, renormalized {'f_sway': 8.009999918307196, 'zeta_sway': 0.012581455029267675, 'f_twist': 10.022112857148691, 'zeta_twist': 0.015741402609561056}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 16 h 500.0 us: lam 0.996988, final {'f_sway': 7.997930147795919, 'zeta_sway': 0.012562498951459777, 'f_twist': 10.00701339786659, 'zeta_twist': 0.01571769021536792}, err_freq 0.1505 %, err_damp 11.97 %
+done gs_ipc_16cells_500.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 16 h 1000.0 us: speed 0.225, renormalized {'f_sway': 8.009999971463934, 'zeta_sway': 0.025158781741736785, 'f_twist': 10.019873751351195, 'zeta_twist': 0.031467971061269126}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 16 h 1000.0 us: lam 0.997209, final {'f_sway': 7.998827630450037, 'zeta_sway': 0.02512370499228416, 'f_twist': 10.005906348004503, 'zeta_twist': 0.03142413457934366}, err_freq 0.1393 %, err_damp 87.27 %
+done gs_ipc_16cells_1000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 16 h 2000.0 us: speed 0.363, renormalized {'f_sway': 8.009999855812142, 'zeta_sway': 0.05028601742522299, 'f_twist': 10.010977890178216, 'zeta_twist': 0.06281792295797477}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 16 h 2000.0 us: lam 0.998094, final {'f_sway': 8.002393186381099, 'zeta_sway': 0.05023834405671443, 'f_twist': 10.001493366079622, 'zeta_twist': 0.06275856523331501}, err_freq 0.09499 %, err_damp 272.7 %
+done gs_ipc_16cells_2000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 20 h 250.0 us: speed 0.0527, renormalized {'f_sway': 8.009999897081567, 'zeta_sway': 0.006290985596299325, 'f_twist': 10.045019026230475, 'zeta_twist': 0.007889179639186306}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 20 h 250.0 us: lam 0.994701, final {'f_sway': 7.98874910126885, 'zeta_sway': 0.006274296045116745, 'f_twist': 10.018370287632541, 'zeta_twist': 0.007868251075342522}, err_freq 0.2646 %, err_damp 53.89 %
+done gs_ipc_20cells_250.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 20 h 500.0 us: speed 0.0906, renormalized {'f_sway': 8.009999913080108, 'zeta_sway': 0.012581447919107517, 'f_twist': 10.04445006834, 'zeta_twist': 0.015776480764474424}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 20 h 500.0 us: lam 0.994756, final {'f_sway': 7.98897714636066, 'zeta_sway': 0.012548430732919386, 'f_twist': 10.018091719139703, 'zeta_twist': 0.015735087450546373}, err_freq 0.2618 %, err_damp 12.05 %
+done gs_ipc_20cells_500.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 20 h 1000.0 us: speed 0.153, renormalized {'f_sway': 8.009999931070361, 'zeta_sway': 0.0251589006958006, 'f_twist': 10.042178261875335, 'zeta_twist': 0.03153797299939947}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 20 h 1000.0 us: lam 0.994979, final {'f_sway': 7.989887650803766, 'zeta_sway': 0.02509575600621316, 'f_twist': 10.016978541001189, 'zeta_twist': 0.03145888433384069}, err_freq 0.2505 %, err_damp 87.34 %
+done gs_ipc_20cells_1000.0us.json
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+gs_ipc n 20 h 2000.0 us: speed 0.271, renormalized {'f_sway': 8.010000052639743, 'zeta_sway': 0.05028568985826917, 'f_twist': 10.033152847381771, 'zeta_twist': 0.06295669859686293}
+CUDA Backend Kernel Console Init Success!
+CUDA Backend Kernel Console Init Success!
+/home/youran/R4R/exp4_tofu/jello_sim.py:85: OptimizeWarning: Covariance of the parameters could not be estimated
+  p, _ = curve_fit(model, t, q, p0=[np.abs(q).max(), ZETA_VIDEO * w0, w0, 0.0], maxfev=20000)
+gs_ipc n 20 h 2000.0 us: lam 0.995868, final {'f_sway': 7.993505071412923, 'zeta_sway': 0.050182310876460245, 'f_twist': 10.012540737357673, 'zeta_twist': 0.06282770231580616}, err_freq 0.2058 %, err_damp 272.8 %
+done gs_ipc_20cells_2000.0us.json
